@@ -10,6 +10,7 @@ window.CATALOGO = {
     "Diseño": { color: "#5B48B0", icon: "pen-tool", texto: "Para que se vea bien y se use fácil, antes de construir." },
     "IA y automatización": { color: "#17766A", icon: "sparkles", texto: "Para quitarse trabajo repetido y no perder clientes." },
     "Marketing": { color: "#A23F6B", icon: "megaphone", texto: "Para que les encuentren y les elijan." },
+    "Formación": { color: "#8A5A12", icon: "graduation-cap", texto: "Para que el equipo del cliente aprenda a usar la IA por sí mismo." },
     "Apps": { color: "#3D4B66", icon: "smartphone", texto: "Para ideas propias y herramientas internas." },
     "Mantenimiento": { color: "#5E6675", icon: "wrench", texto: "Para que todo siga funcionando cada mes." }
   },
@@ -176,6 +177,23 @@ window.CATALOGO = {
       ]
     },
     {
+      id: "seo", icon: "map-pin", categoria: "Marketing",
+      titulo: "Ficha de Google y SEO local",
+      frase: "Que el negocio aparezca en Google Maps cuando alguien lo busca cerca.",
+      queEs: "Dejamos completa y optimizada la ficha gratuita del negocio en Google (la que sale en Google Maps): categorías, horarios, servicios, fotos y textos con las palabras que usan sus clientes. Respondemos las reseñas pendientes y le damos plantillas para pedir reseñas nuevas.",
+      paraQuien: ["Negocios de barrio: tiendas, estéticas, restaurantes, talleres", "Despachos y consultoras que reciben clientes en su oficina", "Cualquier negocio con local o zona de servicio"],
+      senales: "Te dicen «no salgo en Google Maps», «tengo pocas reseñas» o «sale mi horario mal».",
+      incluye: ["Ficha de Google completa: categorías, horarios, servicios y fotos", "Textos con las palabras que buscan sus clientes", "Respuesta a las reseñas pendientes", "Plantillas para pedir reseñas", "Revisión de que sus datos coinciden en internet"],
+      noIncluye: ["Gestión mensual de reseñas (va en el plan de redes)", "Anuncios en Google", "Posicionar la web en buscadores a nivel nacional"],
+      plazo: "1 semana (Google puede tardar unos días en verificar la ficha)",
+      precio: { inicial: "seo_local" },
+      terceros: [
+        { que: "Ficha de Google", quien: "Cliente", costeEur: [0, 0], periodo: "", nota: "Gratuita y a nombre del cliente" }
+      ],
+      demos: [{ nombre: "Piñatas Madrid", url: "https://melinarivera.github.io/pinata/" }],
+      preguntas: [["¿Tengo que pagar algo a Google?", "No. La ficha de Google es gratis. Solo pagas nuestro trabajo de dejarla bien hecha."]]
+    },
+    {
       id: "uxui", icon: "pen-tool", categoria: "Diseño",
       titulo: "Diseño UX/UI",
       frase: "Ver y probar tu web o app antes de construirla, para no pagar dos veces.",
@@ -193,6 +211,44 @@ window.CATALOGO = {
       preguntas: [
         ["¿Para qué pagar diseño si luego hay que programarlo?", "Porque cambiar un dibujo cuesta minutos y cambiar algo ya programado cuesta días. El diseño evita pagar dos veces."],
         ["¿Qué es una auditoría UX?", "Revisamos su web o app actual como si fuéramos sus clientes y le damos un informe con lo que les hace dudar o abandonar, y cómo arreglarlo."]
+      ]
+    },
+    {
+      id: "identidad", icon: "palette", categoria: "Diseño",
+      titulo: "Identidad visual básica",
+      frase: "Que el negocio se reconozca a primera vista y se vea igual en todas partes.",
+      queEs: "Creamos la imagen básica del negocio: un logo sencillo, sus colores, sus tipografías y unas plantillas para redes. Todo recogido en una mini guía para que cualquier persona la use igual.",
+      paraQuien: ["Negocios que empiezan y no tienen logo", "Negocios con un logo hecho a mano o que no se lee bien", "Quien va a contratar web o redes y no tiene marca"],
+      senales: "Te dicen «no tengo logo», «cada publicación me sale distinta» o «mi logo lo hizo un amigo».",
+      incluye: ["Logo sencillo: 2 propuestas y la versión final", "Versiones para redes, web y fondo oscuro", "Paleta de colores y tipografías", "Mini guía de marca en PDF", "5 plantillas de Canva para redes", "2 rondas de cambios"],
+      noIncluye: ["Registro de la marca en la oficina de patentes", "Diseño de papelería impresa, rótulos o envases", "Ilustraciones o mascotas a medida"],
+      plazo: "2–3 semanas",
+      precio: { inicial: "identidad" },
+      terceros: [
+        { que: "Registro de marca (si lo quiere)", quien: "Cliente", costeEur: null, periodo: "año", nota: "Se paga a la oficina de patentes de su país" },
+        { que: "Canva (para editar las plantillas)", quien: "Cliente", costeEur: [0, 12], periodo: "mes", nota: "Funciona con el plan gratuito" }
+      ],
+      demos: [{ nombre: "Piñatas Madrid", url: "https://melinarivera.github.io/pinata/" }],
+      preguntas: [["¿El logo es mío?", "Sí. Te entregamos todos los archivos y los derechos de uso."]]
+    },
+    {
+      id: "formacion", icon: "graduation-cap", categoria: "Formación",
+      titulo: "Formación en IA para equipos",
+      frase: "Que tu equipo use la IA en su trabajo diario, con seguridad y sin perder tiempo.",
+      queEs: "Un taller práctico de 2 horas donde el equipo aprende a usar herramientas de IA (como Claude o ChatGPT) en sus tareas reales: redactar correos y propuestas, resumir documentos, preparar contenidos o atender clientes. Lo imparte Melina, con experiencia en recursos humanos y formación.",
+      paraQuien: ["Despachos, gestorías y consultoras", "Equipos comerciales y de atención al cliente", "Pymes que ya pagan alguna IA pero nadie la usa bien", "Academias y centros de formación"],
+      senales: "Te dicen «hemos oído hablar de la IA pero no sabemos usarla», «cada uno la usa a su manera» o «me da miedo meter datos de clientes».",
+      incluye: ["Taller práctico de 2 horas, presencial u online", "Hasta 10 personas por grupo", "Ejemplos con las tareas reales del negocio", "Guía con instrucciones listas para copiar", "Buenas prácticas de privacidad y datos de clientes"],
+      noIncluye: ["Licencias de las herramientas de IA", "Desplazamiento fuera de Madrid (se presupuesta aparte)", "Implantar automatizaciones (es otro servicio)"],
+      plazo: "Se agenda en 1–2 semanas",
+      precio: { inicial: "formacion_ia", porUnidad: "taller" },
+      terceros: [
+        { que: "Planes de pago de IA (si el equipo los quiere)", quien: "Cliente", costeEur: [0, 25], periodo: "mes", nota: "Por persona; muchas herramientas tienen plan gratuito" }
+      ],
+      demos: [{ nombre: "Tesovia (IA hecha por Melina)", url: "https://www.tesovia.com" }],
+      preguntas: [
+        ["¿Es para gente que no sabe nada de tecnología?", "Sí. Se empieza desde cero y con ejemplos de su propio trabajo."],
+        ["¿Es seguro meter datos de clientes en la IA?", "Lo explicamos en el taller: qué datos se pueden usar, cuáles no y cómo configurarlo."]
       ]
     },
     {

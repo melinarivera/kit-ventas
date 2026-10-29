@@ -280,7 +280,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 'use strict';
 var C = window.CATALOGO;
 /* Copia de seguridad de los precios; los reales se leen de la web de Melina al cargar */
-var PR = {"landing":{"eur":350,"mxn":3500},"web":{"eur":1100,"mxn":12000},"tienda":{"eur":1600,"mxn":16000},"ia":{"eur":490,"mxn":5500},"ia_cuota":{"eur":39,"mxn":650},"ia_citas":{"eur":890,"mxn":9900},"ia_citas_cuota":{"eur":69,"mxn":1100},"ia_incluidas":1000,"ia_citas_incluidas":2000,"ia_bloque_extra":{"eur":9,"mxn":150},"ia_descuento_propia":{"eur":9,"mxn":150},"automatizacion":{"eur":290,"mxn":3500},"crm":{"eur":1200,"mxn":14000},"crm_configurar":{"eur":400,"mxn":4500},"redes":{"eur":220,"mxn":3500},"redes_crecimiento":{"eur":420,"mxn":6500},"auditoria_redes":{"eur":120,"mxn":1500},"uxui":{"eur":450,"mxn":5000},"uxui_app":{"eur":1200,"mxn":14000},"auditoria_ux":{"eur":250,"mxn":2800},"app":{"eur":3000,"mxn":35000},"mantenimiento":{"eur":49,"mxn":700},"pack_arranque":{"eur":790,"mxn":8900,"ahorro_eur":170,"ahorro_mxn":1600},"pack_pyme_digital":{"eur":1890,"mxn":23900,"ahorro_eur":360,"ahorro_mxn":4100},"pack_organiza":{"eur":1590,"mxn":18500,"ahorro_eur":190,"ahorro_mxn":2500}};
+var PR = {"landing":{"eur":350,"mxn":3500},"web":{"eur":1100,"mxn":12000},"tienda":{"eur":1600,"mxn":16000},"ia":{"eur":490,"mxn":5500},"ia_cuota":{"eur":39,"mxn":650},"ia_citas":{"eur":890,"mxn":9900},"ia_citas_cuota":{"eur":69,"mxn":1100},"ia_incluidas":1000,"ia_citas_incluidas":2000,"ia_bloque_extra":{"eur":9,"mxn":150},"ia_descuento_propia":{"eur":9,"mxn":150},"automatizacion":{"eur":290,"mxn":3500},"crm":{"eur":1200,"mxn":14000},"crm_configurar":{"eur":400,"mxn":4500},"redes":{"eur":220,"mxn":3500},"redes_crecimiento":{"eur":420,"mxn":6500},"auditoria_redes":{"eur":120,"mxn":1500},"seo_local":{"eur":120,"mxn":2200},"identidad":{"eur":290,"mxn":5500},"formacion_ia":{"eur":180,"mxn":3500},"uxui":{"eur":450,"mxn":5000},"uxui_app":{"eur":1200,"mxn":14000},"auditoria_ux":{"eur":250,"mxn":2800},"app":{"eur":3000,"mxn":35000},"mantenimiento":{"eur":49,"mxn":700},"pack_arranque":{"eur":790,"mxn":8900,"ahorro_eur":170,"ahorro_mxn":1600},"pack_pyme_digital":{"eur":1890,"mxn":23900,"ahorro_eur":360,"ahorro_mxn":4100},"pack_organiza":{"eur":1590,"mxn":18500,"ahorro_eur":190,"ahorro_mxn":2500}};
 var USD = 1.1, MXN_TERC = 20;  /* US$ = € × 1,10 redondeado a 5 · terceros en pesos ≈ € × 20 */
 var cur = 'eur';
 var $ = function(s){ return document.querySelector(s); };
@@ -293,7 +293,7 @@ function grp(n, sep){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))
 function val(key){ var v = PR[key]; if (!v) return 0; if (cur === 'mxn') return v.mxn; if (cur === 'usd') return Math.round(v.eur*USD/5)*5; return v.eur; }
 function money(n){ if (cur === 'mxn') return '$' + grp(n, ',') + ' MXN'; if (cur === 'usd') return 'US$' + grp(n, ','); return grp(n, '.') + ' €'; }
 function terc(n){ return cur === 'mxn' ? n*MXN_TERC : cur === 'usd' ? n*USD : n; }
-function rango(a,b){ if (a === b) return money(terc(a)); return (cur === 'eur' ? grp(a,'.') : money(terc(a)).replace(/ MXN$/,'')) + '–' + money(terc(b)); }
+function rango(a,b){ if (a === b) return a === 0 ? 'Gratis' : money(terc(a)); return (cur === 'eur' ? grp(a,'.') : money(terc(a)).replace(/ MXN$/,'')) + '–' + money(terc(b)); }
 function ahorro(k){ var p = PR[k]; return cur === 'mxn' ? p.ahorro_mxn : cur === 'usd' ? Math.round(p.ahorro_eur*USD/5)*5 : p.ahorro_eur; }
 var PER = { 'año':'al año', 'mes':'al mes', 'venta':'por venta', 'mensaje':'por mensaje' };
 function svc(id){ return C.servicios.filter(function(s){ return s.id === id; })[0]; }
@@ -369,11 +369,14 @@ var OPTS = [
   { id:'landing', tipo:'check' }, { id:'web', tipo:'check' }, { id:'tienda', tipo:'check' },
   { id:'uxui', tipo:'select', opciones:[['','No'],['web','Diseño de web (hasta 5 pantallas)'],['app','Diseño de app (hasta 15 pantallas)']] },
   { id:'auditoria_ux', tipo:'check', base:'uxui', titulo:'Auditoría UX (pago único)', desc:'Informe de mejoras de su web o app actual' },
+  { id:'identidad', tipo:'check' },
   { id:'ia', tipo:'select', opciones:[['','No'],['basic','Asistente (responde dudas)'],['citas','Asistente con citas']] },
   { id:'automatizacion', tipo:'num', max:10 },
   { id:'crm', tipo:'select', opciones:[['','No'],['medida','CRM a medida'],['config','Configurar uno existente']] },
   { id:'redes', tipo:'select', opciones:[['','No'],['esencial','Plan Esencial'],['crec','Plan Crecimiento']] },
   { id:'auditoria', tipo:'check', base:'redes', titulo:'Auditoría de redes (pago único)', desc:'Revisión de sus perfiles con un plan de acción' },
+  { id:'seo', tipo:'check' },
+  { id:'formacion', tipo:'num', max:10, desc:'Talleres de 2 horas, hasta 10 personas cada uno.' },
   { id:'app', tipo:'check' }, { id:'mant', tipo:'check' }
 ];
 function renderOpts(){
@@ -382,7 +385,7 @@ function renderOpts(){
     if (o.tipo === 'check') ctl = '<input type="checkbox" id="' + idc + '" data-q="' + o.id + '"' + (q[o.id] ? ' checked' : '') + '/>';
     if (o.tipo === 'select') ctl = '<select id="' + idc + '" data-q="' + o.id + '">' + o.opciones.map(function(op){ return '<option value="' + op[0] + '"' + ((q[o.id]||'') === op[0] ? ' selected' : '') + '>' + esc(op[1]) + '</option>'; }).join('') + '</select>';
     if (o.tipo === 'num') ctl = '<input type="number" min="0" max="' + o.max + '" id="' + idc + '" data-q="' + o.id + '" value="' + (q[o.id]||0) + '" style="width:84px"/>';
-    return '<div class="opt">' + tile(s, 'sm') + '<label for="' + idc + '"><b>' + esc(titulo) + '</b><small>' + esc(desc) + (o.tipo === 'num' ? ' Indica cuántas.' : '') + '</small></label><div class="ctl">' + ctl + '</div></div>';
+    return '<div class="opt">' + tile(s, 'sm') + '<label for="' + idc + '"><b>' + esc(titulo) + '</b><small>' + esc(desc) + (o.tipo === 'num' && !o.desc ? ' Indica cuántas.' : '') + '</small></label><div class="ctl">' + ctl + '</div></div>';
   }).join('');
   icons();
   document.querySelectorAll('[data-q]').forEach(function(el){
@@ -401,6 +404,7 @@ function lines(){
   if (q.uxui === 'web'){ ini.push(['Diseño UX/UI de web', val('uxui')]); addT(svc('uxui')); }
   if (q.uxui === 'app'){ ini.push(['Diseño UX/UI de app', val('uxui_app')]); addT(svc('uxui')); }
   if (q.auditoria_ux) ini.push(['Auditoría UX', val('auditoria_ux')]);
+  if (q.identidad){ ini.push(['Identidad visual básica', val('identidad')]); addT(svc('identidad')); }
   if (q.ia === 'basic'){ ini.push(['Asistente de WhatsApp con IA (puesta en marcha)', val('ia')]); mes.push(['Asistente con IA (hasta ' + grp(PR.ia_incluidas,'.') + ' conversaciones, IA incluida)', val('ia_cuota')]); addT(svc('ia')); }
   if (q.ia === 'citas'){ ini.push(['Asistente con citas (puesta en marcha)', val('ia_citas')]); mes.push(['Asistente con citas (hasta ' + grp(PR.ia_citas_incluidas,'.') + ' conversaciones, IA incluida)', val('ia_citas_cuota')]); addT(svc('ia')); }
   if (q.automatizacion > 0){ ini.push(['Automatizaciones × ' + q.automatizacion, val('automatizacion') * q.automatizacion]); addT(svc('automatizacion')); }
@@ -409,6 +413,8 @@ function lines(){
   if (q.redes === 'esencial'){ mes.push(['Redes, plan Esencial', val('redes')]); addT(svc('redes')); }
   if (q.redes === 'crec'){ mes.push(['Redes, plan Crecimiento', val('redes_crecimiento')]); addT(svc('redes')); }
   if (q.auditoria) ini.push(['Auditoría de redes', val('auditoria_redes')]);
+  if (q.seo) ini.push(['Ficha de Google y SEO local', val('seo_local')]);
+  if (q.formacion > 0){ ini.push(['Formación en IA × ' + q.formacion + (q.formacion > 1 ? ' talleres' : ' taller'), val('formacion_ia') * q.formacion]); addT(svc('formacion')); }
   if (q.app){ ini.push(['App o SaaS a medida (primera versión)', val('app')]); addT(svc('app')); }
   if (q.mant) mes.push(['Mantenimiento mensual', val('mantenimiento')]);
   return { ini:ini, mes:mes, ter:Object.keys(ter).map(function(k){ return ter[k]; }) };
@@ -476,7 +482,7 @@ document.addEventListener('click', function(e){
   if (e.target.closest('[data-back]')){ showList(); return; }
   var qb = e.target.closest('[data-quote]');
   if (qb){ var id = qb.dataset.quote;
-    if (id === 'ia') q.ia = q.ia || 'basic'; else if (id === 'crm') q.crm = q.crm || 'medida'; else if (id === 'redes') q.redes = q.redes || 'esencial'; else if (id === 'uxui') q.uxui = q.uxui || 'web'; else if (id === 'automatizacion') q.automatizacion = Math.max(1, q.automatizacion || 0); else q[id] = true;
+    if (id === 'ia') q.ia = q.ia || 'basic'; else if (id === 'crm') q.crm = q.crm || 'medida'; else if (id === 'redes') q.redes = q.redes || 'esencial'; else if (id === 'uxui') q.uxui = q.uxui || 'web'; else if (id === 'automatizacion' || id === 'formacion') q[id] = Math.max(1, q[id] || 0); else q[id] = true;
     renderOpts(); renderRes(); tab('cotizar'); toast('Añadido al presupuesto'); return; }
   var tb = e.target.closest('[data-tab]'); if (tb){ if (tb.dataset.tab === 'servicios') showList(); tab(tb.dataset.tab); return; }
   var cb = e.target.closest('[data-cur]'); if (cb){ setCur(cb.dataset.cur); return; }
