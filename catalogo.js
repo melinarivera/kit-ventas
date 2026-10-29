@@ -5,6 +5,16 @@
    directamente a esa empresa. */
 window.CATALOGO = {
 
+  categorias: {
+    "Webs": { color: "#2F6A9E", icon: "globe", texto: "Para que el negocio exista y venda en internet." },
+    "Diseño": { color: "#5B48B0", icon: "pen-tool", texto: "Para que se vea bien y se use fácil, antes de construir." },
+    "IA y automatización": { color: "#17766A", icon: "sparkles", texto: "Para quitarse trabajo repetido y no perder clientes." },
+    "Marketing": { color: "#A23F6B", icon: "megaphone", texto: "Para que les encuentren y les elijan." },
+    "Apps": { color: "#3D4B66", icon: "smartphone", texto: "Para ideas propias y herramientas internas." },
+    "Mantenimiento": { color: "#5E6675", icon: "wrench", texto: "Para que todo siga funcionando cada mes." }
+  },
+
+
   condiciones: [
     "Los precios son «desde»: el precio final lo confirma Melina por escrito tras una llamada gratuita de 20 minutos.",
     "Forma de pago de los proyectos: 50 % al empezar y 50 % al entregar.",
@@ -16,7 +26,7 @@ window.CATALOGO = {
 
   servicios: [
     {
-      id: "landing", icono: "🚀", categoria: "Webs",
+      id: "landing", icon: "rocket", categoria: "Webs",
       titulo: "Landing page sencilla",
       frase: "Una página clara para que te encuentren en Google y te escriban por WhatsApp.",
       queEs: "Una sola página web que presenta el negocio (quién es, qué ofrece, precios o servicios, opiniones y cómo contactar) y lleva al cliente a escribir o llamar.",
@@ -39,7 +49,7 @@ window.CATALOGO = {
       ]
     },
     {
-      id: "web", icono: "🏢", categoria: "Webs",
+      id: "web", icon: "building-2", categoria: "Webs",
       titulo: "Web corporativa",
       frase: "Una web completa que genera confianza y explica bien todo lo que haces.",
       queEs: "Una web de 5 a 7 páginas (inicio, servicios, sobre nosotros, blog o catálogo, contacto…) con estructura pensada para que el visitante confíe y contacte.",
@@ -62,7 +72,7 @@ window.CATALOGO = {
       ]
     },
     {
-      id: "tienda", icono: "🛒", categoria: "Webs",
+      id: "tienda", icon: "shopping-bag", categoria: "Webs",
       titulo: "Tienda online o sistema de reservas",
       frase: "Tu negocio abierto 24 horas: vende o recibe reservas mientras duermes.",
       queEs: "Una web donde el cliente compra y paga con tarjeta, o reserva cita y recibe recordatorios. Con un panel para gestionar pedidos o reservas.",
@@ -86,7 +96,7 @@ window.CATALOGO = {
       ]
     },
     {
-      id: "ia", icono: "🤖", categoria: "IA y automatización",
+      id: "ia", icon: "bot", categoria: "IA y automatización",
       titulo: "Asistente de WhatsApp con IA",
       frase: "Responde a tus clientes al momento, a cualquier hora, y te pasa los que están listos para comprar.",
       queEs: "Un asistente que contesta en el WhatsApp del negocio (o en su web) con la información del negocio: precios, horarios, servicios, ubicación. Si no sabe algo, pasa la conversación a una persona. La versión «con citas» además agenda, envía recordatorios y guarda cada contacto en una ficha.",
@@ -109,7 +119,7 @@ window.CATALOGO = {
       ]
     },
     {
-      id: "automatizacion", icono: "⚙️", categoria: "IA y automatización",
+      id: "automatizacion", icon: "workflow", categoria: "IA y automatización",
       titulo: "Automatización de tareas",
       frase: "Lo que hoy haces a mano cada semana, que se haga solo.",
       queEs: "Un «flujo» que hace una tarea repetitiva sin que nadie la toque. Ejemplos: pasar facturas del email a una hoja de cálculo, enviar recordatorios de pago, crear un informe semanal, avisar cuando entra un pedido.",
@@ -127,7 +137,7 @@ window.CATALOGO = {
       preguntas: [["¿Qué pasa si cambio de programa?", "Se adapta el flujo; se presupuesta antes de tocarlo."]]
     },
     {
-      id: "crm", icono: "🗂️", categoria: "IA y automatización",
+      id: "crm", icon: "users", categoria: "IA y automatización",
       titulo: "CRM o planner a medida",
       frase: "Todos tus clientes, citas y tareas en un solo sitio, en vez de libretas y Excel.",
       queEs: "Una herramienta para guardar clientes con su historial, reservas o ventas, y lanzar campañas (por WhatsApp o email) respetando la ley de protección de datos. Puede ser hecha a medida o configurar una que ya existe (HubSpot, Notion…).",
@@ -146,7 +156,7 @@ window.CATALOGO = {
       preguntas: [["¿Mis datos están seguros?", "Sí. Van en tu cuenta, con acceso solo para tu equipo, y firmamos un contrato de protección de datos (RGPD)."]]
     },
     {
-      id: "redes", icono: "📣", categoria: "Marketing",
+      id: "redes", icon: "megaphone", categoria: "Marketing",
       titulo: "Redes sociales y reputación",
       frase: "Que tu negocio se vea activo, profesional y bien valorado en Instagram, Facebook y Google.",
       queEs: "Gestión mensual de las redes del negocio: plan de publicaciones, diseños, textos, respuesta a comentarios y reseñas de Google. En el plan Crecimiento, también reels y gestión de anuncios.",
@@ -166,7 +176,27 @@ window.CATALOGO = {
       ]
     },
     {
-      id: "app", icono: "📱", categoria: "Apps",
+      id: "uxui", icon: "pen-tool", categoria: "Diseño",
+      titulo: "Diseño UX/UI",
+      frase: "Ver y probar tu web o app antes de construirla, para no pagar dos veces.",
+      queEs: "Diseñamos cómo se verá y cómo se usará una web o app antes de programarla: qué pantallas tiene, qué hay en cada una y por dónde va el usuario. Se entrega un prototipo en Figma que se puede tocar como si fuera real, y una guía de estilo (colores, letras, botones) para que todo sea coherente.",
+      paraQuien: ["Emprendedores que van a invertir en una app y quieren validarla antes", "Negocios con una web que se ve anticuada o confunde a sus clientes", "Empresas que ya tienen programador pero no diseñador", "Cualquier cliente de web o app que quiera ver el resultado antes de pagar el desarrollo"],
+      senales: "Te dicen «mi web no convence», «la gente entra y no compra», «quiero ver cómo quedaría antes» o «tengo programador pero queda feo».",
+      incluye: ["Entrevista y mapa de lo que necesitan sus usuarios", "Web: diseño de hasta 5 pantallas (móvil y ordenador)", "App: hasta 15 pantallas y el flujo completo de usuario", "Prototipo navegable en Figma", "Guía de estilo: colores, tipografías y componentes", "2 rondas de cambios"],
+      noIncluye: ["Programar la web o la app (es otro servicio; si lo contratan junto, se descuenta parte del diseño)", "Logo o identidad de marca completa", "Fotos o ilustraciones a medida", "Pruebas con usuarios reales a gran escala"],
+      plazo: "Web: 1–2 semanas · App: 3–4 semanas",
+      precio: { inicial: "uxui", variante: { nombre: "Diseño de app completa (hasta 15 pantallas)", inicial: "uxui_app" }, extra: { nombre: "Auditoría UX de su web o app actual (informe de mejoras)", inicial: "auditoria_ux" } },
+      terceros: [
+        { que: "Figma (para ver y comentar el diseño)", quien: "Cliente", costeEur: null, periodo: "mes", nota: "El plan gratuito basta para verlo; el archivo se entrega en su cuenta" }
+      ],
+      demos: [{ nombre: "Kit de ventas (este mismo)", url: "https://melinarivera.github.io/kit-ventas/" }, { nombre: "Demo asistente WhatsApp", url: "https://melinarivera.github.io/MR_Portafolio/demos/asistente-whatsapp/#estetica" }, { nombre: "Demo CRM restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }],
+      preguntas: [
+        ["¿Para qué pagar diseño si luego hay que programarlo?", "Porque cambiar un dibujo cuesta minutos y cambiar algo ya programado cuesta días. El diseño evita pagar dos veces."],
+        ["¿Qué es una auditoría UX?", "Revisamos su web o app actual como si fuéramos sus clientes y le damos un informe con lo que les hace dudar o abandonar, y cómo arreglarlo."]
+      ]
+    },
+    {
+      id: "app", icon: "smartphone", categoria: "Apps",
       titulo: "App o SaaS a medida",
       frase: "Tu idea o tu herramienta interna, convertida en una aplicación que funciona.",
       queEs: "Una aplicación web hecha a medida: usuarios con contraseña, panel de administración y base de datos. Se empieza por una primera versión (MVP) con lo imprescindible y luego se amplía.",
@@ -185,7 +215,7 @@ window.CATALOGO = {
       preguntas: [["¿Por qué un MVP y no todo de golpe?", "Para salir antes, probar con usuarios reales y gastar solo en lo que funciona."]]
     },
     {
-      id: "mant", icono: "🛠️", categoria: "Mantenimiento",
+      id: "mant", icon: "wrench", categoria: "Mantenimiento",
       titulo: "Mantenimiento mensual",
       frase: "Tu web siempre funcionando, segura y al día, sin preocuparte.",
       queEs: "Una cuota mensual para que la web o la herramienta siga funcionando: vigilamos que esté en línea, renovamos y revisamos dominio y certificados, hacemos copias de seguridad y los cambios pequeños. Es como el mantenimiento del coche: si no se hace, tarde o temprano algo falla.",
@@ -219,6 +249,8 @@ window.CATALOGO = {
     ["Meta", "La empresa dueña de WhatsApp, Instagram y Facebook. Cobra algunos mensajes de WhatsApp y los anuncios."],
     ["IA / tokens", "Lo que consume la inteligencia artificial al responder. Va incluido en la cuota del asistente."],
     ["Ronda de cambios", "Una vez que el cliente revisa y pide ajustes. Incluimos 2 por proyecto."],
-    ["MVP", "Primera versión de una app con lo imprescindible para empezar a usarla."]
+    ["MVP", "Primera versión de una app con lo imprescindible para empezar a usarla."],
+    ["UX / UI", "UX es cómo se usa (que sea fácil y lleve al cliente a comprar). UI es cómo se ve (colores, letras, botones)."],
+    ["Prototipo", "Diseño que se puede tocar en el móvil como si fuera la web o app real, pero sin programar."]
   ]
 };
