@@ -39,7 +39,7 @@ window.CATALOGO = {
       precio: { inicial: "landing" },
       terceros: [
         { que: "Dominio (www.sunegocio.com)", quien: "Cliente", costeEur: [10, 15], periodo: "año" },
-        { que: "Alojamiento (hosting)", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Gratis en webs sencillas" },
+        { que: "Alojamiento (hosting)", quien: "Cliente", costeEur: [0, 0], periodo: "", nota: "Gratis: usamos un alojamiento que permite uso comercial (Cloudflare Pages), a tu nombre" },
         { que: "Textos legales (iubenda)", quien: "Cliente", costeEur: [0, 6], periodo: "mes" }
       ],
       mensual: { opcional: "mant", texto: "Opcional: mantenimiento mensual." },
@@ -62,7 +62,7 @@ window.CATALOGO = {
       precio: { inicial: "web" },
       terceros: [
         { que: "Dominio", quien: "Cliente", costeEur: [10, 15], periodo: "año" },
-        { que: "Alojamiento (hosting)", quien: "Cliente", costeEur: [0, 10], periodo: "mes" },
+        { que: "Alojamiento (hosting)", quien: "Cliente", costeEur: [0, 10], periodo: "mes", nota: "Gratis si la web no lleva funciones especiales (Cloudflare Pages, uso comercial permitido)" },
         { que: "Textos legales (iubenda)", quien: "Cliente", costeEur: [0, 6], periodo: "mes" }
       ],
       mensual: { opcional: "mant", texto: "Recomendado: mantenimiento mensual." },
@@ -171,7 +171,7 @@ window.CATALOGO = {
       plazo: "3–5 semanas (configurar uno existente: 1–2 semanas)",
       precio: { inicial: "crm", variante: { nombre: "Configurar uno existente (HubSpot, Notion…)", inicial: "crm_configurar" } },
       terceros: [
-        { que: "Base de datos", quien: "Cliente", costeEur: [0, 25], periodo: "mes", nota: "Gratis al empezar; si crece mucho, desde 25 $/mes" },
+        { que: "Base de datos (Supabase Pro)", quien: "Cliente", costeEur: [23, 25], periodo: "mes", nota: "Recomendada desde el primer día: el plan gratis se pausa si no se usa y no guarda copias diarias" },
         { que: "Licencias de HubSpot, Notion, etc. (si se usan)", quien: "Cliente", costeEur: null, periodo: "mes" }
       ],
       mensual: { opcional: "mant", texto: "Recomendado: mantenimiento mensual." },
@@ -211,7 +211,7 @@ window.CATALOGO = {
       plazo: "Primer vídeo en 3–5 días desde que aprueba el guion",
       precio: { tope: "vídeos de hasta 1 minuto; el pack son 4 al mes", inicial: "avatar_video", porUnidad: "vídeo", variante: { nombre: "Pack mensual: 4 vídeos", mensual: "avatar_pack" }, extra: { nombre: "Su propio avatar (su cara y su voz, pago único)", inicial: "avatar_propio" } },
       terceros: [
-        { que: "Herramienta de vídeo con avatar (HeyGen o similar)", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluida; los vídeos son suyos" }
+        { que: "Herramienta de vídeo con avatar y voz (HeyGen)", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluida en el precio, también la voz; los vídeos son tuyos" }
       ],
       demos: [],
       preguntas: [
@@ -308,7 +308,7 @@ window.CATALOGO = {
       plazo: "6–10 semanas según el alcance",
       precio: { inicial: "app" },
       terceros: [
-        { que: "Alojamiento y base de datos", quien: "Cliente", costeEur: [0, 30], periodo: "mes" },
+        { que: "Alojamiento y base de datos", quien: "Cliente", costeEur: [23, 35], periodo: "mes", nota: "Plan de pago desde el primer día, con copias de seguridad" },
         { que: "IA (si la app usa IA)", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Según uso" }
       ],
       mensual: { opcional: "mant", texto: "Necesario: mantenimiento mensual." },
@@ -462,7 +462,7 @@ window.CATALOGO = {
     ["Herramientas incluidas", "Programas que usamos para hacer tu trabajo (IA, diseño, vídeo, voz). Van dentro de nuestro precio: no tienes que contratarlos."],
     ["Mantenimiento", "Cuota mensual para que todo siga funcionando: vigilancia, seguridad, copias y cambios pequeños."],
     ["Dominio", "La dirección de la web (www.negocio.com). Se paga cada año, unos 10–15 €."],
-    ["Alojamiento (hosting)", "El «terreno» donde vive la web. En webs sencillas puede ser gratis."],
+    ["Alojamiento (hosting)", "El «terreno» donde vive la web. En webs sencillas es gratis con un alojamiento que permite uso comercial."],
     ["iubenda", "Servicio que genera y actualiza la política de privacidad y cookies para cumplir la ley."],
     ["Meta", "La empresa dueña de WhatsApp, Instagram y Facebook. Cobra algunos mensajes de WhatsApp y los anuncios."],
     ["IA / tokens", "Lo que consume la inteligencia artificial al responder. Va incluido en la cuota del asistente."],
