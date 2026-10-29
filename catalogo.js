@@ -106,7 +106,7 @@ window.CATALOGO = {
       incluye: ["Configuración con la información del negocio", "Respuestas 24/7 en WhatsApp o web", "Pase a una persona cuando hace falta", "Con citas: agenda, recordatorios y ficha de cada cliente", "La cuota mensual incluye la IA, el servidor y el mantenimiento"],
       noIncluye: ["Más de 1.000 conversaciones al mes (2.000 con citas): bloques extra aparte", "Mensajes de WhatsApp que cobra Meta (los paga el cliente a Meta)", "Asesoramiento legal o médico: el asistente nunca lo da", "Llamadas de voz"],
       plazo: "1–2 semanas (con citas: 2–3 semanas)",
-      precio: { inicial: "ia", mensual: "ia_cuota", variante: { nombre: "Con citas (agenda + recordatorios + CRM)", inicial: "ia_citas", mensual: "ia_citas_cuota" } },
+      precio: { tope: "hasta 1.000 conversaciones al mes; con citas, 2.000", inicial: "ia", mensual: "ia_cuota", variante: { nombre: "Con citas (agenda + recordatorios + CRM)", inicial: "ia_citas", mensual: "ia_citas_cuota" } },
       terceros: [
         { que: "Mensajes de WhatsApp (Meta): responder a clientes", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Gratis hasta 1.000 respuestas al mes; después ≈ 0,017 € cada una" },
         { que: "Recordatorios automáticos (Meta)", quien: "Cliente", costeEur: null, periodo: "mensaje", nota: "≈ 0,017 € cada recordatorio" },
@@ -129,7 +129,7 @@ window.CATALOGO = {
       incluye: ["Configuración con la información del negocio y su forma de hablar", "Atiende 24/7 con voz natural, en español", "Toma citas o reservas en su agenda", "Resumen de cada llamada por WhatsApp o email", "Pasa la llamada a una persona cuando hace falta", "La cuota incluye la IA, la voz, el número y 200 minutos al mes"],
       noIncluye: ["Más de 200 minutos al mes: bloques de 100 minutos aparte", "Llamadas salientes de venta (solo atiende llamadas que entran)", "Consejo médico o legal: nunca lo da", "Cambiar de compañía telefónica"],
       plazo: "2–3 semanas (incluye una semana de pruebas)",
-      precio: { inicial: "voz", mensual: "voz_cuota", extra: { nombre: "Si necesitas más: 100 minutos extra", inicial: "voz_bloque_extra" } },
+      precio: { tope: "hasta 200 minutos de llamadas al mes", inicial: "voz", mensual: "voz_cuota", extra: { nombre: "Si necesitas más: 100 minutos extra", inicial: "voz_bloque_extra" } },
       terceros: [
         { que: "Desvío de llamadas desde tu línea", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Según su operador; normalmente gratis" },
         { que: "IA, voz natural y número de teléfono", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluidos en la cuota (hasta 200 minutos al mes)" }
@@ -188,7 +188,7 @@ window.CATALOGO = {
       incluye: ["Esencial: 2 redes, 8 publicaciones al mes", "Crecimiento: 12 publicaciones + 4 reels y gestión de anuncios", "Calendario mensual y diseños propios", "Respuesta a reseñas y perfil de Google optimizado"],
       noIncluye: ["El dinero de los anuncios (lo paga el cliente a Meta o Google)", "Sesiones de fotos o vídeo presenciales", "Responder mensajes privados 24/7 (para eso: asistente de WhatsApp)", "Garantizar seguidores o ventas concretas"],
       plazo: "Arranca en 1 semana; se recomienda mínimo 3 meses para ver resultados",
-      precio: { mensual: "redes", variante: { nombre: "Plan Crecimiento (reels + anuncios)", mensual: "redes_crecimiento" }, extra: { nombre: "Auditoría de perfiles con plan de acción (pago único)", inicial: "auditoria_redes" } },
+      precio: { tope: "Esencial: 2 redes y 8 publicaciones al mes; Crecimiento: 12 publicaciones y 4 reels", mensual: "redes", variante: { nombre: "Plan Crecimiento (reels + anuncios)", mensual: "redes_crecimiento" }, extra: { nombre: "Auditoría de perfiles con plan de acción (pago único)", inicial: "auditoria_redes" } },
       terceros: [
         { que: "Inversión en anuncios (Meta o Google)", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Lo decide el cliente; se paga directo a la plataforma" },
         { que: "Canva Pro y herramientas para programar publicaciones", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluidas en la cuota" }
@@ -209,7 +209,7 @@ window.CATALOGO = {
       incluye: ["Guion pensado para enganchar en los primeros segundos", "Vídeo de hasta 1 minuto con avatar y voz natural", "Subtítulos y formato vertical u horizontal", "Pack mensual: 4 vídeos al mes", "Licencias de la herramienta de vídeo incluidas"],
       noIncluye: ["Grabaciones con cámara real o sesiones de fotos", "Vídeos de más de 1 minuto (se presupuestan aparte)", "Publicar los vídeos (va en el plan de redes)", "Usar la cara o la voz de otra persona sin su permiso"],
       plazo: "Primer vídeo en 3–5 días desde que aprueba el guion",
-      precio: { inicial: "avatar_video", porUnidad: "vídeo", variante: { nombre: "Pack mensual: 4 vídeos", mensual: "avatar_pack" }, extra: { nombre: "Su propio avatar (su cara y su voz, pago único)", inicial: "avatar_propio" } },
+      precio: { tope: "vídeos de hasta 1 minuto; el pack son 4 al mes", inicial: "avatar_video", porUnidad: "vídeo", variante: { nombre: "Pack mensual: 4 vídeos", mensual: "avatar_pack" }, extra: { nombre: "Su propio avatar (su cara y su voz, pago único)", inicial: "avatar_propio" } },
       terceros: [
         { que: "Herramienta de vídeo con avatar (HeyGen o similar)", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluida; los vídeos son suyos" }
       ],

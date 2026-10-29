@@ -175,6 +175,8 @@ section[hidden],[hidden]{display:none!important}
 .hint{display:flex;gap:10px;align-items:flex-start;background:var(--ok-wash);color:#11492D;border-radius:12px;padding:12px 14px;font-size:14.5px;margin-top:14px}
 .hint svg{font-size:19px;margin-top:1px}
 /* guía del vendedor (cifrada) */
+.chul{background:var(--sheet);border:2px solid var(--night);border-radius:16px;padding:18px 20px;margin-bottom:10px}
+.chul ol,.chul ul{margin:8px 0 14px 20px;display:flex;flex-direction:column;gap:6px}
 .glead{font-size:16px;max-width:75ch;margin-bottom:6px}
 #guiaBody h3{font-family:var(--display);font-size:22px;margin:26px 0 10px}
 #guiaBody p{max-width:75ch;margin-bottom:10px}
@@ -368,11 +370,12 @@ function priceChips(s){
   if (p.mensual) out.push(['Cuota mensual', 'desde ' + money(val(p.mensual)) + ' al mes']);
   if (p.variante){ var v = p.variante; out.push([v.nombre, (v.inicial ? 'desde ' + money(val(v.inicial)) : '') + (v.inicial && v.mensual ? ' + ' : '') + (v.mensual ? money(val(v.mensual)) + ' al mes' : '')]); }
   if (p.extra) out.push([p.extra.nombre, money(val(p.extra.inicial))]);
+  if (p.tope) out.push(['Qué incluye la cuota', p.tope.charAt(0).toUpperCase() + p.tope.slice(1)]);
   return out;
 }
 function rowPrice(s){
   var p = s.precio;
-  if (p.inicial && p.mensual) return 'desde ' + money(val(p.inicial)) + '<small>+ ' + money(val(p.mensual)) + ' al mes</small>';
+  if (p.inicial && p.mensual) return 'desde ' + money(val(p.inicial)) + '<small>+ ' + money(val(p.mensual)) + ' al mes</small>' + (p.tope ? '<small>' + esc(p.tope.split(';')[0]) + '</small>' : '');
   if (p.inicial) return 'desde ' + money(val(p.inicial)) + (p.porUnidad ? '<small>por ' + p.porUnidad + '</small>' : '<small>pago inicial</small>');
   return 'desde ' + money(val(p.mensual)) + '<small>al mes</small>';
 }
