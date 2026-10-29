@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Kit de ventas · Melina Rivera</title>
+<meta name="description" content="Servicios, qué incluye cada uno, precios y presupuesto al momento."/>
+<meta name="robots" content="noindex"/>
+<meta name="theme-color" content="#0F0F1A"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
+<style>
+/* Layout: cabecera con pestañas (Servicios · Cotizar · Glosario); una columna legible en móvil */
+:root{
+  --bg:#F4F5F8; --card:#FFFFFF; --soft:#EEF2F7; --ink:#14161F; --muted:#525B6B; --line:#DDE2EA;
+  --navy:#0F0F1A; --accent:#2F6A9E; --accent-soft:#E3EEF8; --ok:#1F7A4D; --ok-soft:#E1F3E9; --warn:#8A5300; --warn-soft:#FCF0DA; --bad:#A1261E; --bad-soft:#FBE4E1;
+  --display:'Playfair Display',Georgia,serif; --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+a{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+header.top{background:var(--navy);color:#F0EDE8;padding-top:env(safe-area-inset-top)}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px 10px;flex-wrap:wrap}
+.brand h1{font-family:var(--display);font-size:24px;line-height:1.15}
+.brand h1 em{font-style:italic;font-weight:500;color:#8BB8D8}
+.brand p{font-size:14px;color:rgba(240,237,232,.72)}
+.cur{display:inline-flex;background:rgba(255,255,255,.08);border-radius:99px;padding:3px;gap:2px}
+.cur button{border:0;background:transparent;color:rgba(240,237,232,.8);font-size:13px;font-weight:600;padding:7px 11px;border-radius:99px;cursor:pointer;white-space:nowrap;min-height:36px}
+.cur button.on{background:#5B8DB8;color:#fff}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;padding-bottom:0}
+nav.tabs button{border:0;background:transparent;color:rgba(240,237,232,.75);font-weight:600;font-size:15px;padding:12px 16px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;min-height:48px}
+nav.tabs button.on{color:#fff;border-bottom-color:#8BB8D8}
+main{padding-block:20px 60px}
+section[hidden]{display:none!important}
+.intro{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:18px;display:flex;gap:14px;align-items:flex-start}
+.intro b{display:block;margin-bottom:2px}
+.intro p{color:var(--muted);font-size:15px}
+.steps-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.steps-mini div{background:var(--soft);border-radius:12px;padding:10px 12px;font-size:14px}
+.steps-mini span{display:block;font-weight:700;color:var(--accent)}
+@media (max-width:640px){.steps-mini{grid-template-columns:1fr}}
+h2{font-family:var(--display);font-size:26px;line-height:1.2;margin:6px 0 12px;text-wrap:balance}
+h3{font-size:17px}
+.cat{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:.15s;min-width:0}
+.svc:hover{border-color:var(--accent);transform:translateY(-2px)}
+.svc:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #8BB8D8;outline-offset:2px}
+.svc .ic{font-size:24px}
+.svc p{color:var(--muted);font-size:14.5px}
+.price{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.price small{font-weight:500;color:var(--muted)}
+.more{margin-top:auto;font-size:14px;font-weight:700;color:var(--accent)}
+/* ficha */
+.sheet{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.sheet-head{background:var(--navy);color:#F0EDE8;padding:20px}
+.sheet-head .back{background:transparent;border:0;color:#8BB8D8;font-weight:700;cursor:pointer;padding:6px 0;margin-bottom:8px;min-height:40px}
+.sheet-head h2{color:#fff;margin:0 0 6px}
+.sheet-head .frase{font-family:var(--display);font-style:italic;font-size:18px;color:#8BB8D8}
+.prices{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.pchip{background:rgba(255,255,255,.08);border-radius:12px;padding:8px 12px;font-size:14px}
+.pchip b{display:block;font-size:18px;color:#fff;font-variant-numeric:tabular-nums}
+.sheet-body{padding:20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.block{min-width:0}
+.block.full{grid-column:1/-1}
+.block h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.block ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.block li{padding-left:24px;position:relative;font-size:15px}
+.yes li::before{content:"✓";position:absolute;left:2px;color:var(--ok);font-weight:800}
+.no li::before{content:"✕";position:absolute;left:3px;color:var(--bad);font-weight:800}
+.dot li::before{content:"•";position:absolute;left:6px;color:var(--accent);font-weight:800}
+.callout{background:var(--soft);border-radius:12px;padding:12px 14px;font-size:15px}
+.callout.warn{background:var(--warn-soft);color:#5C3800}
+@media (max-width:720px){.sheet-body{grid-template-columns:1fr}}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--soft);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.who{display:inline-block;font-size:12.5px;font-weight:700;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.who.cli{background:var(--warn-soft);color:var(--warn)}
+.who.nos{background:var(--ok-soft);color:var(--ok)}
+.qa{display:flex;flex-direction:column;gap:8px}
+.qa details{border:1px solid var(--line);border-radius:12px;padding:0 14px}
+.qa summary{cursor:pointer;font-weight:600;padding:12px 0;min-height:44px}
+.qa details p{padding-bottom:12px;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);font-weight:700;font-size:15px;text-decoration:none;color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.wa{background:#1F8F52;border-color:#1F8F52;color:#fff}
+/* cotizador */
+.quote{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:860px){.quote{grid-template-columns:1fr}}
+.qstep{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px}
+.qstep h3{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.qstep h3 span{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:14px;flex:none}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:10px 4px;border-top:1px solid var(--line)}
+.opt:first-of-type{border-top:0}
+.opt input[type=checkbox]{width:22px;height:22px;margin-top:2px;accent-color:var(--accent);flex:none}
+.opt label{flex:1;min-width:0;cursor:pointer}
+.opt label b{display:block}
+.opt label small{color:var(--muted);font-size:13.5px}
+.opt select,.opt input[type=number]{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff;min-height:44px;max-width:100%}
+.opt .side{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
+.res{position:sticky;top:12px;background:var(--card);border:2px solid var(--accent);border-radius:18px;padding:18px}
+.res h3{font-family:var(--display);font-size:22px;margin-bottom:4px}
+.res .sub{color:var(--muted);font-size:14px;margin-bottom:12px}
+.rgroup{margin-top:12px}
+.rgroup h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between;gap:8px}
+.rline{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.rline span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:600}
+.rtotal{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;margin-top:8px;border-radius:12px;background:var(--accent-soft);font-weight:700}
+.rtotal span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:18px}
+.rtotal.big{background:var(--navy);color:#fff}
+.empty{color:var(--muted);font-size:15px;padding:12px 0}
+.hint{background:var(--ok-soft);color:#0F4D2E;border-radius:12px;padding:10px 12px;font-size:14.5px;margin-top:12px}
+.seller{margin-top:14px;border:2px dashed var(--warn);border-radius:14px;padding:12px;background:var(--warn-soft)}
+.seller h4{color:var(--warn)}
+.foot{margin-top:28px;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.linkbtn{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:13px;padding:8px 0}
+dialog{border:0;border-radius:18px;padding:0;max-width:min(440px,calc(100vw - 32px));width:100%}
+dialog::backdrop{background:rgba(15,15,26,.55)}
+.dlg{padding:20px;display:flex;flex-direction:column;gap:12px}
+.dlg label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+.dlg input{border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px}
+.dlg p{color:var(--muted);font-size:14px}
+.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%) translateY(16px);opacity:0;transition:.2s;background:var(--navy);color:#fff;font-weight:600;padding:10px 16px;border-radius:12px;pointer-events:none;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%)}
+.gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.gl div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.gl b{display:block;margin-bottom:4px}
+.gl p{color:var(--muted);font-size:15px}
+.cond{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:18px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{header.top nav,.btns,.foot,.seller{display:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <div><h1>Melina Rivera · <em>Servicios</em></h1><p>Tecnología que trabaja por tu negocio</p></div>
+      <div class="cur" role="group" aria-label="Moneda">
+        <button type="button" data-cur="eur" class="on">€ España</button>
+        <button type="button" data-cur="mxn">$ MXN México</button>
+        <button type="button" data-cur="usd">US$ Otros países</button>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Secciones">
+      <button type="button" data-tab="servicios" class="on">Servicios</button>
+      <button type="button" data-tab="cotizar">Hacer presupuesto</button>
+      <button type="button" data-tab="glosario">Palabras clave y condiciones</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- SERVICIOS -->
+  <section id="tab-servicios">
+    <div class="intro">
+      <div>
+        <b>Cómo usar este kit</b>
+        <p>Con el cliente delante: busca lo que necesita, abre la ficha para explicarlo y haz el presupuesto en la pestaña siguiente.</p>
+        <div class="steps-mini">
+          <div><span>1. Escucha</span>Cada ficha dice qué frases del cliente indican que le sirve.</div>
+          <div><span>2. Explica</span>Qué incluye, qué no y quién paga cada cosa. Enséñale la demo.</div>
+          <div><span>3. Presupuesta</span>Marca lo que quiere y envíale el resumen por WhatsApp.</div>
+        </div>
+      </div>
+    </div>
+    <div id="svcList"></div>
+    <div id="svcDetail" hidden></div>
+  </section>
+
+  <!-- COTIZAR -->
+  <section id="tab-cotizar" hidden>
+    <h2>Presupuesto en 3 pasos</h2>
+    <div class="quote">
+      <div>
+        <div class="qstep"><h3><span>1</span>¿Qué necesita el cliente?</h3><div id="qOpts"></div></div>
+        <div class="qstep"><h3><span>2</span>Datos para el resumen (opcional)</h3>
+          <div class="opt"><label for="qName"><b>Nombre del negocio</b><small>Aparece en el resumen que le envías</small></label></div>
+          <input id="qName" style="width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:44px" placeholder="Ej.: Estética Luna"/>
+        </div>
+        <div class="qstep"><h3><span>3</span>Envíaselo</h3>
+          <p style="color:var(--muted);font-size:15px;margin-bottom:10px">El resumen dice qué nos paga a nosotros, qué paga aparte a otras empresas y que es un precio «desde» que Melina confirma.</p>
+          <div class="btns">
+            <button class="btn wa" type="button" id="btnWa">Enviar por WhatsApp</button>
+            <button class="btn" type="button" id="btnCopy">Copiar texto</button>
+            <button class="btn" type="button" id="btnReset">Empezar de nuevo</button>
+          </div>
+        </div>
+      </div>
+      <aside class="res" aria-live="polite" id="qRes"></aside>
+    </div>
+  </section>
+
+  <!-- GLOSARIO -->
+  <section id="tab-glosario" hidden>
+    <h2>Condiciones para todos los servicios</h2>
+    <div class="cond"><ul class="block dot" id="condList" style="list-style:none"></ul></div>
+    <h2>Palabras clave</h2>
+    <div class="gl" id="glList"></div>
+  </section>
+
+  <div class="foot">
+    <span>Precios «desde». Precio final confirmado por escrito tras una llamada gratuita de 20 minutos.</span>
+    <span><a href="https://melinarivera.github.io/MR_Portafolio/servicios/" target="_blank" rel="noopener">Página de servicios</a> · <button class="linkbtn" type="button" id="btnSeller">Modo vendedor</button></span>
+  </div>
+</main>
+
+<dialog id="dlgSeller" aria-labelledby="dlgTitle">
+  <form class="dlg" method="dialog" id="sellerForm">
+    <h3 id="dlgTitle">Modo vendedor (solo en este móvil)</h3>
+    <p>Tu comisión se guarda solo en este dispositivo: no está escrita en la página, así que el cliente no la ve aunque abra este enlace en su móvil.</p>
+    <label for="pIni">% de comisión sobre el pago inicial<input id="pIni" type="number" min="0" max="100" step="1" inputmode="numeric" placeholder="Ej.: 50"/></label>
+    <label for="pMes">% de comisión sobre las cuotas mensuales<input id="pMes" type="number" min="0" max="100" step="1" inputmode="numeric" placeholder="Ej.: 30"/></label>
+    <div class="btns">
+      <button class="btn primary" value="save" type="submit">Guardar y activar</button>
+      <button class="btn" value="off" type="submit">Desactivar</button>
+    </div>
+  </form>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="catalogo.js"></script>
+<script>
+(function(){
+'use strict';
+var C = window.CATALOGO;
+/* Copia de seguridad de los precios por si no se puede leer precios.json */
+var PR = {"landing":{"eur":350,"mxn":3500},"web":{"eur":1100,"mxn":12000},"tienda":{"eur":1600,"mxn":16000},"ia":{"eur":490,"mxn":5500},"ia_cuota":{"eur":39,"mxn":650},"ia_citas":{"eur":890,"mxn":9900},"ia_citas_cuota":{"eur":69,"mxn":1100},"ia_incluidas":1000,"ia_citas_incluidas":2000,"ia_bloque_extra":{"eur":9,"mxn":150},"ia_descuento_propia":{"eur":9,"mxn":150},"automatizacion":{"eur":290,"mxn":3500},"crm":{"eur":1200,"mxn":14000},"crm_configurar":{"eur":400,"mxn":4500},"redes":{"eur":220,"mxn":3500},"redes_crecimiento":{"eur":420,"mxn":6500},"auditoria_redes":{"eur":120,"mxn":1500},"app":{"eur":3000,"mxn":35000},"mantenimiento":{"eur":49,"mxn":700},"pack_arranque":{"eur":790,"mxn":8900,"ahorro_eur":170,"ahorro_mxn":1600},"pack_pyme_digital":{"eur":1890,"mxn":23900,"ahorro_eur":360,"ahorro_mxn":4100},"pack_organiza":{"eur":1590,"mxn":18500,"ahorro_eur":190,"ahorro_mxn":2500}};
+var USD = 1.1, MXN_TERC = 20;   /* conversión aproximada: precio USD = EUR × 1,10 (redondeado a 5); terceros MXN ≈ EUR × 20 */
+var cur = 'eur';
+var $ = function(s){ return document.querySelector(s); };
+var esc = function(s){ return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); };
+var store = { get:function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }, set:function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }, del:function(k){ try{ localStorage.removeItem(k); }catch(e){} } };
+
+function val(key){ var v = PR[key]; if (!v) return 0; if (cur === 'mxn') return v.mxn; if (cur === 'usd') return Math.round(v.eur*USD/5)*5; return v.eur; }
+function grp(n, sep){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, sep); }
+function num(n){ return grp(n, '.'); }
+function money(n){
+  if (cur === 'mxn') return '$' + grp(n, ',') + ' MXN';
+  if (cur === 'usd') return 'US$' + grp(n, ',');
+  return grp(n, '.') + ' €';
+}
+function terc(n){ if (cur === 'mxn') return n*MXN_TERC; if (cur === 'usd') return n*USD; return n; }
+function rango(a,b){ if (a === b) return a === 0 ? 'Gratis' : money(terc(a)); return (a === 0 ? '0' : money(terc(a)).replace(/ €$/,'')) + '–' + money(terc(b)); }
+var PER = { 'año':'al año', 'mes':'al mes', 'venta':'por venta', 'mensaje':'por mensaje' };
+function svc(id){ return C.servicios.filter(function(s){ return s.id === id; })[0]; }
+function priceChips(s){
+  var p = s.precio, out = [];
+  if (p.inicial) out.push(['Pago inicial' + (p.porUnidad ? ' (por ' + p.porUnidad + ')' : ''), 'desde ' + money(val(p.inicial))]);
+  if (p.mensual) out.push(['Cuota mensual', 'desde ' + money(val(p.mensual)) + '/mes']);
+  if (p.variante){ var v = p.variante; out.push([v.nombre, (v.inicial ? 'desde ' + money(val(v.inicial)) : '') + (v.inicial && v.mensual ? ' + ' : '') + (v.mensual ? money(val(v.mensual)) + '/mes' : '')]); }
+  if (p.extra) out.push([p.extra.nombre, money(val(p.extra.inicial))]);
+  return out;
+}
+function cardPrice(s){
+  var p = s.precio;
+  if (p.inicial && p.mensual) return 'desde ' + money(val(p.inicial)) + ' <small>+ ' + money(val(p.mensual)) + '/mes</small>';
+  if (p.inicial) return 'desde ' + money(val(p.inicial)) + (p.porUnidad ? ' <small>por ' + p.porUnidad + '</small>' : '');
+  return 'desde ' + money(val(p.mensual)) + ' <small>/mes</small>';
+}
+
+/* ---------- Servicios ---------- */
+function renderList(){
+  var cats = [];
+  C.servicios.forEach(function(s){ if (cats.indexOf(s.categoria) < 0) cats.push(s.categoria); });
+  $('#svcList').innerHTML = cats.map(function(c){
+    return '<p class="cat">' + esc(c) + '</p><div class="grid">' + C.servicios.filter(function(s){ return s.categoria === c; }).map(function(s){
+      return '<button type="button" class="svc" data-open="' + s.id + '"><span class="ic" aria-hidden="true">' + s.icono + '</span><h3>' + esc(s.titulo) + '</h3><p>' + esc(s.frase) + '</p><span class="price">' + cardPrice(s) + '</span><span class="more">Ver ficha completa →</span></button>';
+    }).join('') + '</div>';
+  }).join('') +
+  '<p class="cat">Packs (servicios combinados con descuento)</p><div class="grid">' + C.packs.map(function(k){
+    var p = PR[k.id], ahorro = cur === 'mxn' ? p.ahorro_mxn : (cur === 'usd' ? Math.round(p.ahorro_eur*USD/5)*5 : p.ahorro_eur);
+    return '<div class="svc" style="cursor:default"><span class="ic" aria-hidden="true">📦</span><h3>' + esc(k.titulo) + '</h3><p>' + esc(k.para) + ': ' + k.incluye.map(function(i){ var s = svc(i); return s ? s.titulo : (i === 'auditoria' ? 'auditoría de redes' : i); }).join(' + ') + '.</p><span class="price">desde ' + money(val(k.id)) + (k.mensual ? ' <small>+ ' + money(val(k.mensual)) + '/mes del asistente</small>' : '') + '</span><span style="color:var(--ok);font-size:14px;font-weight:600">Ahorra ' + money(ahorro) + '</span></div>';
+  }).join('') + '</div>';
+}
+function renderDetail(id){
+  var s = svc(id); if (!s) return;
+  var rows = s.terceros.map(function(t){
+    return '<tr><td>' + esc(t.que) + '</td><td><span class="who ' + (t.quien === 'Cliente' ? 'cli' : 'nos') + '">' + (t.quien === 'Cliente' ? 'Lo paga el cliente' : 'Lo pagamos nosotros') + '</span></td><td class="num">' + (t.costeEur ? rango(t.costeEur[0], t.costeEur[1]) + ' ' + (PER[t.periodo] || '') : '—') + '</td><td>' + esc(t.nota || '') + '</td></tr>';
+  }).join('');
+  var mensual = s.mensual ? '<div class="callout">' + esc(s.mensual.texto) + ' Mantenimiento: desde <b>' + money(val('mantenimiento')) + '/mes</b>. <a href="#" data-open="mant">¿Qué incluye?</a></div>' : '';
+  $('#svcDetail').innerHTML =
+    '<article class="sheet">' +
+      '<div class="sheet-head"><button type="button" class="back" data-back>← Todos los servicios</button><h2>' + s.icono + ' ' + esc(s.titulo) + '</h2><p class="frase">«' + esc(s.frase) + '»</p>' +
+      '<div class="prices">' + priceChips(s).map(function(c){ return '<div class="pchip">' + esc(c[0]) + '<b>' + esc(c[1]) + '</b></div>'; }).join('') + '</div></div>' +
+      '<div class="sheet-body">' +
+        '<div class="block full"><h3>Qué es (para explicarlo en palabras sencillas)</h3><p>' + esc(s.queEs) + '</p></div>' +
+        '<div class="block"><h3>A quién ofrecérselo</h3><ul class="dot">' + s.paraQuien.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' +
+        '<div class="block"><h3>Cómo saber que le sirve</h3><div class="callout">' + esc(s.senales) + '</div><h3 style="margin-top:14px">Plazo</h3><p>' + esc(s.plazo) + '</p></div>' +
+        '<div class="block"><h3>Qué incluye (nuestro trabajo)</h3><ul class="yes">' + s.incluye.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' +
+        '<div class="block"><h3>Qué NO incluye (límites)</h3><ul class="no">' + s.noIncluye.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' +
+        (rows ? '<div class="block full"><h3>Quién paga cada cosa</h3><div class="table-wrap"><table><thead><tr><th>Concepto</th><th>Quién</th><th>Coste aprox.</th><th>Nota</th></tr></thead><tbody>' +
+          '<tr><td><b>Nuestro trabajo (mano de obra)</b></td><td><span class="who nos">Nos lo paga el cliente a nosotros</span></td><td class="num">' + esc(priceChips(s)[0][1]) + '</td><td>Diseño, desarrollo, configuración, formación y soporte</td></tr>' +
+          rows + '</tbody></table></div></div>' : '') +
+        (mensual ? '<div class="block full">' + mensual + '</div>' : '') +
+        (s.preguntas.length ? '<div class="block full"><h3>Lo que suele preguntar el cliente</h3><div class="qa">' + s.preguntas.map(function(q){ return '<details><summary>' + esc(q[0]) + '</summary><p>' + esc(q[1]) + '</p></details>'; }).join('') + '</div></div>' : '') +
+        '<div class="block full"><div class="btns">' + s.demos.map(function(d){ return '<a class="btn" href="' + esc(d.url) + '" target="_blank" rel="noopener">Ver ejemplo: ' + esc(d.nombre) + ' ↗</a>'; }).join('') +
+          '<button class="btn primary" type="button" data-quote="' + s.id + '">Añadir al presupuesto →</button></div></div>' +
+      '</div>' +
+    '</article>';
+  $('#svcList').hidden = true; $('#svcDetail').hidden = false; window.scrollTo(0,0);
+}
+
+/* ---------- Cotizador ---------- */
+var q = {};
+var OPTS = [
+  { id:'landing', tipo:'check' }, { id:'web', tipo:'check' }, { id:'tienda', tipo:'check' },
+  { id:'ia', tipo:'select', opciones:[['','No'],['basic','Asistente (responde dudas)'],['citas','Asistente con citas']] },
+  { id:'automatizacion', tipo:'num', max:10 },
+  { id:'crm', tipo:'select', opciones:[['','No'],['medida','CRM a medida'],['config','Configurar uno existente']] },
+  { id:'redes', tipo:'select', opciones:[['','No'],['esencial','Plan Esencial'],['crec','Plan Crecimiento']] },
+  { id:'auditoria', tipo:'check', titulo:'Auditoría de redes (pago único)', desc:'Revisión de sus perfiles con un plan de acción' },
+  { id:'app', tipo:'check' }, { id:'mant', tipo:'check' }
+];
+function renderOpts(){
+  $('#qOpts').innerHTML = OPTS.map(function(o){
+    var s = svc(o.id), titulo = o.titulo || (s && s.titulo), desc = o.desc || (s && s.frase), ctrl = '';
+    var idc = 'q-' + o.id;
+    if (o.tipo === 'check') ctrl = '<input type="checkbox" id="' + idc + '" data-q="' + o.id + '"' + (q[o.id] ? ' checked' : '') + '/>';
+    var side = '';
+    if (o.tipo === 'select') side = '<div class="side"><select id="' + idc + '" data-q="' + o.id + '" aria-label="' + esc(titulo) + '">' + o.opciones.map(function(op){ return '<option value="' + op[0] + '"' + ((q[o.id]||'') === op[0] ? ' selected' : '') + '>' + esc(op[1]) + '</option>'; }).join('') + '</select></div>';
+    if (o.tipo === 'num') side = '<div class="side"><input type="number" min="0" max="' + o.max + '" id="' + idc + '" data-q="' + o.id + '" value="' + (q[o.id]||0) + '" style="width:84px" aria-label="Número de flujos"/></div>';
+    return '<div class="opt">' + ctrl + '<label for="' + idc + '"><b>' + esc(titulo) + '</b><small>' + esc(desc) + '</small></label>' + side + '</div>';
+  }).join('');
+  document.querySelectorAll('[data-q]').forEach(function(el){
+    el.addEventListener(el.tagName === 'SELECT' || el.type === 'checkbox' ? 'change' : 'input', function(){
+      q[el.dataset.q] = el.type === 'checkbox' ? el.checked : (el.type === 'number' ? Math.max(0, Math.min(10, parseInt(el.value,10) || 0)) : el.value);
+      renderRes();
+    });
+  });
+}
+function lines(){
+  var ini = [], mes = [], ter = {};
+  function addT(s){ if (!s) return; s.terceros.forEach(function(t){ if (t.quien !== 'Cliente') return; var k = t.que; if (!ter[k] || (t.costeEur && ter[k].costeEur && t.costeEur[1] > ter[k].costeEur[1])) ter[k] = t; }); }
+  if (q.landing){ ini.push(['Landing page sencilla', val('landing')]); addT(svc('landing')); }
+  if (q.web){ ini.push(['Web corporativa', val('web')]); addT(svc('web')); }
+  if (q.tienda){ ini.push(['Tienda online o reservas', val('tienda')]); addT(svc('tienda')); }
+  if (q.ia === 'basic'){ ini.push(['Asistente de WhatsApp con IA (puesta en marcha)', val('ia')]); mes.push(['Asistente con IA (hasta ' + num(PR.ia_incluidas) + ' conversaciones, IA incluida)', val('ia_cuota')]); addT(svc('ia')); }
+  if (q.ia === 'citas'){ ini.push(['Asistente con citas (puesta en marcha)', val('ia_citas')]); mes.push(['Asistente con citas (hasta ' + num(PR.ia_citas_incluidas) + ' conversaciones, IA incluida)', val('ia_citas_cuota')]); addT(svc('ia')); }
+  if (q.automatizacion > 0){ ini.push(['Automatizaciones × ' + q.automatizacion, val('automatizacion') * q.automatizacion]); addT(svc('automatizacion')); }
+  if (q.crm === 'medida'){ ini.push(['CRM a medida', val('crm')]); addT(svc('crm')); }
+  if (q.crm === 'config'){ ini.push(['Configurar CRM existente', val('crm_configurar')]); addT(svc('crm')); }
+  if (q.redes === 'esencial'){ mes.push(['Redes · plan Esencial', val('redes')]); addT(svc('redes')); }
+  if (q.redes === 'crec'){ mes.push(['Redes · plan Crecimiento', val('redes_crecimiento')]); addT(svc('redes')); }
+  if (q.auditoria) ini.push(['Auditoría de redes', val('auditoria_redes')]);
+  if (q.app){ ini.push(['App o SaaS a medida (MVP)', val('app')]); addT(svc('app')); }
+  if (q.mant) mes.push(['Mantenimiento mensual', val('mantenimiento')]);
+  return { ini:ini, mes:mes, ter:Object.keys(ter).map(function(k){ return ter[k]; }) };
+}
+function sum(a){ return a.reduce(function(t,x){ return t + x[1]; }, 0); }
+function packHint(){
+  if (q.landing && q.ia === 'basic' && q.auditoria) return ['Pack Arranque', 'pack_arranque'];
+  if (q.web && q.ia === 'basic' && q.redes === 'esencial') return ['Pack Pyme Digital', 'pack_pyme_digital'];
+  if (q.crm === 'medida' && q.automatizacion >= 2) return ['Pack Organiza tu negocio', 'pack_organiza'];
+  return null;
+}
+function seller(){ if (store.get('kv-seller') !== '1') return null; var a = parseFloat(store.get('kv-pini')), b = parseFloat(store.get('kv-pmes')); return { ini:isNaN(a)?0:a, mes:isNaN(b)?0:b }; }
+function renderRes(){
+  var L = lines(), I = sum(L.ini), M = sum(L.mes);
+  if (!L.ini.length && !L.mes.length){ $('#qRes').innerHTML = '<h3>Resumen</h3><p class="empty">Marca a la izquierda lo que necesita el cliente y aquí aparece el precio.</p>'; return; }
+  var html = '<h3>Resumen' + ($('#qName').value.trim() ? ' · ' + esc($('#qName').value.trim()) : '') + '</h3><p class="sub">Precios «desde»' + (cur === 'eur' ? ', sin IVA' : cur === 'mxn' ? ', + IVA' : '') + '. Melina confirma el precio final.</p>';
+  if (L.ini.length) html += '<div class="rgroup"><h4><span>Nos paga una vez (nuestro trabajo)</span></h4>' + L.ini.map(function(l){ return '<div class="rline"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '</span></div>'; }).join('') + '<div class="rtotal"><span>Pago inicial</span><span>' + money(I) + '</span></div><p class="sub" style="margin:6px 0 0">50 % al empezar (' + money(I/2) + ') y 50 % al entregar.</p></div>';
+  if (L.mes.length) html += '<div class="rgroup"><h4><span>Nos paga cada mes</span></h4>' + L.mes.map(function(l){ return '<div class="rline"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '/mes</span></div>'; }).join('') + '<div class="rtotal"><span>Cuota mensual</span><span>' + money(M) + '/mes</span></div><p class="sub" style="margin:6px 0 0">Sin permanencia. Se cancela avisando con 30 días.</p></div>';
+  html += '<div class="rtotal big"><span>Total primer año</span><span>' + money(I + 12*M) + '</span></div>';
+  if (L.ter.length) html += '<div class="rgroup"><h4><span>Paga aparte a otras empresas (aprox.)</span></h4>' + L.ter.map(function(t){ return '<div class="rline"><span>' + esc(t.que) + (t.nota && !t.costeEur ? ' <small style="color:var(--muted)">(' + esc(t.nota) + ')</small>' : '') + '</span><span>' + (t.costeEur ? rango(t.costeEur[0], t.costeEur[1]) + ' ' + (PER[t.periodo]||'') : 'ver nota') + '</span></div>'; }).join('') + '<p class="sub" style="margin:6px 0 0">Nosotros no cobramos nada sobre estos costes. Van a nombre del cliente.</p></div>';
+  var ph = packHint();
+  if (ph){ var p = PR[ph[1]], ah = cur === 'mxn' ? p.ahorro_mxn : (cur === 'usd' ? Math.round(p.ahorro_eur*USD/5)*5 : p.ahorro_eur); html += '<div class="hint">💡 Encaja en el <b>' + ph[0] + '</b>: desde ' + money(val(ph[1])) + ' en lugar de los precios sueltos (ahorra ' + money(ah) + '). Ofrécelo y confírmalo con Melina.</div>'; }
+  var sv = seller();
+  if (sv){ var ci = I * sv.ini/100, cm = M * sv.mes/100; html += '<div class="seller"><h4>Solo para ti · comisión</h4><div class="rline"><span>Del pago inicial (' + sv.ini + ' %)</span><span>' + money(ci) + '</span></div><div class="rline"><span>De las cuotas (' + sv.mes + ' %)</span><span>' + money(cm) + '/mes</span></div><div class="rline"><span>Total primer año</span><span>' + money(ci + 12*cm) + '</span></div><button class="linkbtn" type="button" id="hideSeller">Ocultar (el cliente está mirando)</button></div>'; }
+  $('#qRes').innerHTML = html;
+  var hs = document.getElementById('hideSeller'); if (hs) hs.addEventListener('click', function(){ store.set('kv-seller','0'); renderRes(); toast('Comisión oculta'); });
+}
+function summaryText(){
+  var L = lines(), I = sum(L.ini), M = sum(L.mes), n = $('#qName').value.trim();
+  var t = '*Presupuesto' + (n ? ' para ' + n : '') + '* · Melina Rivera\n\n';
+  if (L.ini.length){ t += '*Pago inicial (una vez):*\n' + L.ini.map(function(l){ return '• ' + l[0] + ': ' + money(l[1]); }).join('\n') + '\n*Total: ' + money(I) + '* (50 % al empezar, 50 % al entregar)\n\n'; }
+  if (L.mes.length){ t += '*Cuota mensual (sin permanencia):*\n' + L.mes.map(function(l){ return '• ' + l[0] + ': ' + money(l[1]) + '/mes'; }).join('\n') + '\n*Total: ' + money(M) + '/mes*\n\n'; }
+  if (L.ter.length){ t += '*Aparte, a otras empresas (aprox., a tu nombre):*\n' + L.ter.map(function(t){ return '• ' + t.que + ': ' + (t.costeEur ? rango(t.costeEur[0], t.costeEur[1]) + ' ' + (PER[t.periodo]||'') : 'según uso'); }).join('\n') + '\n\n'; }
+  t += 'Precios «desde»' + (cur === 'eur' ? ' sin IVA' : cur === 'mxn' ? ' + IVA' : '') + '. Melina te confirma el precio final tras una llamada gratuita de 20 min.\nServicios y ejemplos: https://melinarivera.github.io/MR_Portafolio/servicios/?v=2';
+  return t;
+}
+
+/* ---------- Glosario ---------- */
+function renderGlos(){
+  $('#condList').innerHTML = C.condiciones.map(function(c){ return '<li>' + esc(c) + '</li>'; }).join('');
+  $('#glList').innerHTML = C.glosario.map(function(g){ return '<div><b>' + esc(g[0]) + '</b><p>' + esc(g[1]) + '</p></div>'; }).join('');
+}
+
+/* ---------- navegación y eventos ---------- */
+function tab(t){
+  ['servicios','cotizar','glosario'].forEach(function(x){ $('#tab-' + x).hidden = x !== t; });
+  document.querySelectorAll('[data-tab]').forEach(function(b){ b.classList.toggle('on', b.dataset.tab === t); });
+  try { history.replaceState(null, '', '#' + t); } catch(e) {}
+  window.scrollTo(0,0);
+}
+function setCur(c){
+  cur = c; store.set('kv-cur', c);
+  document.querySelectorAll('[data-cur]').forEach(function(b){ b.classList.toggle('on', b.dataset.cur === c); });
+  renderList(); renderRes();
+  if (!$('#svcDetail').hidden){ var o = $('#svcDetail').dataset.id; if (o) renderDetail(o); }
+}
+var toastT;
+function toast(m){ var t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove('show'); }, 2200); }
+
+document.addEventListener('click', function(e){
+  var o = e.target.closest('[data-open]');
+  if (o){ e.preventDefault(); $('#svcDetail').dataset.id = o.dataset.open; tab('servicios'); renderDetail(o.dataset.open); return; }
+  if (e.target.closest('[data-back]')){ $('#svcDetail').hidden = true; $('#svcList').hidden = false; return; }
+  var qb = e.target.closest('[data-quote]');
+  if (qb){ var id = qb.dataset.quote; if (id === 'ia') q.ia = q.ia || 'basic'; else if (id === 'crm') q.crm = q.crm || 'medida'; else if (id === 'redes') q.redes = q.redes || 'esencial'; else if (id === 'automatizacion') q.automatizacion = Math.max(1, q.automatizacion || 0); else q[id] = true; renderOpts(); renderRes(); tab('cotizar'); toast('Añadido al presupuesto'); return; }
+  var tb = e.target.closest('[data-tab]'); if (tb){ tab(tb.dataset.tab); return; }
+  var cb = e.target.closest('[data-cur]'); if (cb){ setCur(cb.dataset.cur); return; }
+});
+$('#qName').addEventListener('input', renderRes);
+$('#btnCopy').addEventListener('click', function(){
+  var txt = summaryText();
+  if (!lines().ini.length && !lines().mes.length){ toast('Primero marca algún servicio'); return; }
+  if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function(){ toast('Resumen copiado'); }, function(){ toast('No se pudo copiar'); }); else toast('No se pudo copiar');
+});
+$('#btnWa').addEventListener('click', function(){
+  if (!lines().ini.length && !lines().mes.length){ toast('Primero marca algún servicio'); return; }
+  window.open('https://wa.me/?text=' + encodeURIComponent(summaryText()), '_blank', 'noopener');
+});
+$('#btnReset').addEventListener('click', function(){ q = {}; $('#qName').value = ''; renderOpts(); renderRes(); toast('Presupuesto vacío'); });
+$('#btnSeller').addEventListener('click', function(){ $('#pIni').value = store.get('kv-pini') || ''; $('#pMes').value = store.get('kv-pmes') || ''; $('#dlgSeller').showModal(); });
+$('#sellerForm').addEventListener('submit', function(e){
+  var action = e.submitter && e.submitter.value;
+  if (action === 'save'){ store.set('kv-pini', $('#pIni').value || '0'); store.set('kv-pmes', $('#pMes').value || '0'); store.set('kv-seller','1'); toast('Modo vendedor activado'); }
+  else { store.set('kv-seller','0'); toast('Modo vendedor desactivado'); }
+  renderRes();
+});
+
+/* ---------- arranque ---------- */
+var saved = store.get('kv-cur'); if (saved === 'mxn' || saved === 'usd') cur = saved;
+document.querySelectorAll('[data-cur]').forEach(function(b){ b.classList.toggle('on', b.dataset.cur === cur); });
+renderList(); renderOpts(); renderRes(); renderGlos();
+var h = (location.hash || '').slice(1); if (h === 'cotizar' || h === 'glosario') tab(h);
+/* Precios en vivo desde la web de Melina (mismo sitio: melinarivera.github.io) */
+fetch('/MR_Portafolio/servicios/precios.json', { cache:'no-store' }).then(function(r){ if (!r.ok) throw 0; return r.json(); }).then(function(j){ PR = j; renderList(); renderRes(); if (!$('#svcDetail').hidden && $('#svcDetail').dataset.id) renderDetail($('#svcDetail').dataset.id); }).catch(function(){});
+})();
+</script>
+</body>
+</html>
