@@ -8,9 +8,9 @@ window.CATALOGO = {
   categorias: {
     "Webs": { color: "#2F6A9E", icon: "globe", texto: "Para que el negocio exista y venda en internet." },
     "Diseño": { color: "#5B48B0", icon: "pen-tool", texto: "Para que se vea bien y se use fácil, antes de construir." },
-    "IA y automatización": { color: "#17766A", icon: "sparkles", texto: "Para quitarse trabajo repetido y no perder clientes." },
-    "Marketing": { color: "#A23F6B", icon: "megaphone", texto: "Para que les encuentren y les elijan." },
-    "Formación": { color: "#8A5A12", icon: "graduation-cap", texto: "Para que el equipo del cliente aprenda a usar la IA por sí mismo." },
+    "IA y automatización": { color: "#17766A", icon: "sparkles", texto: "Para quitarte trabajo repetido y no perder clientes." },
+    "Marketing": { color: "#A23F6B", icon: "megaphone", texto: "Para que te encuentren y te elijan." },
+    "Formación": { color: "#8A5A12", icon: "graduation-cap", texto: "Para que tu equipo aprenda a usar la IA por sí mismo." },
     "Apps": { color: "#3D4B66", icon: "smartphone", texto: "Para ideas propias y herramientas internas." },
     "Mantenimiento": { color: "#5E6675", icon: "wrench", texto: "Para que todo siga funcionando cada mes." }
   },
@@ -20,7 +20,7 @@ window.CATALOGO = {
     "Los precios son «desde»: el precio final lo confirma Melina por escrito tras una llamada gratuita de 20 minutos.",
     "Forma de pago de los proyectos: 50 % al empezar y 50 % al entregar.",
     "Las cuotas mensuales no tienen permanencia: se cancelan avisando con 30 días.",
-    "El dominio, el alojamiento y las cuentas van siempre a nombre del cliente: si deja de trabajar con nosotros, se lo lleva todo.",
+    "El dominio, el alojamiento y las cuentas van siempre a tu nombre: si dejas de trabajar con nosotros, te lo llevas todo.",
     "Incluye 2 rondas de cambios. Cambios fuera de lo acordado: se presupuestan aparte antes de hacerlos.",
     "Impuestos: España + IVA 21 %; México + IVA 16 %; otros países, según la factura (lo confirma Melina)."
   ],
@@ -120,6 +120,28 @@ window.CATALOGO = {
       ]
     },
     {
+      id: "voz", icon: "phone-call", categoria: "IA y automatización",
+      titulo: "Recepcionista de voz con IA",
+      frase: "Contesta el teléfono por ti, a cualquier hora, y no se te escapa ni una llamada.",
+      queEs: "Un asistente que atiende las llamadas del negocio con voz natural en español: da información (horarios, precios, servicios), toma citas o reservas y te envía un resumen de cada llamada por WhatsApp o email. Si la llamada lo necesita, la pasa a una persona. Se configura con la información del negocio y se activa desviando la línea cuando no puedes contestar (o siempre).",
+      paraQuien: ["Restaurantes que pierden reservas en hora punta", "Clínicas, fisios y estéticas con recepción saturada", "Despachos y consultoras que reciben llamadas todo el día", "Negocios donde nadie puede coger el teléfono mientras atiende"],
+      senales: "Te dicen «no doy abasto con el teléfono», «pierdo llamadas mientras atiendo» o «me llaman fuera de horario».",
+      incluye: ["Configuración con la información del negocio y su forma de hablar", "Atiende 24/7 con voz natural, en español", "Toma citas o reservas en su agenda", "Resumen de cada llamada por WhatsApp o email", "Pasa la llamada a una persona cuando hace falta", "La cuota incluye la IA, la voz, el número y 200 minutos al mes"],
+      noIncluye: ["Más de 200 minutos al mes: bloques de 100 minutos aparte", "Llamadas salientes de venta (solo atiende llamadas que entran)", "Consejo médico o legal: nunca lo da", "Cambiar de compañía telefónica"],
+      plazo: "2–3 semanas (incluye una semana de pruebas)",
+      precio: { inicial: "voz", mensual: "voz_cuota", extra: { nombre: "Si necesitas más: 100 minutos extra", inicial: "voz_bloque_extra" } },
+      terceros: [
+        { que: "Desvío de llamadas desde tu línea", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Según su operador; normalmente gratis" },
+        { que: "IA, voz natural y número de teléfono", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluidos en la cuota (hasta 200 minutos al mes)" }
+      ],
+      demos: [],
+      preguntas: [
+        ["¿Se nota que es una máquina?", "La voz es muy natural, pero al empezar dice que es un asistente virtual del negocio: es lo honesto y lo que pide la ley."],
+        ["¿Y si alguien quiere hablar con una persona?", "Le pasa la llamada a quien decidas, o toma el recado y te avisa al momento."],
+        ["¿Cuántos minutos son 200?", "Unas 100 llamadas de 2 minutos al mes. Si te quedas corto, te avisamos antes y decides si añadir minutos."]
+      ]
+    },
+    {
       id: "automatizacion", icon: "workflow", categoria: "IA y automatización",
       titulo: "Automatización de tareas",
       frase: "Lo que hoy haces a mano cada semana, que se haga solo.",
@@ -168,12 +190,33 @@ window.CATALOGO = {
       plazo: "Arranca en 1 semana; se recomienda mínimo 3 meses para ver resultados",
       precio: { mensual: "redes", variante: { nombre: "Plan Crecimiento (reels + anuncios)", mensual: "redes_crecimiento" }, extra: { nombre: "Auditoría de perfiles con plan de acción (pago único)", inicial: "auditoria_redes" } },
       terceros: [
-        { que: "Inversión en anuncios (Meta o Google)", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Lo decide el cliente; se paga directo a la plataforma" }
+        { que: "Inversión en anuncios (Meta o Google)", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Lo decide el cliente; se paga directo a la plataforma" },
+        { que: "Canva Pro y herramientas para programar publicaciones", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluidas en la cuota" }
       ],
       demos: [{ nombre: "Instagram de Melina", url: "https://www.instagram.com/melina_rivera_developer/" }],
       preguntas: [
         ["¿Hay permanencia?", "No. Recomendamos 3 meses para ver resultados, pero se cancela avisando con 30 días."],
         ["¿Me garantizáis clientes?", "No prometemos números. Sí un perfil activo, profesional y bien cuidado, y te enseñamos los resultados cada mes."]
+      ]
+    },
+    {
+      id: "avatar", icon: "clapperboard", categoria: "Marketing",
+      titulo: "Vídeos con avatar IA",
+      frase: "Vídeos para redes y web con un presentador virtual, sin ponerte delante de la cámara.",
+      queEs: "Creamos vídeos cortos en los que un presentador virtual (un avatar con voz natural) explica los servicios del negocio, responde preguntas frecuentes o presenta novedades y cursos. Nosotros escribimos el guion, generamos el vídeo, ponemos subtítulos y lo entregamos listo para Instagram, TikTok, WhatsApp o la web. Si quiere, el avatar puede ser él mismo: con un par de minutos de grabación y su permiso, creamos su doble digital.",
+      paraQuien: ["Negocios que saben que deben hacer vídeo pero no les gusta grabarse", "Academias y formadores (presentación de cursos, lecciones)", "Despachos y consultoras que quieren explicar trámites", "Tiendas y estéticas que quieren enseñar productos o tratamientos"],
+      senales: "Te dicen «me da vergüenza salir en vídeo», «no tengo tiempo de grabar» o «el vídeo funciona pero no sé hacerlo».",
+      incluye: ["Guion pensado para enganchar en los primeros segundos", "Vídeo de hasta 1 minuto con avatar y voz natural", "Subtítulos y formato vertical u horizontal", "Pack mensual: 4 vídeos al mes", "Licencias de la herramienta de vídeo incluidas"],
+      noIncluye: ["Grabaciones con cámara real o sesiones de fotos", "Vídeos de más de 1 minuto (se presupuestan aparte)", "Publicar los vídeos (va en el plan de redes)", "Usar la cara o la voz de otra persona sin su permiso"],
+      plazo: "Primer vídeo en 3–5 días desde que aprueba el guion",
+      precio: { inicial: "avatar_video", porUnidad: "vídeo", variante: { nombre: "Pack mensual: 4 vídeos", mensual: "avatar_pack" }, extra: { nombre: "Su propio avatar (su cara y su voz, pago único)", inicial: "avatar_propio" } },
+      terceros: [
+        { que: "Herramienta de vídeo con avatar (HeyGen o similar)", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluida; los vídeos son suyos" }
+      ],
+      demos: [],
+      preguntas: [
+        ["¿Los vídeos son míos?", "Sí. Te los entregamos en archivo y los publicas donde quieras, también en anuncios."],
+        ["¿Se nota que es IA?", "Se ve muy natural. Recomendamos indicarlo en la descripción del vídeo: genera confianza y es lo que piden las normas de las redes."]
       ]
     },
     {
@@ -205,7 +248,8 @@ window.CATALOGO = {
       plazo: "Web: 1–2 semanas · App: 3–4 semanas",
       precio: { inicial: "uxui", variante: { nombre: "Diseño de app completa (hasta 15 pantallas)", inicial: "uxui_app" }, extra: { nombre: "Auditoría UX de su web o app actual (informe de mejoras)", inicial: "auditoria_ux" } },
       terceros: [
-        { que: "Figma (para ver y comentar el diseño)", quien: "Cliente", costeEur: null, periodo: "mes", nota: "El plan gratuito basta para verlo; el archivo se entrega en su cuenta" }
+        { que: "Figma (para ver y comentar el diseño)", quien: "Cliente", costeEur: [0, 0], periodo: "", nota: "El plan gratuito basta para verlo; el archivo se entrega en su cuenta" },
+        { que: "Licencia de Figma para diseñar", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluida en el precio" }
       ],
       demos: [{ nombre: "Kit de ventas (este mismo)", url: "https://melinarivera.github.io/kit-ventas/" }, { nombre: "Demo asistente WhatsApp", url: "https://melinarivera.github.io/MR_Portafolio/demos/asistente-whatsapp/#estetica" }, { nombre: "Demo CRM restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }],
       preguntas: [
@@ -235,18 +279,19 @@ window.CATALOGO = {
       id: "formacion", icon: "graduation-cap", categoria: "Formación",
       titulo: "Formación en IA para equipos",
       frase: "Que tu equipo use la IA en su trabajo diario, con seguridad y sin perder tiempo.",
-      queEs: "Un taller práctico de 2 horas donde el equipo aprende a usar herramientas de IA (como Claude o ChatGPT) en sus tareas reales: redactar correos y propuestas, resumir documentos, preparar contenidos o atender clientes. Lo imparte Melina, con experiencia en recursos humanos y formación.",
+      queEs: "Un taller práctico de 2 horas en el que cada persona del equipo sale usando la IA (como Claude o ChatGPT) en 3 tareas reales de su puesto: correos, propuestas, resúmenes, contenidos o atención al cliente. Dos terceras partes del tiempo son práctica. Lo imparte Melina, con experiencia en recursos humanos y formación. Programa: qué hace bien la IA y en qué se equivoca (15 min) · cómo pedirle las cosas (20 min) · práctica con su trabajo (35 min) · privacidad y datos de clientes (15 min) · kit personal (25 min) · dudas (10 min).",
       paraQuien: ["Despachos, gestorías y consultoras", "Equipos comerciales y de atención al cliente", "Pymes que ya pagan alguna IA pero nadie la usa bien", "Academias y centros de formación"],
       senales: "Te dicen «hemos oído hablar de la IA pero no sabemos usarla», «cada uno la usa a su manera» o «me da miedo meter datos de clientes».",
-      incluye: ["Taller práctico de 2 horas, presencial u online", "Hasta 10 personas por grupo", "Ejemplos con las tareas reales del negocio", "Guía con instrucciones listas para copiar", "Buenas prácticas de privacidad y datos de clientes"],
-      noIncluye: ["Licencias de las herramientas de IA", "Desplazamiento fuera de Madrid (se presupuesta aparte)", "Implantar automatizaciones (es otro servicio)"],
-      plazo: "Se agenda en 1–2 semanas",
+      incluye: ["Formulario previo y llamada de 15 min para preparar casos con su trabajo real", "Taller de 2 horas, presencial u online, hasta 10 personas", "Guía en PDF con 15–20 instrucciones listas para copiar, hecha para su negocio", "Semáforo de datos: qué se puede meter en la IA y qué nunca", "Plantilla de normas de uso de IA para el equipo", "Constancia de asistencia (sirve como registro de formación y para FUNDAE)", "2 semanas de dudas por correo o WhatsApp", "Lista de 3 tareas del equipo que se podrían automatizar"],
+      noIncluye: ["Licencias de las herramientas de IA", "Desplazamiento fuera de Madrid (se presupuesta aparte)", "Implantar automatizaciones (es otro servicio)", "Tramitar FUNDAE (lo hace la empresa o su gestoría; damos toda la documentación)"],
+      plazo: "Se agenda en 1–2 semanas. También: taller + sesión de seguimiento a los 15 días, o programa de 3 sesiones por puestos (a medida)",
       precio: { inicial: "formacion_ia", porUnidad: "taller" },
       terceros: [
         { que: "Planes de pago de IA (si el equipo los quiere)", quien: "Cliente", costeEur: [0, 25], periodo: "mes", nota: "Por persona; muchas herramientas tienen plan gratuito" }
       ],
       demos: [{ nombre: "Tesovia (IA hecha por Melina)", url: "https://www.tesovia.com" }],
       preguntas: [
+        ["¿Se puede bonificar con FUNDAE?", "En España, sí. Con 10 personas, la empresa puede recuperar entre 180 y 260 € del precio, según su crédito. Hay que comunicarlo en FUNDAE antes del taller; nosotros damos factura, programa, control de asistencia y constancias."],
         ["¿Es para gente que no sabe nada de tecnología?", "Sí. Se empieza desde cero y con ejemplos de su propio trabajo."],
         ["¿Es seguro meter datos de clientes en la IA?", "Lo explicamos en el taller: qué datos se pueden usar, cuáles no y cómo configurarlo."]
       ]
@@ -287,6 +332,122 @@ window.CATALOGO = {
     }
   ],
 
+  /* Soluciones por tipo de negocio: problema → cómo lo resolvemos → servicios (id).
+     "preset" rellena el presupuesto con la solución recomendada. */
+  nichos: [
+    {
+      id: "estetica", icon: "flower-2", nombre: "Estéticas, peluquerías y belleza",
+      resumen: "Más citas, menos huecos vacíos y menos tiempo al teléfono.",
+      problemas: [
+        ["Pierdes citas porque no puedes contestar el WhatsApp mientras atiendes", "Un asistente responde al momento, a cualquier hora, y deja la cita agendada", ["ia"]],
+        ["Clientas que reservan y luego no vienen", "Recordatorio automático el día antes, con opción de confirmar o cambiar", ["ia"]],
+        ["El teléfono suena en mitad de un tratamiento", "La recepcionista de voz contesta, informa y apunta la cita por ti", ["voz"]],
+        ["Instagram parado y reseñas de Google sin responder", "Publicaciones cada semana y reseñas respondidas; ficha de Google al día", ["redes", "seo"]],
+        ["Quieres enseñar tus tratamientos pero no te gusta grabarte", "Vídeos con un presentador virtual que explica cada tratamiento", ["avatar"]]
+      ],
+      demos: [{ nombre: "Demo asistente de estética", url: "https://melinarivera.github.io/MR_Portafolio/demos/asistente-whatsapp/#estetica" }],
+      preset: { ia: "citas", redes: "esencial", seo: true }
+    },
+    {
+      id: "extranjeria", icon: "scale", nombre: "Consultoras de extranjería y despachos",
+      resumen: "Menos preguntas repetidas, expedientes en orden y un equipo que usa la IA con seguridad.",
+      problemas: [
+        ["Respondes 50 veces al día lo mismo: requisitos, documentos, precios", "Un asistente explica lo básico, filtra el caso y da cita solo a quien encaja", ["ia"]],
+        ["Llamadas constantes que interrumpen el trabajo", "La recepcionista de voz atiende, toma el recado o da cita y te pasa un resumen", ["voz"]],
+        ["Expedientes y plazos en Excel o en papel", "Un CRM con cada expediente, sus documentos y avisos de plazos", ["crm"]],
+        ["Cada persona usa la IA a su manera, con datos delicados", "Taller para el equipo con normas claras de qué datos nunca se meten en la IA", ["formacion"]],
+        ["Una web que no transmite confianza y pocas reseñas", "Web clara por áreas de trabajo y ficha de Google cuidada", ["web", "seo"]]
+      ],
+      demos: [{ nombre: "Demo asistente de extranjería", url: "https://melinarivera.github.io/MR_Portafolio/demos/asistente-whatsapp/#extranjeria" }],
+      preset: { ia: "citas", crm: "medida", formacion: 1 }
+    },
+    {
+      id: "gestorias", icon: "calculator", nombre: "Gestorías y asesorías",
+      resumen: "Menos horas pasando datos y persiguiendo documentación.",
+      problemas: [
+        ["Los clientes mandan facturas en fotos, correos y papeles", "Una automatización que lee las facturas con IA y las deja ordenadas para contabilidad", ["automatizacion"]],
+        ["Cada trimestre hay que perseguir la documentación", "Recordatorios automáticos por WhatsApp o email con lo que falta a cada cliente", ["automatizacion"]],
+        ["Clientes que llaman para preguntar cómo va lo suyo", "Un CRM con el estado de cada cliente y avisos automáticos", ["crm"]],
+        ["El equipo pierde horas en tareas que la IA haría en minutos", "Taller práctico de IA con sus tareas reales", ["formacion"]]
+      ],
+      demos: [{ nombre: "Nexo: facturas con IA", url: "https://melinarivera.github.io/Nexo_Facturas/" }],
+      preset: { automatizacion: 2, crm: "medida", formacion: 1 }
+    },
+    {
+      id: "restaurantes", icon: "utensils", nombre: "Restaurantes y bares",
+      resumen: "Reservas que no se pierden y clientes que vuelven.",
+      problemas: [
+        ["El teléfono de reservas suena en plena hora punta", "La recepcionista de voz toma la reserva mientras tú atiendes la sala", ["voz"]],
+        ["No sabes quiénes son tus clientes habituales ni sus alergias", "Un CRM con fichas, alérgenos, clientes VIP y clientes que hace tiempo que no vienen", ["crm"]],
+        ["Mesas vacías por reservas que no se presentan", "Recordatorios automáticos y campañas para llenar los días flojos", ["crm"]],
+        ["Sales mal en Google Maps o con el horario antiguo", "Ficha de Google completa, con fotos, carta y reseñas respondidas", ["seo"]],
+        ["Nadie tiene tiempo de llevar Instagram", "Publicaciones cada semana con platos, novedades y eventos", ["redes"]]
+      ],
+      demos: [{ nombre: "Demo CRM de restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }],
+      preset: { voz: true, crm: "medida", seo: true }
+    },
+    {
+      id: "tiendas", icon: "store", nombre: "Tiendas y comercio de barrio",
+      resumen: "Vender también a quien no pasa por la puerta.",
+      problemas: [
+        ["Solo vendes a quien pasa por delante", "Tienda online o catálogo con pedidos por WhatsApp", ["tienda"]],
+        ["No sales en Google cuando te buscan cerca", "Ficha de Google optimizada para tu barrio", ["seo"]],
+        ["Te escriben todo el día preguntando precios y disponibilidad", "Un asistente que responde al momento con tu catálogo", ["ia"]],
+        ["No tienes logo ni una imagen que se reconozca", "Identidad visual básica y plantillas para redes", ["identidad"]],
+        ["Tus novedades no se enteran", "Redes al día y vídeos cortos con presentador virtual", ["redes", "avatar"]]
+      ],
+      demos: [{ nombre: "Piñatas Madrid", url: "https://melinarivera.github.io/pinata/" }, { nombre: "Efsun · tienda", url: "https://melinarivera.github.io/tienda-esoterica/" }],
+      preset: { tienda: true, seo: true, redes: "esencial" }
+    },
+    {
+      id: "academias", icon: "school", nombre: "Academias y centros de formación",
+      resumen: "Llenar grupos sin pasarte el día contestando mensajes.",
+      problemas: [
+        ["En época de matrículas no das abasto con las preguntas", "Un asistente que informa de cursos, horarios y precios y apunta a los interesados", ["ia"]],
+        ["Te cuesta llenar los grupos", "Una página para cada curso y redes que atraen alumnos de tu zona", ["landing", "redes"]],
+        ["Quieres vídeos de tus cursos pero no tienes tiempo de grabar", "Vídeos con un presentador virtual, o con tu propio avatar", ["avatar"]],
+        ["Alumnos, pagos y asistencias repartidos en varios Excel", "Un CRM o planner con alumnos, grupos y pagos", ["crm"]]
+      ],
+      demos: [{ nombre: "Tesovia (IA para estudiar)", url: "https://www.tesovia.com" }],
+      preset: { landing: true, ia: "basic", avatar: "pack" }
+    },
+    {
+      id: "salud", icon: "stethoscope", nombre: "Clínicas, fisios y consultas",
+      resumen: "Una recepción que no se satura y pacientes que no olvidan su cita.",
+      problemas: [
+        ["Recepción saturada de llamadas para pedir o cambiar citas", "La recepcionista de voz gestiona las citas y deja libre a tu equipo", ["voz"]],
+        ["Pacientes que olvidan la cita", "Recordatorios automáticos con opción de confirmar o cambiar", ["ia"]],
+        ["Una web antigua que no explica tus tratamientos", "Web clara, pensada para el móvil, con tus tratamientos y cómo reservar", ["web"]],
+        ["Pocas reseñas en Google", "Ficha de Google completa y plantillas para pedir reseñas", ["seo"]]
+      ],
+      nota: "La IA nunca da consejo médico ni guarda datos de salud: solo gestiona citas e información general.",
+      demos: [],
+      preset: { voz: true, ia: "citas", seo: true }
+    },
+    {
+      id: "oficina", icon: "building-2", nombre: "Pymes con equipo de oficina",
+      resumen: "Que el equipo deje de hacer a mano lo que puede hacerse solo.",
+      problemas: [
+        ["Nadie del equipo sabe usar la IA, o la usa mal", "Taller práctico de 2 horas con sus tareas reales", ["formacion"]],
+        ["Horas copiando datos de un programa a otro", "Automatizaciones que pasan los datos solos", ["automatizacion"]],
+        ["Clientes y tareas repartidos en correos, Excel y libretas", "Un CRM a medida o el que ya usáis bien configurado", ["crm"]]
+      ],
+      demos: [{ nombre: "Nexo: facturas con IA", url: "https://melinarivera.github.io/Nexo_Facturas/" }],
+      preset: { formacion: 1, automatizacion: 2, crm: "medida" }
+    },
+    {
+      id: "emprendedores", icon: "lightbulb", nombre: "Emprendedores con una idea",
+      resumen: "De la idea a algo que puedes enseñar y vender.",
+      problemas: [
+        ["Tienes una idea de app pero no sabes cuánto costará ni por dónde empezar", "Diseñamos las pantallas y un prototipo que se puede probar antes de programar", ["uxui"]],
+        ["Necesitas una primera versión para enseñar a clientes o inversores", "Una app web con lo imprescindible (MVP), lista para usar", ["app"]],
+        ["Aún no tienes marca ni dónde presentarte", "Identidad visual y una landing para captar a los primeros interesados", ["identidad", "landing"]]
+      ],
+      demos: [{ nombre: "Tesovia", url: "https://www.tesovia.com" }, { nombre: "ZenWi", url: "https://zenwi.app" }],
+      preset: { uxui: "app", identidad: true, landing: true }
+    }
+  ],
+
   packs: [
     { id: "pack_arranque", titulo: "Pack Arranque", para: "Empezar a recibir clientes por internet", incluye: ["landing", "ia", "auditoria"], mensual: "ia_cuota" },
     { id: "pack_pyme_digital", titulo: "Pack Pyme Digital", para: "Profesionalizar la presencia online", incluye: ["web", "ia", "3 meses de redes Esencial"], mensual: "ia_cuota" },
@@ -294,17 +455,18 @@ window.CATALOGO = {
   ],
 
   glosario: [
-    ["Pago inicial", "Lo que paga el cliente una vez por hacer el trabajo (la web, la app, la puesta en marcha). 50 % al empezar y 50 % al entregar."],
-    ["Cuota mensual", "Lo que paga cada mes por un servicio que sigue funcionando (asistente, redes, mantenimiento). Sin permanencia."],
+    ["Pago inicial", "Lo que pagas una vez por hacer el trabajo (la web, la app, la puesta en marcha). 50 % al empezar y 50 % al entregar."],
+    ["Cuota mensual", "Lo que pagas cada mes por un servicio que sigue funcionando (asistente, redes, mantenimiento). Sin permanencia."],
     ["Mano de obra (nuestro trabajo)", "Diseño, programación, configuración, formación y soporte. Es lo que cobramos nosotros: el pago inicial y las cuotas."],
-    ["Costes de terceros", "Lo que el cliente paga directamente a otras empresas: dominio, alojamiento, iubenda, Meta, anuncios, pasarela de pago. Nosotros no cobramos nada sobre eso."],
+    ["Costes de terceros", "Lo que pagas directamente a otras empresas: dominio, alojamiento, iubenda, Meta, anuncios, pasarela de pago. No cobramos nada sobre eso."],
+    ["Herramientas incluidas", "Programas que usamos para hacer tu trabajo (IA, diseño, vídeo, voz). Van dentro de nuestro precio: no tienes que contratarlos."],
     ["Mantenimiento", "Cuota mensual para que todo siga funcionando: vigilancia, seguridad, copias y cambios pequeños."],
     ["Dominio", "La dirección de la web (www.negocio.com). Se paga cada año, unos 10–15 €."],
     ["Alojamiento (hosting)", "El «terreno» donde vive la web. En webs sencillas puede ser gratis."],
     ["iubenda", "Servicio que genera y actualiza la política de privacidad y cookies para cumplir la ley."],
     ["Meta", "La empresa dueña de WhatsApp, Instagram y Facebook. Cobra algunos mensajes de WhatsApp y los anuncios."],
     ["IA / tokens", "Lo que consume la inteligencia artificial al responder. Va incluido en la cuota del asistente."],
-    ["Ronda de cambios", "Una vez que el cliente revisa y pide ajustes. Incluimos 2 por proyecto."],
+    ["Ronda de cambios", "Cada vez que revisas y pides ajustes. Incluimos 2 por proyecto."],
     ["MVP", "Primera versión de una app con lo imprescindible para empezar a usarla."],
     ["UX / UI", "UX es cómo se usa (que sea fácil y lleve al cliente a comprar). UI es cómo se ve (colores, letras, botones)."],
     ["Prototipo", "Diseño que se puede tocar en el móvil como si fuera la web o app real, pero sin programar."]
