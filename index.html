@@ -7,6 +7,7 @@
 <meta name="description" content="Qué ofrecemos, qué incluye cada servicio, quién paga cada cosa y presupuesto al momento."/>
 <meta name="robots" content="noindex"/>
 <meta name="theme-color" content="#0F1020"/>
+<link rel="icon" href="img/mr-favicon.svg" type="image/svg+xml"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
@@ -35,6 +36,9 @@ svg.lucide{width:1em;height:1em;stroke-width:1.75;flex:none}
 header.top{background:var(--night);color:#EEF0F6;padding-top:env(safe-area-inset-top)}
 .brand{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;padding-block:22px 14px;flex-wrap:wrap}
 .brand h1{font-family:var(--display);font-weight:700;font-size:clamp(24px,4vw,32px);line-height:1.1;letter-spacing:-.01em}
+.lockup{display:flex;align-items:center;gap:14px}
+.lockup .logo{height:46px;width:auto;flex:none;padding-right:14px;border-right:1px solid rgba(156,194,224,.35)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .brand p{color:var(--steel-light);font-family:var(--display);font-style:italic;font-size:17px;margin-top:2px}
 .seg{display:inline-flex;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:3px;gap:2px}
 .seg button{border:0;background:transparent;color:rgba(238,240,246,.78);font-size:14px;font-weight:600;padding:8px 12px;border-radius:9px;cursor:pointer;min-height:40px;white-space:nowrap}
@@ -170,6 +174,23 @@ section[hidden],[hidden]{display:none!important}
 .empty svg{font-size:20px;color:var(--steel);margin-top:2px}
 .hint{display:flex;gap:10px;align-items:flex-start;background:var(--ok-wash);color:#11492D;border-radius:12px;padding:12px 14px;font-size:14.5px;margin-top:14px}
 .hint svg{font-size:19px;margin-top:1px}
+/* guía del vendedor (cifrada) */
+.glead{font-size:16px;max-width:75ch;margin-bottom:6px}
+#guiaBody h3{font-family:var(--display);font-size:22px;margin:26px 0 10px}
+#guiaBody p{max-width:75ch;margin-bottom:10px}
+.gtw{overflow-x:auto;border:1px solid var(--rule);border-radius:14px;background:var(--sheet)}
+.gt{border-collapse:collapse;width:100%;font-size:14.5px}
+.gt th{text-align:left;background:var(--wash);font-weight:700;padding:10px 12px;white-space:nowrap}
+.gt td{padding:9px 12px;border-top:1px solid var(--rule);vertical-align:top}
+.gt td:first-child{font-weight:600}
+.gt td:nth-child(3){font-weight:700;color:var(--ok)}
+.gcols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 12px}
+.gcols > div{background:var(--sheet);border:1px solid var(--rule);border-radius:14px;padding:14px 16px}
+.gcols ul{margin:8px 0 0 18px}
+@media (max-width:720px){.gcols{grid-template-columns:1fr}}
+.ghead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--client-wash);border-radius:14px;padding:12px 16px;margin-bottom:6px}
+.ghead b{display:flex;align-items:center;gap:8px;color:var(--client)}
+
 /* soluciones por tipo de negocio */
 .intro{margin-bottom:18px}
 .intro h2{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.6vw,30px);line-height:1.15}
@@ -225,7 +246,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 <header class="top">
   <div class="wrap">
     <div class="brand">
-      <div><h1>Servicios MR</h1><p>Tecnología que trabaja por tu negocio</p></div>
+      <div class="lockup"><svg class="logo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 140"><g fill="#D3D9E1"><rect x="27" y="22" width="6" height="96"/><polygon points="27,22 45,22 88,98 77,98"/><polygon points="82,98 88,98 127,22 121,22"/><rect x="121" y="22" width="14" height="96"/></g><path d="M135 25 H152 A25 25 0 0 1 152 75 H135" fill="none" stroke="#9CC2E0" stroke-width="6"/><polygon points="139,72 154,72 189,118 174,118" fill="#9CC2E0"/></svg><div><h1><span class="sr">MR · </span>Servicios</h1><p>Tecnología que trabaja por tu negocio</p></div></div>
       <div class="seg" role="group" aria-label="Moneda">
         <button type="button" data-cur="eur" aria-pressed="true">€ España</button>
         <button type="button" data-cur="mxn" aria-pressed="false">$ México</button>
@@ -237,6 +258,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
       <button type="button" role="tab" data-tab="servicios" aria-selected="false"><i data-lucide="layout-list"></i>Servicios</button>
       <button type="button" role="tab" data-tab="cotizar" aria-selected="false"><i data-lucide="calculator"></i>Hacer presupuesto</button>
       <button type="button" role="tab" data-tab="glosario" aria-selected="false"><i data-lucide="book-open"></i>Condiciones y palabras clave</button>
+      <button type="button" role="tab" data-tab="guia" aria-selected="false" id="tabGuia" hidden><i data-lucide="lock-open"></i>Guía del vendedor</button>
     </nav>
   </div>
 </header>
@@ -278,6 +300,11 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
     </div>
   </section>
 
+  <section id="tab-guia" hidden>
+    <div class="ghead"><b><i data-lucide="lock-open"></i>Solo para el vendedor. No la enseñes al cliente.</b><button class="linkbtn" type="button" id="btnLock"><i data-lucide="lock"></i>Cerrar la guía en este móvil</button></div>
+    <div id="guiaBody"></div>
+  </section>
+
   <section id="tab-glosario" hidden>
     <h2 class="h2">Condiciones para todos los servicios</h2>
     <div class="cond"><ul id="condList"></ul></div>
@@ -287,10 +314,19 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 
   <div class="foot">
     <span>Precios desde. Te confirmamos el precio final por escrito tras una llamada gratuita de 20 minutos.</span>
-    <span style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><a href="https://melinarivera.github.io/MR_Portafolio/servicios/?v=2" target="_blank" rel="noopener">Página de servicios</a></span>
+    <span style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><a href="https://melinarivera.github.io/MR_Portafolio/servicios/?v=2" target="_blank" rel="noopener">Página de servicios</a><button class="linkbtn" type="button" id="btnKey"><i data-lucide="key-round"></i>Acceso vendedor</button></span>
   </div>
 </main>
 
+<dialog id="dlgKey" aria-labelledby="dlgKeyT">
+  <form class="dlg" method="dialog" id="keyForm">
+    <h3 id="dlgKeyT"><i data-lucide="key-round"></i>Acceso vendedor</h3>
+    <p>Escribe la clave para ver la guía de venta. Se queda abierta solo en este móvil.</p>
+    <label for="kPw">Clave<input id="kPw" class="field" type="password" autocomplete="current-password"/></label>
+    <p id="kErr" style="color:var(--no)" hidden>Clave incorrecta. Prueba otra vez.</p>
+    <div class="btns"><button class="btn primary" value="ok" type="submit">Abrir la guía</button><button class="btn" value="no" type="submit" formnovalidate>Cancelar</button></div>
+  </form>
+</dialog>
 <div class="toast" id="toast" role="status"></div>
 
 <script src="catalogo.js"></script>
@@ -528,7 +564,7 @@ function renderGlos(){
 
 /* ---------- navegación ---------- */
 function tab(t){
-  ['negocio','servicios','cotizar','glosario'].forEach(function(x){ $('#tab-' + x).hidden = x !== t; });
+  ['negocio','servicios','cotizar','glosario','guia'].forEach(function(x){ $('#tab-' + x).hidden = x !== t; });
   document.querySelectorAll('[data-tab]').forEach(function(b){ b.setAttribute('aria-selected', b.dataset.tab === t); });
   try { history.replaceState(null, '', '#' + t); } catch(e) {}
   window.scrollTo(0,0);
@@ -570,11 +606,33 @@ $('#btnWa').addEventListener('click', function(){
 });
 $('#btnReset').addEventListener('click', function(){ q = {}; $('#qName').value = ''; renderOpts(); renderRes(); toast('Presupuesto vacío'); });
 
+/* ---------- guía del vendedor (cifrada con AES-GCM; la clave no está en el código) ---------- */
+function b64(s){ return Uint8Array.from(atob(s), function(c){ return c.charCodeAt(0); }); }
+function openGuide(pw){
+  if (!window.crypto || !crypto.subtle) return Promise.reject();
+  return fetch('guia.json', { cache:'no-store' }).then(function(r){ return r.json(); }).then(function(d){
+    return crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']).then(function(k){
+      return crypto.subtle.deriveKey({ name:'PBKDF2', salt:b64(d.salt), iterations:d.it, hash:'SHA-256' }, k, { name:'AES-GCM', length:256 }, false, ['decrypt']);
+    }).then(function(key){ return crypto.subtle.decrypt({ name:'AES-GCM', iv:b64(d.iv) }, key, b64(d.ct)); });
+  }).then(function(buf){
+    $('#guiaBody').innerHTML = new TextDecoder().decode(buf);
+    $('#tabGuia').hidden = false; store.set('kv-guia', pw); icons();
+  });
+}
+$('#btnKey').addEventListener('click', function(){ $('#kErr').hidden = true; $('#kPw').value = ''; $('#dlgKey').showModal(); });
+$('#keyForm').addEventListener('submit', function(e){
+  if (!e.submitter || e.submitter.value !== 'ok') return;
+  e.preventDefault();
+  openGuide($('#kPw').value).then(function(){ $('#dlgKey').close(); tab('guia'); toast('Guía abierta'); }, function(){ $('#kErr').hidden = false; });
+});
+$('#btnLock').addEventListener('click', function(){ try{ localStorage.removeItem('kv-guia'); }catch(e){} $('#guiaBody').innerHTML = ''; $('#tabGuia').hidden = true; showNiches(); tab('negocio'); toast('Guía cerrada en este móvil'); });
+
 /* ---------- arranque ---------- */
 var saved = store.get('kv-cur'); if (saved === 'mxn' || saved === 'usd') cur = saved;
 document.querySelectorAll('[data-cur]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.cur === cur); });
 renderNiches(); renderList(); renderOpts(); renderRes(); renderGlos(); icons();
 var h = (location.hash || '').slice(1); if (h === 'cotizar' || h === 'glosario' || h === 'servicios') tab(h);
+var gpw = store.get('kv-guia'); if (gpw) openGuide(gpw).then(function(){ if (h === 'guia') tab('guia'); }, function(){ try{ localStorage.removeItem('kv-guia'); }catch(e){} });
 fetch('/MR_Portafolio/servicios/precios.json', { cache:'no-store' }).then(function(r){ if (!r.ok) throw 0; return r.json(); }).then(function(j){ PR = j; renderList(); renderRes(); if (!$('#svcDetail').hidden) renderDetail($('#svcDetail').dataset.id); }).catch(function(){});
 })();
 </script>
