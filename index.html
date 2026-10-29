@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-<title>Servicios de Melina Rivera</title>
+<title>MR · Tecnología que trabaja por tu negocio</title>
 <meta name="description" content="Qué ofrecemos, qué incluye cada servicio, quién paga cada cosa y presupuesto al momento."/>
 <meta name="robots" content="noindex"/>
 <meta name="theme-color" content="#0F1020"/>
@@ -13,7 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 <style>
 /* Concepto: la «carta» de servicios. Cada categoría es una lista compuesta como un menú,
-   con su color e icono de línea. Marca de Melina: Playfair Display + DM Sans, azul noche y azul acero. */
+   con su color e icono de línea. Marca MR: Playfair Display + DM Sans, azul noche y azul acero. */
 :root{
   --paper:#F5F6F9; --sheet:#FFFFFF; --wash:#EDF0F5; --ink:#141725; --muted:#515A6B; --rule:#DCE1E9;
   --night:#0F1020; --steel:#3A6E9E; --steel-light:#9CC2E0;
@@ -225,7 +225,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 <header class="top">
   <div class="wrap">
     <div class="brand">
-      <div><h1>Servicios de Melina Rivera</h1><p>Tecnología que trabaja por tu negocio</p></div>
+      <div><h1>Servicios MR</h1><p>Tecnología que trabaja por tu negocio</p></div>
       <div class="seg" role="group" aria-label="Moneda">
         <button type="button" data-cur="eur" aria-pressed="true">€ España</button>
         <button type="button" data-cur="mxn" aria-pressed="false">$ México</button>
@@ -266,7 +266,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
         <div class="qbox"><h3><span class="n">1</span>¿Qué necesitas?</h3><div id="qOpts"></div></div>
         <div class="qbox"><h3><span class="n">2</span>Nombre del negocio (opcional)</h3><div class="qbody"><label for="qName" class="rsub" style="display:block;margin-bottom:6px">Aparece en el resumen.</label><input id="qName" class="field" placeholder="Ej.: Estética Luna"/></div></div>
         <div class="qbox"><h3><span class="n">3</span>Guárdalo o compártelo</h3><div class="qbody">
-          <p class="rsub" style="margin-bottom:12px">El resumen separa nuestro trabajo de lo que pagas aparte a otras empresas. Melina confirma el precio final.</p>
+          <p class="rsub" style="margin-bottom:12px">El resumen separa nuestro trabajo de lo que pagas aparte a otras empresas. Te confirmamos el precio final.</p>
           <div class="btns">
             <button class="btn wa" type="button" id="btnWa"><i data-lucide="message-circle"></i>Enviar por WhatsApp</button>
             <button class="btn" type="button" id="btnCopy"><i data-lucide="copy"></i>Copiar texto</button>
@@ -286,7 +286,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
   </section>
 
   <div class="foot">
-    <span>Precios desde. Melina confirma el precio final por escrito tras una llamada gratuita de 20 minutos.</span>
+    <span>Precios desde. Te confirmamos el precio final por escrito tras una llamada gratuita de 20 minutos.</span>
     <span style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><a href="https://melinarivera.github.io/MR_Portafolio/servicios/?v=2" target="_blank" rel="noopener">Página de servicios</a></span>
   </div>
 </main>
@@ -499,7 +499,7 @@ function packHint(){
 function taxNote(){ return cur === 'eur' ? 'sin IVA' : cur === 'mxn' ? 'más IVA' : 'impuestos según país'; }
 function renderRes(){
   var L = lines(), I = sum(L.ini), M = sum(L.mes), name = $('#qName').value.trim();
-  var head = '<div class="res-head"><h3>' + (name ? esc(name) : 'Resumen') + '</h3><p>Precios desde, ' + taxNote() + '. Melina confirma el precio final.</p></div>';
+  var head = '<div class="res-head"><h3>' + (name ? esc(name) : 'Resumen') + '</h3><p>Precios desde, ' + taxNote() + '. Te confirmamos el precio final.</p></div>';
   if (!L.ini.length && !L.mes.length){ $('#qRes').innerHTML = head + '<div class="res-body"><p class="empty">' + ic('mouse-pointer-click') + '<span>Marca lo que necesitas y aquí aparece el precio, separado en pago inicial, cuota mensual y lo que pagas aparte a otras empresas.</span></p></div>'; icons(); return; }
   var b = '';
   if (L.ini.length) b += '<div class="rg"><h4>' + ic('hand-coins') + 'Pago único</h4>' + L.ini.map(function(l){ return '<div class="rl"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '</span></div>'; }).join('') + '<div class="rt"><span>Pago inicial</span><span>' + money(I) + '</span></div><p class="rsub">50 % al empezar (' + money(I/2) + ') y 50 % al entregar.</p></div>';
@@ -512,11 +512,11 @@ function renderRes(){
 }
 function summaryText(){
   var L = lines(), I = sum(L.ini), M = sum(L.mes), n = $('#qName').value.trim();
-  var t = '*Presupuesto' + (n ? ' para ' + n : '') + '*\nMelina Rivera, tecnología que trabaja por tu negocio\n\n';
+  var t = '*Presupuesto' + (n ? ' para ' + n : '') + '*\nMR · Tecnología que trabaja por tu negocio\n\n';
   if (L.ini.length) t += '*Pago inicial (una vez):*\n' + L.ini.map(function(l){ return '• ' + l[0] + ': ' + money(l[1]); }).join('\n') + '\n*Total: ' + money(I) + '* (50 % al empezar, 50 % al entregar)\n\n';
   if (L.mes.length) t += '*Cuota mensual (sin permanencia):*\n' + L.mes.map(function(l){ return '• ' + l[0] + ': ' + money(l[1]) + ' al mes'; }).join('\n') + '\n*Total: ' + money(M) + ' al mes*\n\n';
   if (L.ter.length) t += '*Aparte, a otras empresas (aprox., a tu nombre):*\n' + L.ter.map(function(x){ return '• ' + x.que + ': ' + (x.costeEur ? rango(x.costeEur[0], x.costeEur[1]) + ' ' + (PER[x.periodo]||'') : 'según uso'); }).join('\n') + '\n\n';
-  return t + 'Precios desde, ' + taxNote() + '. Melina te confirma el precio final tras una llamada gratuita de 20 minutos.\nServicios y ejemplos: https://melinarivera.github.io/MR_Portafolio/servicios/?v=2';
+  return t + 'Precios desde, ' + taxNote() + '. Te confirmamos el precio final tras una llamada gratuita de 20 minutos.\nServicios y ejemplos: https://melinarivera.github.io/MR_Portafolio/servicios/?v=2';
 }
 
 /* ---------- Condiciones ---------- */

@@ -1,4 +1,4 @@
-# Kit de ventas · Melina Rivera
+# Kit de ventas · MR
 
 Página para enseñar los servicios de Melina a clientes y hacerles un presupuesto al momento. Todo lo que aparece aquí lo puede ver el cliente.
 

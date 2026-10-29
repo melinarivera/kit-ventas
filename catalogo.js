@@ -17,12 +17,12 @@ window.CATALOGO = {
 
 
   condiciones: [
-    "Los precios son «desde»: el precio final lo confirma Melina por escrito tras una llamada gratuita de 20 minutos.",
+    "Los precios son «desde»: el precio final te lo confirmamos por escrito tras una llamada gratuita de 20 minutos.",
     "Forma de pago de los proyectos: 50 % al empezar y 50 % al entregar.",
     "Las cuotas mensuales no tienen permanencia: se cancelan avisando con 30 días.",
     "El dominio, el alojamiento y las cuentas van siempre a tu nombre: si dejas de trabajar con nosotros, te lo llevas todo.",
     "Incluye 2 rondas de cambios. Cambios fuera de lo acordado: se presupuestan aparte antes de hacerlos.",
-    "Impuestos: España + IVA 21 %; México + IVA 16 %; otros países, según la factura (lo confirma Melina)."
+    "Impuestos: España + IVA 21 %; México + IVA 16 %; otros países, según la factura (te lo confirmamos)."
   ],
 
   servicios: [
