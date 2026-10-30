@@ -183,7 +183,7 @@ window.CATALOGO = {
         {que:  "Si prefieres configurar un CRM ya hecho", quien:  "Cliente", costeEur:  null, periodo:  "mes", nota:  "En lugar de la base de datos", opciones:  [{n:  "HubSpot, plan gratuito", p:  "gratis para empezar"}, {n:  "Notion", p:  "gratis o de pago según usuarios"}]}
       ],
       mensual: { opcional: "mant", texto: "Recomendado: mantenimiento mensual." },
-      demos: [{ nombre: "Demo CRM restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }, { nombre: "Nexo para gestorías", url: "https://melinarivera.github.io/Nexo_Facturas/" }],
+      demos: [{ nombre: "Demo CRM restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }],
       preguntas: [["¿Mis datos están seguros?", "Sí. Van en tu cuenta, con acceso solo para tu equipo, y firmamos un contrato de protección de datos (RGPD)."]]
     },
     {
@@ -263,7 +263,7 @@ window.CATALOGO = {
         {que:  "Figma, para ver y comentar el diseño", quien:  "Cliente", costeEur:  [0, 0], costeMxn:  [0, 0], costeUsd:  [0, 0], periodo:  "", nota:  "Con el plan gratuito basta; el archivo es tuyo"},
         {que:  "Licencia de Figma para diseñar", quien:  "Nosotros", costeEur:  null, periodo:  "mes", nota:  "Incluida en el precio"}
       ],
-      demos: [{ nombre: "Prototipo de app que se puede tocar", url: "https://melinarivera.github.io/MR_Portafolio/demos/prototipo-ux/" }, { nombre: "Kit de ventas (este mismo)", url: "https://melinarivera.github.io/kit-ventas/" }, { nombre: "Demo asistente WhatsApp", url: "https://melinarivera.github.io/MR_Portafolio/demos/asistente-whatsapp/#estetica" }, { nombre: "Demo CRM restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }],
+      demos: [{ nombre: "Prototipo de app que se puede tocar", url: "https://melinarivera.github.io/MR_Portafolio/demos/prototipo-ux/" }],
       preguntas: [
         ["¿Para qué pagar diseño si luego hay que programarlo?", "Porque cambiar un dibujo cuesta minutos y cambiar algo ya programado cuesta días. El diseño evita pagar dos veces."],
         ["¿Qué es una auditoría UX?", "Revisamos su web o app actual como si fuéramos sus clientes y le damos un informe con lo que les hace dudar o abandonar, y cómo arreglarlo."]
@@ -303,7 +303,7 @@ window.CATALOGO = {
       terceros: [
         {que:  "Suscripción a la app de IA de cada persona (opcional)", quien:  "Cliente", costeEur:  [0, 20], costeMxn:  [0, 400], costeUsd:  [0, 20], periodo:  "mes", nota:  "Es la app de chat que usa cada empleado (como ChatGPT o Claude), con cuota fija al mes. No se paga por uso. Para empezar bastan los planes gratuitos", opciones:  [{n:  "Planes gratuitos (Claude, ChatGPT)", p:  "0 €"}, {n:  "Claude Pro o ChatGPT Plus", p:  "20 US$/mes por persona (unos 18 €)"}, {n:  "Claude Team (equipos)", p:  "desde 20 US$/mes por persona, con pago anual y mínimo 5"}]}
       ],
-      demos: [{ nombre: "Muestra del taller: semáforo de datos", url: "https://melinarivera.github.io/MR_Portafolio/demos/semaforo-ia/" }, { nombre: "Tesovia (IA hecha por Melina)", url: "https://www.tesovia.com" }],
+      demos: [{ nombre: "Muestra del taller: semáforo de datos", url: "https://melinarivera.github.io/MR_Portafolio/demos/semaforo-ia/" }],
       preguntas: [
         ["¿La empresa puede recuperar el dinero del taller? (solo España)", "Sí, con FUNDAE: es el crédito de formación que toda empresa tiene por lo que paga a la Seguridad Social. Con 10 personas, la empresa puede recuperar entre 180 y 260 € del precio, según su crédito. Hay que comunicarlo en FUNDAE antes del taller; nosotros damos factura, programa, control de asistencia y constancias."],
         ["¿Es para gente que no sabe nada de tecnología?", "Sí. Se empieza desde cero y con ejemplos de su propio trabajo."],
@@ -329,7 +329,7 @@ window.CATALOGO = {
         {que:  "Publicarla en App Store o Google Play (casi nunca hace falta)", quien:  "Cliente", costeEur:  null, periodo:  "", nota:  "Nuestras apps funcionan desde el navegador y se instalan en el móvil sin pasar por las tiendas. Solo si quieres que aparezca en ellas", opciones:  [{n:  "Apple App Store", p:  "99 US$ al año (unos 90 €)"}, {n:  "Google Play", p:  "25 US$ una sola vez (unos 23 €)"}]}
       ],
       mensual: { opcional: "mant", texto: "Necesario: mantenimiento mensual." },
-      demos: [{ nombre: "Tesovia", url: "https://www.tesovia.com" }, { nombre: "ETERN-ME", url: "https://etern-me.com" }, { nombre: "ZenWi", url: "https://zenwi.app" }],
+      demos: [{ nombre: "Tesovia", url: "https://www.tesovia.com" }, { nombre: "ETERN-ME", url: "https://etern-me.com" }],
       preguntas: [["¿Por qué un MVP y no todo de golpe?", "Para salir antes, probar con usuarios reales y gastar solo en lo que funciona."]]
     },
     {
@@ -426,7 +426,7 @@ window.CATALOGO = {
         ["Quieres vídeos de tus cursos pero no tienes tiempo de grabar", "Vídeos con un presentador virtual, o con tu propio avatar", ["avatar"]],
         ["Alumnos, pagos y asistencias repartidos en varios Excel", "Un CRM o planner con alumnos, grupos y pagos", ["crm"]]
       ],
-      demos: [{ nombre: "Tesovia (IA para estudiar)", url: "https://www.tesovia.com" }],
+      demos: [{ nombre: "Demo: taller de IA para el equipo", url: "https://melinarivera.github.io/MR_Portafolio/demos/semaforo-ia/" }],
       preset: { landing: true, ia: "basic", avatar: "pack" }
     },
     {
@@ -461,7 +461,7 @@ window.CATALOGO = {
         ["Necesitas una primera versión para enseñar a clientes o inversores", "Una app web con lo imprescindible (MVP), lista para usar", ["app"]],
         ["Aún no tienes marca ni dónde presentarte", "Identidad visual y una landing para captar a los primeros interesados", ["identidad", "landing"]]
       ],
-      demos: [{ nombre: "Tesovia", url: "https://www.tesovia.com" }, { nombre: "ZenWi", url: "https://zenwi.app" }],
+      demos: [{ nombre: "Demo: prototipo de app antes de programar", url: "https://melinarivera.github.io/MR_Portafolio/demos/prototipo-ux/" }],
       preset: { uxui: "app", identidad: true, landing: true }
     }
   ],
