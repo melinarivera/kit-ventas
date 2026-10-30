@@ -305,7 +305,7 @@ window.CATALOGO = {
       ],
       demos: [{ nombre: "Tesovia (IA hecha por Melina)", url: "https://www.tesovia.com" }],
       preguntas: [
-        ["¿Se puede bonificar con FUNDAE?", "En España, sí. Con 10 personas, la empresa puede recuperar entre 180 y 260 € del precio, según su crédito. Hay que comunicarlo en FUNDAE antes del taller; nosotros damos factura, programa, control de asistencia y constancias."],
+        ["¿La empresa puede recuperar el dinero del taller? (solo España)", "Sí, con FUNDAE: es el crédito de formación que toda empresa tiene por lo que paga a la Seguridad Social. Con 10 personas, la empresa puede recuperar entre 180 y 260 € del precio, según su crédito. Hay que comunicarlo en FUNDAE antes del taller; nosotros damos factura, programa, control de asistencia y constancias."],
         ["¿Es para gente que no sabe nada de tecnología?", "Sí. Se empieza desde cero y con ejemplos de su propio trabajo."],
         ["¿Es seguro meter datos de clientes en la IA?", "Lo explicamos en el taller: qué datos se pueden usar, cuáles no y cómo configurarlo."]
       ]

@@ -49,6 +49,69 @@ nav.tabs button{display:inline-flex;align-items:center;gap:7px;border:0;backgrou
 nav.tabs button[aria-selected=true]{color:#fff;border-bottom-color:var(--steel-light)}
 nav.tabs svg{font-size:18px}
 main{padding-block:24px 64px}
+.hact{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.keybtn{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(156,194,224,.45);background:rgba(156,194,224,.12);color:#EEF0F6;font-weight:700;font-size:14px;padding:8px 14px;border-radius:12px;min-height:42px;cursor:pointer}
+.keybtn:hover{background:rgba(156,194,224,.22)}
+.cursel{display:none}
+.cursel select{appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.08) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23EEF0F6' stroke-width='2.5'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center;border:1px solid rgba(255,255,255,.18);color:#EEF0F6;font-weight:700;font-size:14px;padding:8px 30px 8px 12px;border-radius:12px;min-height:42px}
+.cursel select option{color:#141725}
+.qbar{display:none}
+.headadd{margin-top:16px}
+/* pedido */
+.pform{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}
+.pform .full{grid-column:1/-1}
+.pform label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14.5px}
+.pform label small{font-weight:500;color:var(--muted)}
+.pform textarea{min-height:84px;resize:vertical}
+.req{color:var(--no)}
+.perr{color:var(--no);font-weight:600;font-size:14.5px;margin-top:10px}
+.checks{list-style:none;display:flex;flex-direction:column;gap:8px}
+.checks label{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:15px;cursor:pointer}
+.checks input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:var(--night)}
+.ptot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.ptot div{background:var(--wash);border-radius:12px;padding:10px 12px;font-size:13.5px;color:var(--muted)}
+.ptot b{display:block;font-size:19px;color:var(--ink);font-variant-numeric:tabular-nums}
+@media (max-width:720px){
+  .pform{grid-template-columns:1fr}
+  .ptot{grid-template-columns:1fr 1fr}
+  /* cabecera compacta */
+  .brand{align-items:center;padding-block:10px 10px;flex-wrap:nowrap}
+  .brand p{display:none}
+  .brand h1{font-size:22px}
+  .lockup{gap:8px;min-width:0}
+  .lockup .logo{height:48px;margin:-4px 0 -4px -8px}
+  .seg{display:none}
+  .cursel{display:block}
+  /* navegación abajo, como una app */
+  nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#FFFFFF;border-top:1px solid var(--rule);padding:4px 4px max(4px,env(safe-area-inset-bottom));gap:0;overflow:visible;box-shadow:0 -6px 18px rgba(15,16,32,.08)}
+  nav.tabs button{flex:1 1 0;flex-direction:column;gap:2px;color:var(--muted);font-size:11.5px;padding:7px 2px 5px;min-height:56px;border-bottom:0;border-top:3px solid transparent;border-radius:0}
+  nav.tabs button[aria-selected=true]{color:var(--night);border-bottom-color:transparent;border-top-color:var(--night)}
+  nav.tabs svg{font-size:22px}
+  main{padding-block:18px 150px}
+  .intro h2,.cat-head h2{font-size:22px}
+  main .guide{display:none}
+  .brand h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .toast{bottom:calc(150px + env(safe-area-inset-bottom))}
+  /* filas de servicio: el precio debajo del texto */
+  .row{grid-template-columns:auto minmax(0,1fr);gap:4px 12px;align-items:start;padding:14px}
+  .row > .tile{grid-row:1/3}
+  .row .price{grid-column:2;text-align:left;font-size:15px;display:flex;flex-wrap:wrap;gap:0 8px;align-items:baseline}
+  .row .price small{display:inline}
+  .row .go,.row > span:last-child:empty{display:none}
+  .sheet-head{padding:14px 16px 18px}
+  .sheet-head h2{font-size:25px}
+  .sheet-body{padding:18px 16px;gap:22px}
+  .prices{display:grid;grid-template-columns:1fr;gap:8px}
+  /* presupuesto: barra con el total siempre a mano */
+  .qbar{position:fixed;left:8px;right:8px;bottom:calc(72px + env(safe-area-inset-bottom));z-index:29;background:var(--night);color:#fff;border-radius:16px;padding:10px 12px 10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 8px 22px rgba(15,16,32,.3)}
+  .qbar[hidden]{display:none!important}
+  .qbar b{display:block;font-size:17px;font-variant-numeric:tabular-nums}
+  .qbar small{color:var(--steel-light);font-size:12.5px}
+  .qbar button{background:#EEF0F6;color:var(--night);border:0;border-radius:11px;font-weight:700;padding:10px 12px;min-height:44px;white-space:nowrap}
+  .res{position:static}
+  .opt{padding:12px 14px}
+  .foot{flex-direction:column;align-items:flex-start}
+}
 section[hidden],[hidden]{display:none!important}
 
 /* guía de uso: es un proceso, por eso va numerada */
@@ -152,7 +215,7 @@ section[hidden],[hidden]{display:none!important}
 .opt input[type=checkbox]{width:24px;height:24px;accent-color:var(--night)}
 .opt select,.opt input[type=number],.field{border:1px solid var(--rule);border-radius:10px;padding:8px 10px;background:#fff;min-height:44px;max-width:100%}
 .field{width:100%}
-@media (max-width:560px){.opt{grid-template-columns:auto minmax(0,1fr)}.opt .ctl{grid-column:1/-1}.opt .ctl select{width:100%}}
+@media (max-width:560px){.opt{grid-template-columns:auto minmax(0,1fr) auto}.opt .ctl{grid-column:1/-1}.opt .ctl.ck{grid-column:auto}.opt .ctl select{width:100%}}
 .res{position:sticky;top:14px;background:var(--sheet);border:1px solid var(--rule);border-radius:18px;overflow:hidden}
 .res-head{background:var(--night);color:#fff;padding:16px 18px}
 .res-head h3{font-family:var(--display);font-size:24px}
@@ -252,16 +315,21 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
   <div class="wrap">
     <div class="brand">
       <div class="lockup"><img class="logo" src="img/mr-logo-3d.png" alt="" width="103" height="64"/><div><h1><span class="sr">MR · </span>Servicios</h1><p>Tecnología que trabaja por tu negocio</p></div></div>
-      <div class="seg" role="group" aria-label="Moneda">
-        <button type="button" data-cur="eur" aria-pressed="true">€ España</button>
-        <button type="button" data-cur="mxn" aria-pressed="false">$ México</button>
-        <button type="button" data-cur="usd" aria-pressed="false">US$ Otros países</button>
+      <div class="hact">
+        <div class="seg" role="group" aria-label="Moneda">
+          <button type="button" data-cur="eur" aria-pressed="true">€ España</button>
+          <button type="button" data-cur="mxn" aria-pressed="false">$ México</button>
+          <button type="button" data-cur="usd" aria-pressed="false">US$ Otros países</button>
+        </div>
+        <label class="cursel"><span class="sr">País y moneda</span><select id="curSel"><option value="eur">€ España</option><option value="mxn">$ México</option><option value="usd">US$ Otros</option></select></label>
+        <button class="keybtn" type="button" id="btnKey" aria-label="Acceso vendedor"><i data-lucide="key-round"></i><span>Vendedor</span></button>
       </div>
     </div>
     <nav class="tabs" role="tablist" aria-label="Secciones">
       <button type="button" role="tab" data-tab="negocio" aria-selected="true"><i data-lucide="store"></i>Tu negocio</button>
       <button type="button" role="tab" data-tab="servicios" aria-selected="false"><i data-lucide="layout-list"></i>Servicios</button>
       <button type="button" role="tab" data-tab="cotizar" aria-selected="false"><i data-lucide="calculator"></i>Presupuesto</button>
+      <button type="button" role="tab" data-tab="pedido" aria-selected="false"><i data-lucide="clipboard-check"></i>Pedido</button>
       <button type="button" role="tab" data-tab="glosario" aria-selected="false"><i data-lucide="book-open"></i>Condiciones</button>
       <button type="button" role="tab" data-tab="guia" aria-selected="false" id="tabGuia" hidden><i data-lucide="lock-open"></i>Guía</button>
     </nav>
@@ -299,10 +367,48 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
             <button class="btn" type="button" id="btnCopy"><i data-lucide="copy"></i>Copiar texto</button>
             <button class="btn" type="button" id="btnReset"><i data-lucide="rotate-ccw"></i>Empezar de nuevo</button>
           </div>
+          <button class="btn primary" type="button" data-tab="pedido" style="margin-top:12px;width:100%"><i data-lucide="clipboard-check"></i>¿Ha dicho que sí? Tomar el pedido</button>
         </div></div>
       </div>
       <aside class="res" aria-live="polite" id="qRes"></aside>
     </div>
+    <div class="qbar" id="qBar" hidden><div><b id="qBarI"></b><small id="qBarM"></small></div><button type="button" id="qBarGo">Ver resumen</button></div>
+  </section>
+
+  <section id="tab-pedido" hidden>
+    <div class="intro"><h2>Tomar el pedido</h2><p>Cuando el cliente dice que sí: rellena sus datos, revisa lo que contrata y envíalo. Le llega a Melina para empezar y al cliente como confirmación. Se guarda en este móvil hasta que lo borres.</p></div>
+    <div class="qbox"><h3><span class="n">1</span>Datos del cliente</h3><div class="qbody pform">
+      <label><span>Nombre del negocio <span class="req">*</span></span><input class="field" id="pNeg" autocomplete="organization"/></label>
+      <label><span>Persona de contacto <span class="req">*</span></span><input class="field" id="pCon" autocomplete="name"/></label>
+      <label><span>WhatsApp del cliente <span class="req">*</span></span><input class="field" id="pTel" type="tel" inputmode="tel" placeholder="Con prefijo: +34… o +52…"/></label>
+      <label>Email<input class="field" id="pMail" type="email" autocomplete="email"/></label>
+      <label>NIF / CIF (España) o RFC (México)<small>Para la factura</small><input class="field" id="pNif"/></label>
+      <label>Dirección fiscal<input class="field" id="pDir" autocomplete="street-address"/></label>
+    </div></div>
+    <div class="qbox"><h3><span class="n">2</span>Lo que contrata</h3><div class="qbody">
+      <div id="pLines"></div>
+      <div class="pform" style="margin-top:14px">
+        <label class="full">Condición pactada (si la hay)<small>Ej.: Pack Arranque, pago adelantado, 6 meses de cuota… Nunca por debajo del mínimo de la guía.</small><input class="field" id="pCond"/></label>
+        <label>Precio inicial acordado<small>Déjalo vacío si es el del presupuesto</small><input class="field" id="pIni" inputmode="decimal"/></label>
+        <label>Cuota mensual acordada<small>Déjalo vacío si es la del presupuesto</small><input class="field" id="pMes" inputmode="decimal"/></label>
+      </div>
+    </div></div>
+    <div class="qbox"><h3><span class="n">3</span>Pago y fechas</h3><div class="qbody pform">
+      <label>Forma de pago<select class="field" id="pPago"><option>Transferencia bancaria</option><option>Bizum</option><option>Tarjeta (enlace de pago)</option><option>Transferencia SPEI (México)</option><option>Otra (ver notas)</option></select></label>
+      <label>Fecha de inicio deseada<input class="field" id="pFecha" type="date"/></label>
+      <p class="full rsub">Al empezar se paga el 50 % del pago inicial y al entregar el otro 50 %. Las cuotas empiezan el mes en que el servicio funciona. Melina envía la factura con los datos de pago.</p>
+    </div></div>
+    <div class="qbox"><h3><span class="n">4</span>Lo que el cliente nos tiene que enviar</h3><div class="qbody"><p class="rsub" style="margin-bottom:10px">Marca lo que ya te ha dado. Lo que falte se le recuerda en su confirmación.</p><ul class="checks" id="pNeed"></ul></div></div>
+    <div class="qbox"><h3><span class="n">5</span>Notas para Melina</h3><div class="qbody"><textarea class="field" id="pNotas" placeholder="Lo que haya comentado el cliente, urgencias, gustos…"></textarea></div></div>
+    <div class="qbox"><h3><span class="n">6</span>Enviar</h3><div class="qbody">
+      <div class="btns">
+        <button class="btn wa" type="button" id="pSendMel"><i data-lucide="send"></i>Enviar pedido a Melina</button>
+        <button class="btn wa" type="button" id="pSendCli"><i data-lucide="message-circle"></i>Confirmación al cliente</button>
+        <button class="btn" type="button" id="pCopy"><i data-lucide="copy"></i>Copiar pedido</button>
+        <button class="btn" type="button" id="pClear"><i data-lucide="trash-2"></i>Borrar y empezar otro</button>
+      </div>
+      <p class="perr" id="pErr" hidden></p>
+    </div></div>
   </section>
 
   <section id="tab-guia" hidden>
@@ -318,8 +424,8 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
   </section>
 
   <div class="foot">
-    <span>Precios sin IVA en España y más IVA en México.</span>
-    <span style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><a href="https://melinarivera.github.io/MR_Portafolio/servicios/?v=2" target="_blank" rel="noopener">Página de servicios</a><button class="linkbtn" type="button" id="btnKey"><i data-lucide="key-round"></i>Acceso vendedor</button></span>
+    <span>Todos los precios son + IVA (o + impuestos en otros países).</span>
+    <span style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><a href="https://melinarivera.github.io/MR_Portafolio/servicios/?v=2" target="_blank" rel="noopener">Página de servicios</a></span>
   </div>
 </main>
 
@@ -417,7 +523,8 @@ function renderDetail(id){
       '<div class="sheet-head"><button type="button" class="back" data-back>' + ic('arrow-left') + 'Todos los servicios</button>' +
         '<div class="sheet-title">' + tile(s) + '<h2>' + esc(s.titulo) + '</h2></div>' +
         '<p class="frase">' + esc(s.frase) + '</p>' +
-        '<div class="prices">' + priceChips(s).map(function(c){ return '<div class="pchip">' + esc(c[0]) + '<b>' + esc(c[1]) + '</b></div>'; }).join('') + '</div></div>' +
+        '<div class="prices">' + priceChips(s).map(function(c){ return '<div class="pchip">' + esc(c[0]) + '<b>' + esc(c[1]) + '</b></div>'; }).join('') + '</div>' +
+        '<button class="btn headadd" type="button" data-quote="' + s.id + '">' + ic('plus') + 'Añadir al presupuesto</button></div>' +
       '<div class="sheet-body">' +
         '<div class="blk full"><h3>' + ic('message-square-text') + 'Qué es, en palabras sencillas</h3><p>' + esc(s.queEs) + '</p></div>' +
         '<div class="blk"><h3>' + ic('target') + 'Para quién es</h3><ul class="dot">' + s.paraQuien.map(function(x){ return '<li>' + ic('dot') + '<span>' + esc(x) + '</span></li>'; }).join('') + '</ul></div>' +
@@ -504,7 +611,7 @@ function renderOpts(){
     if (o.tipo === 'check') ctl = '<input type="checkbox" id="' + idc + '" data-q="' + o.id + '"' + (q[o.id] ? ' checked' : '') + '/>';
     if (o.tipo === 'select') ctl = '<select id="' + idc + '" data-q="' + o.id + '">' + o.opciones.map(function(op){ return '<option value="' + op[0] + '"' + ((q[o.id]||'') === op[0] ? ' selected' : '') + '>' + esc(op[1]) + '</option>'; }).join('') + '</select>';
     if (o.tipo === 'num') ctl = '<input type="number" min="0" max="' + o.max + '" id="' + idc + '" data-q="' + o.id + '" value="' + (q[o.id]||0) + '" style="width:84px"/>';
-    return '<div class="opt">' + tile(s, 'sm') + '<label for="' + idc + '"><b>' + esc(titulo) + '</b><small>' + esc(desc) + (o.tipo === 'num' && !o.desc ? ' Indica cuántas.' : '') + '</small></label><div class="ctl">' + ctl + '</div></div>';
+    return '<div class="opt">' + tile(s, 'sm') + '<label for="' + idc + '"><b>' + esc(titulo) + '</b><small>' + esc(desc) + (o.tipo === 'num' && !o.desc ? ' Indica cuántas.' : '') + '</small></label><div class="ctl' + (o.tipo === 'check' ? ' ck' : '') + '">' + ctl + '</div></div>';
   }).join('');
   icons();
   document.querySelectorAll('[data-q]').forEach(function(el){
@@ -549,11 +656,11 @@ function packHint(){
   if (q.crm === 'medida' && q.automatizacion >= 2) return ['Pack Organiza tu negocio', 'pack_organiza'];
   return null;
 }
-function taxNote(){ return cur === 'eur' ? 'sin IVA' : cur === 'mxn' ? 'más IVA' : 'impuestos según país'; }
+function taxNote(){ return cur === 'usd' ? '+ impuestos' : '+ IVA'; }
 function renderRes(){
   var L = lines(), I = sum(L.ini), M = sum(L.mes), name = $('#qName').value.trim();
   var head = '<div class="res-head"><h3>' + (name ? esc(name) : 'Resumen') + '</h3><p>Precios ' + taxNote() + '.</p></div>';
-  if (!L.ini.length && !L.mes.length){ $('#qRes').innerHTML = head + '<div class="res-body"><p class="empty">' + ic('mouse-pointer-click') + '<span>Marca lo que necesitas y aquí aparece el precio, separado en pago inicial, cuota mensual y lo que pagas aparte a otras empresas.</span></p></div>'; icons(); return; }
+  if (!L.ini.length && !L.mes.length){ qbar(); $('#qRes').innerHTML = head + '<div class="res-body"><p class="empty">' + ic('mouse-pointer-click') + '<span>Marca lo que necesitas y aquí aparece el precio, separado en pago inicial, cuota mensual y lo que pagas aparte a otras empresas.</span></p></div>'; icons(); return; }
   var b = '';
   if (L.ini.length) b += '<div class="rg"><h4>' + ic('hand-coins') + 'Pago único</h4>' + L.ini.map(function(l){ return '<div class="rl"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '</span></div>'; }).join('') + '<div class="rt"><span>Pago inicial</span><span>' + money(I) + '</span></div><p class="rsub">50 % al empezar (' + money(I/2) + ') y 50 % al entregar.</p></div>';
   if (L.mes.length) b += '<div class="rg"><h4>' + ic('calendar-sync') + 'Cada mes</h4>' + L.mes.map(function(l){ return '<div class="rl"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '</span></div>'; }).join('') + '<div class="rt"><span>Cuota mensual</span><span>' + money(M) + '</span></div><p class="rsub">Sin permanencia. Se cancela avisando con 30 días.</p></div>';
@@ -561,7 +668,7 @@ function renderRes(){
   if (L.ter.length) b += '<div class="rg"><h4>' + ic('receipt') + 'Pagas aparte a otras empresas</h4>' + L.ter.map(function(t){ return '<div class="rl"><span>' + esc(t.que) + (t.nota && !costTxt(t) ? '<br><small>' + esc(t.nota) + '</small>' : '') + optsHtml(t) + '</span><span>' + (costTxt(t) || 'según uso') + '</span></div>'; }).join('') + '<p class="rsub" style="margin-top:6px">Aproximado. Va a tu nombre y no cobramos nada sobre esto.</p></div>';
   var ph = packHint();
   if (ph) b += '<div class="hint">' + ic('lightbulb') + '<span>Te sale mejor el <b>' + ph[0] + '</b>: desde ' + money(val(ph[1])) + ' en lugar de los precios sueltos (ahorras ' + money(ahorro(ph[1])) + ').</span></div>';
-  $('#qRes').innerHTML = head + '<div class="res-body">' + b + '</div>'; icons();
+  $('#qRes').innerHTML = head + '<div class="res-body">' + b + '</div>'; icons(); qbar();
 }
 function summaryText(){
   var L = lines(), I = sum(L.ini), M = sum(L.mes), n = $('#qName').value.trim();
@@ -581,17 +688,21 @@ function renderGlos(){
 
 /* ---------- navegación ---------- */
 function tab(t){
-  ['negocio','servicios','cotizar','glosario','guia'].forEach(function(x){ $('#tab-' + x).hidden = x !== t; });
+  ['negocio','servicios','cotizar','pedido','glosario','guia'].forEach(function(x){ $('#tab-' + x).hidden = x !== t; });
   document.querySelectorAll('[data-tab]').forEach(function(b){ b.setAttribute('aria-selected', b.dataset.tab === t); });
   try { history.replaceState(null, '', '#' + t); } catch(e) {}
+  if (t === 'pedido') renderPedido();
+  qbar();
   window.scrollTo(0,0);
 }
 function showList(){ $('#svcDetail').hidden = true; $('#svcList').hidden = false; $('#guide').hidden = false; }
 function setCur(c){
-  cur = c; store.set('kv-cur', c);
+  cur = c; store.set('kv-cur', c); if ($('#curSel')) $('#curSel').value = c;
   document.querySelectorAll('[data-cur]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.cur === c); });
   renderList(); renderRes(); if (!$('#svcDetail').hidden) renderDetail($('#svcDetail').dataset.id);
   if (!$('#nicheDetail').hidden) renderNiche($('#nicheDetail').dataset.id);
+  if (!$('#tab-pedido').hidden) renderPedido();
+  qbar();
 }
 var toastT;
 function toast(m){ var t = $('#toast'); t.innerHTML = ic('check') + esc(m); icons(); t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove('show'); }, 2200); }
@@ -636,7 +747,7 @@ function openGuide(pw){
     $('#tabGuia').hidden = false; store.set('kv-guia', pw); icons();
   });
 }
-$('#btnKey').addEventListener('click', function(){ $('#kErr').hidden = true; $('#kPw').value = ''; $('#dlgKey').showModal(); });
+$('#btnKey').addEventListener('click', function(){ if (!$('#tabGuia').hidden){ tab('guia'); return; } $('#kErr').hidden = true; $('#kPw').value = ''; $('#dlgKey').showModal(); });
 $('#keyForm').addEventListener('submit', function(e){
   if (!e.submitter || e.submitter.value !== 'ok') return;
   e.preventDefault();
@@ -644,11 +755,87 @@ $('#keyForm').addEventListener('submit', function(e){
 });
 $('#btnLock').addEventListener('click', function(){ try{ localStorage.removeItem('kv-guia'); }catch(e){} $('#guiaBody').innerHTML = ''; $('#tabGuia').hidden = true; showNiches(); tab('negocio'); toast('Guía cerrada en este móvil'); });
 
+/* ---------- barra de total en el móvil ---------- */
+function qbar(){
+  var bar = $('#qBar'); if (!bar) return;
+  var L = lines(), I = sum(L.ini), M = sum(L.mes);
+  var show = !$('#tab-cotizar').hidden && (L.ini.length || L.mes.length);
+  bar.hidden = !show; if (!show) return;
+  $('#qBarI').textContent = (I ? money(I) : '') + (I && M ? ' + ' : '') + (M ? money(M) + '/mes' : '');
+  $('#qBarM').textContent = 'Precios ' + taxNote();
+}
+$('#qBarGo').addEventListener('click', function(){ $('#qRes').scrollIntoView({ behavior:'smooth', block:'start' }); });
+$('#curSel').addEventListener('change', function(){ setCur(this.value); });
+
+/* ---------- pedido ---------- */
+var PF = ['pNeg','pCon','pTel','pMail','pNif','pDir','pCond','pIni','pMes','pPago','pFecha','pNotas'];
+var MELINA_WA = '34711593111';
+var Q2S = { landing:'landing', web:'web', tienda:'tienda', uxui:'uxui', auditoria_ux:'uxui', identidad:'identidad', ia:'ia', voz:'voz', automatizacion:'automatizacion', crm:'crm', redes:'redes', auditoria:'redes', seo:'seo', avatar:'avatar', avatar_propio:'avatar', formacion:'formacion', app:'app', mant:'mant' };
+function pedidoStore(){ try { return JSON.parse(store.get('kv-pedido') || '{}'); } catch(e){ return {}; } }
+function pedidoSave(){ var d = pedidoStore(); PF.forEach(function(k){ d[k] = $('#' + k).value; }); d.need = Array.prototype.map.call(document.querySelectorAll('#pNeed input:checked'), function(x){ return x.value; }); store.set('kv-pedido', JSON.stringify(d)); }
+function needs(){
+  var ids = [], out = [];
+  Object.keys(q).forEach(function(k){ var v = q[k]; if (v && v !== '0' && v !== 0 && Q2S[k] && ids.indexOf(Q2S[k]) < 0) ids.push(Q2S[k]); });
+  ids.forEach(function(id){ var s = svc(id); (s && s.necesitamos || []).forEach(function(n){ if (out.indexOf(n) < 0) out.push(n); }); });
+  return out;
+}
+function renderPedido(){
+  var d = pedidoStore();
+  if (!$('#pNeg').value && $('#qName').value) $('#pNeg').value = $('#qName').value;
+  PF.forEach(function(k){ if (d[k] && !$('#' + k).value) $('#' + k).value = d[k]; });
+  var L = lines(), I = sum(L.ini), M = sum(L.mes);
+  if (!L.ini.length && !L.mes.length){
+    $('#pLines').innerHTML = '<p class="empty">' + ic('mouse-pointer-click') + '<span>Todavía no hay servicios. <a href="#" data-tab="cotizar">Ve a Presupuesto</a>, marca lo que contrata y vuelve aquí.</span></p>';
+  } else {
+    $('#pLines').innerHTML = L.ini.map(function(l){ return '<div class="rl"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '</span></div>'; }).join('') +
+      L.mes.map(function(l){ return '<div class="rl"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '/mes</span></div>'; }).join('') +
+      '<div class="ptot"><div>Pago inicial<b>' + money(I) + '</b></div><div>Al empezar (50 %)<b>' + money(I/2) + '</b></div><div>Cuota mensual<b>' + (M ? money(M) : '—') + '</b></div></div>';
+  }
+  var have = d.need || [];
+  $('#pNeed').innerHTML = needs().map(function(n, i){ return '<li><label><input type="checkbox" value="' + esc(n) + '"' + (have.indexOf(n) >= 0 ? ' checked' : '') + '/><span>' + esc(n) + '</span></label></li>'; }).join('') || '<li class="rsub">Aparece al elegir servicios en Presupuesto.</li>';
+  $('#pErr').hidden = true; icons();
+}
+function num(v){ v = String(v || '').replace(/[^\d,.]/g, '').replace(/\.(?=\d{3}(\D|$))/g, '').replace(',', '.'); var n = parseFloat(v); return isNaN(n) ? null : n; }
+function pedidoText(forClient){
+  var L = lines(), I = sum(L.ini), M = sum(L.mes), g = function(id){ return $('#' + id).value.trim(); };
+  var iA = num(g('pIni')), mA = num(g('pMes')), Ifin = iA !== null ? iA : I, Mfin = mA !== null ? mA : M;
+  var faltan = Array.prototype.filter.call(document.querySelectorAll('#pNeed input'), function(x){ return !x.checked; }).map(function(x){ return x.value; });
+  var t = forClient ? '*Confirmación de tu pedido · MR*\n\nHola ' + g('pCon') + ', gracias por confiar en nosotros. Este es el resumen de lo que hemos acordado para *' + g('pNeg') + '*:\n\n'
+                    : '*NUEVO PEDIDO · MR*\n\n*Cliente:* ' + g('pNeg') + '\n*Contacto:* ' + g('pCon') + '\n*WhatsApp:* ' + g('pTel') + (g('pMail') ? '\n*Email:* ' + g('pMail') : '') + (g('pNif') ? '\n*NIF/RFC:* ' + g('pNif') : '') + (g('pDir') ? '\n*Dirección:* ' + g('pDir') : '') + '\n*País/moneda:* ' + ({eur:'España (€)', mxn:'México (MXN)', usd:'Otro país (US$)'})[cur] + '\n\n';
+  t += '*Servicios:*\n' + L.ini.map(function(l){ return '• ' + l[0] + ': ' + money(l[1]); }).concat(L.mes.map(function(l){ return '• ' + l[0] + ': ' + money(l[1]) + ' al mes'; })).join('\n');
+  t += '\n\n*Pago inicial:* ' + money(Ifin) + (iA !== null && iA !== I ? ' (precio acordado; presupuesto: ' + money(I) + ')' : '') + '\n– Al empezar (50 %): ' + money(Ifin/2) + '\n– Al entregar (50 %): ' + money(Ifin/2);
+  if (Mfin) t += '\n*Cuota mensual:* ' + money(Mfin) + (mA !== null && mA !== M ? ' (acordada; presupuesto: ' + money(M) + ')' : '') + ', sin permanencia';
+  if (g('pCond')) t += '\n*Condición:* ' + g('pCond');
+  t += '\n*Forma de pago:* ' + g('pPago') + (g('pFecha') ? '\n*Inicio deseado:* ' + g('pFecha').split('-').reverse().join('/') : '');
+  t += '\n_Precios ' + taxNote() + '._';
+  if (faltan.length) t += '\n\n*' + (forClient ? 'Para empezar necesitamos que nos envíes:' : 'Falta que nos envíe:') + '*\n' + faltan.map(function(x){ return '• ' + x; }).join('\n');
+  if (!forClient && g('pNotas')) t += '\n\n*Notas:* ' + g('pNotas');
+  if (!forClient) t += '\n\n_Vendido por Mauro_';
+  else t += '\n\nMelina te enviará la factura con los datos de pago. Cualquier duda, respóndenos por aquí.';
+  return t;
+}
+function pedidoOk(){
+  var miss = [];
+  if (!$('#pNeg').value.trim()) miss.push('nombre del negocio');
+  if (!$('#pCon').value.trim()) miss.push('persona de contacto');
+  if (!$('#pTel').value.trim()) miss.push('WhatsApp del cliente');
+  var L = lines(); if (!L.ini.length && !L.mes.length) miss.push('los servicios (en Presupuesto)');
+  $('#pErr').hidden = !miss.length; $('#pErr').textContent = miss.length ? 'Falta: ' + miss.join(', ') + '.' : '';
+  return !miss.length;
+}
+function waTo(num, text){ window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(text), '_blank', 'noopener'); }
+$('#tab-pedido').addEventListener('input', pedidoSave);
+$('#tab-pedido').addEventListener('change', pedidoSave);
+$('#pSendMel').addEventListener('click', function(){ if (pedidoOk()) waTo(MELINA_WA, pedidoText(false)); });
+$('#pSendCli').addEventListener('click', function(){ if (!pedidoOk()) return; var n = $('#pTel').value.replace(/\D/g, ''); if (n.length < 9){ $('#pErr').hidden = false; $('#pErr').textContent = 'Revisa el WhatsApp del cliente: ponlo con prefijo (+34… o +52…).'; return; } waTo(n, pedidoText(true)); });
+$('#pCopy').addEventListener('click', function(){ if (!pedidoOk()) return; if (navigator.clipboard) navigator.clipboard.writeText(pedidoText(false)).then(function(){ toast('Pedido copiado'); }); });
+$('#pClear').addEventListener('click', function(){ PF.forEach(function(k){ var el = $('#' + k); el.value = el.tagName === 'SELECT' ? el.options[0].value : ''; }); try{ localStorage.removeItem('kv-pedido'); }catch(e){} q = {}; $('#qName').value = ''; renderOpts(); renderRes(); renderPedido(); toast('Pedido borrado'); });
+
 /* ---------- arranque ---------- */
 var saved = store.get('kv-cur'); if (saved === 'mxn' || saved === 'usd') cur = saved;
 document.querySelectorAll('[data-cur]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.cur === cur); });
 renderNiches(); renderList(); renderOpts(); renderRes(); renderGlos(); icons();
-var h = (location.hash || '').slice(1); if (h === 'cotizar' || h === 'glosario' || h === 'servicios') tab(h);
+var h = (location.hash || '').slice(1); if (h === 'cotizar' || h === 'glosario' || h === 'servicios' || h === 'pedido') tab(h);
 var gpw = store.get('kv-guia'); if (gpw) openGuide(gpw).then(function(){ if (h === 'guia') tab('guia'); }, function(){ try{ localStorage.removeItem('kv-guia'); }catch(e){} });
 fetch('/MR_Portafolio/servicios/precios.json', { cache:'no-store' }).then(function(r){ if (!r.ok) throw 0; return r.json(); }).then(function(j){ PR = j; renderList(); renderRes(); if (!$('#svcDetail').hidden) renderDetail($('#svcDetail').dataset.id); }).catch(function(){});
 })();
