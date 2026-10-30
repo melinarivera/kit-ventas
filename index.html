@@ -153,9 +153,11 @@ section[hidden],[hidden]{display:none!important}
   .row .go{display:none}
   .row .price{font-size:15px}
 }
-.pack-row{cursor:default}
-.pack-row:hover{background:none}
+.pack-row{cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit}
 .save{color:var(--ok);font-size:13px;font-weight:600}
+.packon{display:flex;gap:10px;align-items:flex-start;background:var(--ok-wash);border:1px solid rgba(30,122,76,.28);border-radius:12px;padding:12px 14px;margin-bottom:14px;color:var(--ink);font-size:14px}
+.packon svg{color:var(--ok);margin-top:2px;flex:none}
+.packon b{display:block;font-size:15px;margin-bottom:2px}
 
 /* ficha */
 .sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:18px;overflow:hidden}
@@ -449,7 +451,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 </dialog>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=20261030h"></script>
+<script src="catalogo.js?v=20261030i"></script>
 <script>
 (function(){
 'use strict';
@@ -514,7 +516,7 @@ function renderList(){
   html += '<div class="cat"><div class="cat-head"><span class="tile sm" style="--c:#1E7A4C">' + ic('package') + '</span><div><h2>Packs</h2><p>Si necesitas varias cosas, te sale mejor en pack.</p></div></div><div class="carta">' +
     C.packs.map(function(k){
       var inc = k.incluye.map(function(i){ var s = svc(i); return s ? s.titulo : (i === 'auditoria' ? 'auditoría de redes' : i); }).join(' + ');
-      return '<div class="row pack-row"><span class="tile" style="--c:#1E7A4C">' + ic('package') + '</span><span><b>' + esc(k.titulo) + '</b><span class="pitch">' + esc(k.para) + ': ' + esc(inc) + '.</span></span><span class="price">desde ' + money(val(k.id)) + '<small class="save">ahorra ' + money(ahorro(k.id)) + '</small>' + (k.mensual ? '<small>+ ' + money(val(k.mensual)) + ' al mes</small>' : '') + '</span><span></span></div>';
+      return '<button type="button" class="row pack-row" data-pack="' + k.id + '"><span class="tile" style="--c:#1E7A4C">' + ic('package') + '</span><span><b>' + esc(k.titulo) + '</b><span class="pitch">' + esc(k.para) + ': ' + esc(inc) + '.</span></span><span class="price">desde ' + money(val(k.id)) + '<small class="save">ahorra ' + money(ahorro(k.id)) + '</small>' + (k.mensual ? '<small>+ ' + money(val(k.mensual)) + ' al mes</small>' : '') + '</span><span class="go">' + ic('chevron-right') + '</span></button>';
     }).join('') + '</div></div>';
   $('#svcList').innerHTML = html; icons();
 }
@@ -627,6 +629,7 @@ function renderOpts(){
   document.querySelectorAll('[data-q]').forEach(function(el){
     el.addEventListener(el.tagName === 'SELECT' || el.type === 'checkbox' ? 'change' : 'input', function(){
       q[el.dataset.q] = el.type === 'checkbox' ? el.checked : (el.type === 'number' ? Math.max(0, Math.min(10, parseInt(el.value,10) || 0)) : el.value);
+      var ph0 = packHint(); if (q._pack && (!ph0 || ph0[1] !== q._pack)) delete q._pack;
       renderRes();
     });
   });
@@ -671,19 +674,23 @@ function renderRes(){
   var L = lines(), I = sum(L.ini), M = sum(L.mes), name = $('#qName').value.trim();
   var head = '<div class="res-head"><h3>' + (name ? esc(name) : 'Resumen') + '</h3><p>Precios ' + taxNote() + '.</p></div>';
   if (!L.ini.length && !L.mes.length){ qbar(); $('#qRes').innerHTML = head + '<div class="res-body"><p class="empty">' + ic('mouse-pointer-click') + '<span>Marca lo que necesitas y aquí aparece el precio, separado en pago inicial, cuota mensual y lo que pagas aparte a otras empresas.</span></p></div>'; icons(); return; }
-  var b = '';
+  var b = '', phTop = packHint();
+  if (q._pack && phTop && phTop[1] === q._pack)
+    b += '<div class="packon">' + ic('package') + '<span><b>' + esc(phTop[0]) + ' aplicado</b>Desde ' + money(val(phTop[1])) + ' en lugar de ' + money(val(phTop[1]) + ahorro(phTop[1])) + ' contratándolo suelto. Ahorra ' + money(ahorro(phTop[1])) + '.</span></div>';
   if (L.ini.length) b += '<div class="rg"><h4>' + ic('hand-coins') + 'Pago único</h4>' + L.ini.map(function(l){ return '<div class="rl"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '</span></div>'; }).join('') + '<div class="rt"><span>Pago inicial</span><span>' + money(I) + '</span></div><p class="rsub">50 % al empezar (' + money(I/2) + ') y 50 % al entregar.</p></div>';
   if (L.mes.length) b += '<div class="rg"><h4>' + ic('calendar-sync') + 'Cada mes</h4>' + L.mes.map(function(l){ return '<div class="rl"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '</span></div>'; }).join('') + '<div class="rt"><span>Cuota mensual</span><span>' + money(M) + '</span></div><p class="rsub">Sin permanencia. Se cancela avisando con 30 días.</p></div>';
   b += '<div class="year"><span>Total del primer año</span><span>' + money(I + 12*M) + '</span></div>';
   if (L.ter.length) b += '<div class="rg"><h4>' + ic('receipt') + 'Pagas aparte a otras empresas</h4>' + L.ter.map(function(t){ return '<div class="rl"><span>' + esc(t.que) + (t.nota && !costTxt(t) ? '<br><small>' + esc(t.nota) + '</small>' : '') + optsHtml(t) + '</span><span>' + (costTxt(t) || 'según uso') + '</span></div>'; }).join('') + '<p class="rsub" style="margin-top:6px">Aproximado. Va a tu nombre y no cobramos nada sobre esto.</p></div>';
-  var ph = packHint();
+  var ph = q._pack ? null : packHint();
   if (ph) b += '<div class="hint">' + ic('lightbulb') + '<span>Te sale mejor el <b>' + ph[0] + '</b>: desde ' + money(val(ph[1])) + ' en lugar de los precios sueltos (ahorras ' + money(ahorro(ph[1])) + ').</span></div>';
   $('#qRes').innerHTML = head + '<div class="res-body">' + b + '</div>'; icons(); qbar();
 }
 function summaryText(){
   var L = lines(), I = sum(L.ini), M = sum(L.mes), n = $('#qName').value.trim();
   var t = '*Presupuesto' + (n ? ' para ' + n : '') + '*\nMR · Tecnología que trabaja por tu negocio\n\n';
+  var phT = q._pack ? packHint() : null;
   if (L.ini.length) t += '*Pago inicial (una vez):*\n' + L.ini.map(function(l){ return '• ' + l[0] + ': ' + money(l[1]); }).join('\n') + '\n*Total: ' + money(I) + '* (50 % al empezar, 50 % al entregar)\n\n';
+  if (phT && phT[1] === q._pack) t += '*' + phT[0] + ': desde ' + money(val(phT[1])) + '* en lugar de ' + money(val(phT[1]) + ahorro(phT[1])) + ' suelto (ahorras ' + money(ahorro(phT[1])) + ').\n\n';
   if (L.mes.length) t += '*Cuota mensual (sin permanencia):*\n' + L.mes.map(function(l){ return '• ' + l[0] + ': ' + money(l[1]) + ' al mes'; }).join('\n') + '\n*Total: ' + money(M) + ' al mes*\n\n';
   if (L.ter.length) t += '*Aparte, a otras empresas (aprox., a tu nombre):*\n' + L.ter.map(function(x){ return '• ' + x.que + ': ' + (costTxt(x) || 'según uso') + optsFor(x).map(function(o){ return '\n   – ' + o.n + ': ' + o.p; }).join(''); }).join('\n') + '\n\n';
   return t + 'Precios ' + taxNote() + '. Presupuesto válido durante 30 días.';
@@ -737,6 +744,12 @@ document.addEventListener('click', function(e){
   if (e.target.closest('[data-nback]')){ showNiches(); return; }
   var pb = e.target.closest('[data-preset]');
   if (pb){ var n = niche(pb.dataset.preset); q = JSON.parse(JSON.stringify(n.preset)); renderOpts(); renderRes(); tab('cotizar'); toast('Presupuesto preparado'); return; }
+  var pk = e.target.closest('[data-pack]');
+  if (pk){
+    var k = C.packs.filter(function(x){ return x.id === pk.dataset.pack; })[0];
+    if (k && k.preset){ q = JSON.parse(JSON.stringify(k.preset)); q._pack = k.id; renderOpts(); renderRes(); tab('cotizar'); toast(k.titulo + ' añadido al presupuesto'); }
+    return;
+  }
   var tb = e.target.closest('[data-tab]'); if (tb){ if (tb.dataset.tab === 'servicios') showList(); if (tb.dataset.tab === 'negocio') showNiches(); tab(tb.dataset.tab); return; }
   var cb = e.target.closest('[data-cur]'); if (cb){ setCur(cb.dataset.cur); return; }
 });

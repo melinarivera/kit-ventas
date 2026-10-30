@@ -467,9 +467,9 @@ window.CATALOGO = {
   ],
 
   packs: [
-    { id: "pack_arranque", titulo: "Pack Arranque", para: "Empezar a recibir clientes por internet", incluye: ["landing", "ia", "auditoria"], mensual: "ia_cuota" },
-    { id: "pack_pyme_digital", titulo: "Pack Pyme Digital", para: "Profesionalizar la presencia online", incluye: ["web", "ia", "3 meses de redes Esencial"], mensual: "ia_cuota" },
-    { id: "pack_organiza", titulo: "Pack Organiza tu negocio", para: "Dejar el Excel y el papel", incluye: ["crm", "2 automatizaciones", "formación"] }
+    { id: "pack_arranque", titulo: "Pack Arranque", para: "Empezar a recibir clientes por internet", incluye: ["landing", "ia", "auditoria"], mensual: "ia_cuota", preset: { landing: true, ia: "basic", auditoria: true } },
+    { id: "pack_pyme_digital", titulo: "Pack Pyme Digital", para: "Profesionalizar la presencia online", incluye: ["web", "ia", "3 meses de redes Esencial"], mensual: "ia_cuota", preset: { web: true, ia: "basic", redes: "esencial" } },
+    { id: "pack_organiza", titulo: "Pack Organiza tu negocio", para: "Dejar el Excel y el papel", incluye: ["crm", "2 automatizaciones", "formación"], preset: { crm: "medida", automatizacion: 2, formacion: 1 } }
   ],
 
   glosario: [
