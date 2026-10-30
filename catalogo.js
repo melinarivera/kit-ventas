@@ -303,7 +303,7 @@ window.CATALOGO = {
       terceros: [
         {que:  "Suscripción a la app de IA de cada persona (opcional)", quien:  "Cliente", costeEur:  [0, 20], costeMxn:  [0, 400], costeUsd:  [0, 20], periodo:  "mes", nota:  "Es la app de chat que usa cada empleado (como ChatGPT o Claude), con cuota fija al mes. No se paga por uso. Para empezar bastan los planes gratuitos", opciones:  [{n:  "Planes gratuitos (Claude, ChatGPT)", p:  "0 €"}, {n:  "Claude Pro o ChatGPT Plus", p:  "20 US$/mes por persona (unos 18 €)"}, {n:  "Claude Team (equipos)", p:  "desde 20 US$/mes por persona, con pago anual y mínimo 5"}]}
       ],
-      demos: [{ nombre: "Tesovia (IA hecha por Melina)", url: "https://www.tesovia.com" }],
+      demos: [{ nombre: "Muestra del taller: semáforo de datos", url: "https://melinarivera.github.io/MR_Portafolio/demos/semaforo-ia/" }, { nombre: "Tesovia (IA hecha por Melina)", url: "https://www.tesovia.com" }],
       preguntas: [
         ["¿La empresa puede recuperar el dinero del taller? (solo España)", "Sí, con FUNDAE: es el crédito de formación que toda empresa tiene por lo que paga a la Seguridad Social. Con 10 personas, la empresa puede recuperar entre 180 y 260 € del precio, según su crédito. Hay que comunicarlo en FUNDAE antes del taller; nosotros damos factura, programa, control de asistencia y constancias."],
         ["¿Es para gente que no sabe nada de tecnología?", "Sí. Se empieza desde cero y con ejemplos de su propio trabajo."],
@@ -345,7 +345,7 @@ window.CATALOGO = {
       plazo: "Desde el primer mes; sin permanencia",
       precio: { mensual: "mantenimiento" },
       terceros: [],
-      demos: [],
+      demos: [{ nombre: "Informe mensual de ejemplo", url: "https://melinarivera.github.io/MR_Portafolio/demos/informe-mantenimiento/" }],
       preguntas: [["¿Es obligatorio?", "No, pero si no se mantiene, cualquier fallo o cambio se cobra aparte cuando pase."]]
     }
   ],
