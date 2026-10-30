@@ -18,7 +18,7 @@ window.CATALOGO = {
 
   condiciones: [
     "Los precios son «desde»: el precio final depende de lo que necesites y queda por escrito en tu presupuesto.",
-    "Forma de pago de los proyectos: 50 % al empezar y 50 % al entregar.",
+    "Forma de pago de los proyectos: 50 % al empezar y 50 % al entregar, por transferencia bancaria (o SPEI en México). Bizum o efectivo, solo para importes pequeños.",
     "Las cuotas mensuales no tienen permanencia: se cancelan avisando con 30 días.",
     "El dominio, el alojamiento y las cuentas van siempre a tu nombre: si dejas de trabajar con nosotros, te lo llevas todo.",
     "Incluye 2 rondas de cambios. Cambios fuera de lo acordado: se presupuestan aparte antes de hacerlos.",
