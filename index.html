@@ -442,7 +442,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 </dialog>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=20261030b"></script>
+<script src="catalogo.js?v=20261030c"></script>
 <script>
 (function(){
 'use strict';
@@ -690,10 +690,18 @@ function renderGlos(){
 }
 
 /* ---------- navegación ---------- */
-function tab(t){
+function isHome(){ return !!(history.state && history.state.kv === 'home'); }
+function tab(t, nohist){
+  /* Historial: la flecha «atrás» del navegador siempre lleva al inicio del kit (Tu negocio) */
+  if (!nohist){
+    try {
+      if (t === 'negocio'){ if (!isHome()){ history.back(); return; } }
+      else if (isHome()) history.pushState({ kv:'sub' }, '', '#' + t);
+      else history.replaceState({ kv:'sub' }, '', '#' + t);
+    } catch(e) {}
+  }
   ['negocio','servicios','cotizar','pedido','glosario','guia'].forEach(function(x){ $('#tab-' + x).hidden = x !== t; });
   document.querySelectorAll('[data-tab]').forEach(function(b){ b.setAttribute('aria-selected', b.dataset.tab === t); });
-  try { history.replaceState(null, '', '#' + t); } catch(e) {}
   if (t === 'pedido') renderPedido();
   qbar();
   window.scrollTo(0,0);
@@ -857,7 +865,14 @@ $('#pClear').addEventListener('click', function(){ PF.forEach(function(k){ var e
 var saved = store.get('kv-cur'); if (saved === 'mxn' || saved === 'usd') cur = saved;
 document.querySelectorAll('[data-cur]').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.cur === cur); });
 renderNiches(); renderList(); renderOpts(); renderRes(); renderGlos(); icons();
-var h = (location.hash || '').slice(1); if (h === 'cotizar' || h === 'glosario' || h === 'servicios' || h === 'pedido') tab(h);
+var h = (location.hash || '').slice(1);
+try { if (!history.state || !history.state.kv) history.replaceState({ kv:'home' }, '', location.pathname + location.search); } catch(e) {}
+window.addEventListener('popstate', function(){
+  var st = history.state, hh = (location.hash || '').slice(1);
+  if (st && st.kv === 'sub' && hh){ tab(hh, true); return; }
+  showNiches(); showList(); tab('negocio', true);
+});
+if (h === 'cotizar' || h === 'glosario' || h === 'servicios' || h === 'pedido') tab(h);
 var gpw = store.get('kv-guia'); if (gpw) openGuide(gpw).then(function(){ if (h === 'guia') tab('guia'); }, function(){ try{ localStorage.removeItem('kv-guia'); }catch(e){} });
 fetch('/MR_Portafolio/servicios/precios.json', { cache:'no-store' }).then(function(r){ if (!r.ok) throw 0; return r.json(); }).then(function(j){ PR = j; renderList(); renderRes(); if (!$('#svcDetail').hidden) renderDetail($('#svcDetail').dataset.id); }).catch(function(){});
 })();
