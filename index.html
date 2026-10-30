@@ -442,7 +442,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 </dialog>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=20261030c"></script>
+<script src="catalogo.js?v=20261030d"></script>
 <script>
 (function(){
 'use strict';
@@ -527,7 +527,7 @@ function renderDetail(id){
         '<p class="frase">' + esc(s.frase) + '</p>' +
         '<div class="prices">' + priceChips(s).map(function(c){ return '<div class="pchip">' + esc(c[0]) + '<b>' + esc(c[1]) + '</b></div>'; }).join('') + '</div>' +
         '<div class="headbtns"><button class="btn headadd" type="button" data-quote="' + s.id + '">' + ic('plus') + 'Añadir al presupuesto</button>' +
-          s.demos.slice(0, 1).map(function(d){ return '<a class="btn headdemo" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + ic('play') + 'Ver demo</a>'; }).join('') + '</div></div>' +
+          s.demos.map(function(d){ return '<a class="btn headdemo" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + ic('play') + 'Ver demo' + (s.demos.length > 1 ? ': ' + esc(d.nombre) : '') + '</a>'; }).join('') + '</div></div>' +
       '<div class="sheet-body">' +
         '<div class="blk full"><h3>' + ic('message-square-text') + 'Qué es, en palabras sencillas</h3><p>' + esc(s.queEs) + '</p></div>' +
         '<div class="blk"><h3>' + ic('target') + 'Para quién es</h3><ul class="dot">' + s.paraQuien.map(function(x){ return '<li>' + ic('dot') + '<span>' + esc(x) + '</span></li>'; }).join('') + '</ul></div>' +
@@ -538,7 +538,7 @@ function renderDetail(id){
         '<div class="blk full"><h3>' + ic('wallet') + 'Quién paga cada cosa</h3><div class="pays">' + pays + '</div></div>' +
         (s.mensual ? '<div class="blk full"><div class="note">' + ic('wrench') + '<span>' + esc(s.mensual.texto) + ' Mantenimiento desde <b>' + money(val('mantenimiento')) + ' al mes</b>. <a href="#" data-open="mant">Qué incluye el mantenimiento</a></span></div></div>' : '') +
         (s.preguntas.length ? '<div class="blk full"><h3>' + ic('messages-square') + 'Preguntas frecuentes</h3><div class="qa">' + s.preguntas.map(function(q){ return '<details><summary>' + ic('circle-help') + esc(q[0]) + '</summary><p>' + esc(q[1]) + '</p></details>'; }).join('') + '</div></div>' : '') +
-        '<div class="blk full"><div class="btns">' + s.demos.map(function(d){ return '<a class="btn" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + ic('external-link') + 'Ver ejemplo: ' + esc(d.nombre) + '</a>'; }).join('') +
+        '<div class="blk full"><div class="btns">' +
           '<button class="btn primary" type="button" data-quote="' + s.id + '">' + ic('plus') + 'Añadir al presupuesto</button></div></div>' +
       '</div>' +
     '</article>';
@@ -572,7 +572,8 @@ function renderNiche(id){
       '<div class="sheet-head"><button type="button" class="back" data-nback>' + ic('arrow-left') + 'Todos los negocios</button>' +
         '<div class="sheet-title"><span class="tile" style="--c:#3A6E9E">' + ic(n.icon) + '</span><h2>' + esc(n.nombre) + '</h2></div>' +
         '<p class="frase">' + esc(n.resumen) + '</p>' +
-        '<div class="prices"><div class="pchip">Solución recomendada' + (P.ph ? ' (' + esc(P.ph[0]) + ')' : '') + '<b>desde ' + P.txt + '</b></div></div></div>' +
+        '<div class="prices"><div class="pchip">Solución recomendada' + (P.ph ? ' (' + esc(P.ph[0]) + ')' : '') + '<b>desde ' + P.txt + '</b></div></div>' +
+        (n.demos.length ? '<div class="headbtns">' + n.demos.map(function(d){ return '<a class="btn headdemo" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + ic('play') + 'Ver demo: ' + esc(d.nombre) + '</a>'; }).join('') + '</div>' : '') + '</div>' +
       '<div class="sheet-body">' +
         '<div class="blk full"><h3>' + ic('list-checks') + 'Lo que suele pasar y cómo lo resolvemos</h3><div class="prob">' +
           n.problemas.map(function(p){ return '<div class="pr"><div class="pain">' + ic('circle-alert') + '<span><span class="ph">El problema</span>' + esc(p[0]) + '</span></div><div class="fix">' + ic('circle-check') + '<span><span class="ph">La solución</span>' + esc(p[1]) + '<span class="chips">' + p[2].map(chip).join('') + '</span></span></div></div>'; }).join('') +
@@ -580,7 +581,6 @@ function renderNiche(id){
         (n.nota ? '<div class="blk full"><div class="note">' + ic('shield-check') + '<span>' + esc(n.nota) + '</span></div></div>' : '') +
         '<div class="blk full"><div class="btns">' +
           '<button class="btn primary" type="button" data-preset="' + n.id + '">' + ic('calculator') + 'Ver el presupuesto de esta solución</button>' +
-          n.demos.map(function(d){ return '<a class="btn" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + ic('external-link') + 'Probar: ' + esc(d.nombre) + '</a>'; }).join('') +
         '</div></div>' +
       '</div>' +
     '</article>';
