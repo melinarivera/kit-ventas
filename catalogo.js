@@ -223,7 +223,7 @@ window.CATALOGO = {
       terceros: [
         {que:  "Herramienta de vídeo con avatar y voz", quien:  "Nosotros", costeEur:  null, periodo:  "mes", nota:  "Incluida en el precio; los vídeos son tuyos", opciones:  [{n:  "HeyGen", p:  "incluido (también la voz)"}]}
       ],
-      demos: [{ nombre: "Vídeo con avatar (presenta MR)", url: "https://app.heygen.com/videos/tecnolog-a-y-avatares-para-tu-negocio-37c991beba5e436fa6402971bb6dc4fb" }],
+      demos: [{ nombre: "Vídeo con avatar (presenta MR)", url: "https://melinarivera.github.io/MR_Portafolio/servicios/#demos" }],
       preguntas: [
         ["¿Los vídeos son míos?", "Sí. Te los entregamos en archivo y los publicas donde quieras, también en anuncios."],
         ["¿Se nota que es IA?", "Se ve muy natural. Recomendamos indicarlo en la descripción del vídeo: genera confianza y es lo que piden las normas de las redes."]
