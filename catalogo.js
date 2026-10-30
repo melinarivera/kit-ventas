@@ -22,7 +22,8 @@ window.CATALOGO = {
     "Las cuotas mensuales no tienen permanencia: se cancelan avisando con 30 días.",
     "El dominio, el alojamiento y las cuentas van siempre a tu nombre: si dejas de trabajar con nosotros, te lo llevas todo.",
     "Incluye 2 rondas de cambios. Cambios fuera de lo acordado: se presupuestan aparte antes de hacerlos.",
-    "Impuestos: España + IVA 21 %; México + IVA 16 %; otros países, según la factura (te lo confirmamos)."
+    "Impuestos: España + IVA 21 %; México + IVA 16 %; otros países, según la factura (te lo confirmamos).",
+    "El presupuesto es válido durante 30 días. Los plazos empiezan cuando tenemos todo lo que necesitamos de ti (fotos, textos, accesos)."
   ],
 
   servicios: [
@@ -33,8 +34,9 @@ window.CATALOGO = {
       queEs: "Una sola página web que presenta el negocio (quién es, qué ofrece, precios o servicios, opiniones y cómo contactar) y lleva al cliente a escribir o llamar.",
       paraQuien: ["Autónomos y negocios que no tienen web", "Estéticas, peluquerías, consultoras, tiendas de barrio", "Profesionales que solo tienen Instagram", "Eventos o lanzamientos puntuales"],
       senales: "Te dicen «solo tengo Instagram», «me buscan y no salgo» o «quiero algo sencillo y barato».",
-      incluye: ["1 página con hasta 6 secciones", "Diseño pensado para móvil", "Botón de WhatsApp, formulario y mapa", "SEO local básico (para aparecer en Google de su zona)", "Publicación en internet", "2 rondas de cambios"],
+      incluye: ["1 página con hasta 6 secciones", "Versión para móvil, tablet y ordenador incluida (se adapta sola a cada pantalla)", "Botón de WhatsApp, formulario y mapa", "Preparada para salir en Google cuando buscan en su zona (SEO local básico)", "Publicación en internet", "2 rondas de cambios"],
       noIncluye: ["Tienda o pagos online", "Blog o más páginas", "Varios idiomas", "Logo o fotos profesionales", "Redacción de textos largos (el cliente da la información, nosotros la ordenamos)"],
+      necesitamos: ["Logo (si lo tiene) y 5–10 fotos del negocio", "Textos básicos: qué hace, servicios y precios (nosotros los ordenamos)", "Datos de contacto, horario y dirección", "Acceso para comprar el dominio a su nombre"],
       plazo: "1–2 semanas desde que el cliente envía fotos y datos",
       precio: { inicial: "landing" },
       terceros: [
@@ -56,8 +58,9 @@ window.CATALOGO = {
       queEs: "Una web de 5 a 7 páginas (inicio, servicios, sobre nosotros, blog o catálogo, contacto…) con estructura pensada para que el visitante confíe y contacte.",
       paraQuien: ["Pymes con varios servicios que explicar", "Despachos, consultoras, gestorías, clínicas", "Negocios que quieren aparecer mejor en Google"],
       senales: "Te dicen «mi web es vieja», «no transmite lo que hacemos» o «necesito explicar varios servicios».",
-      incluye: ["5–7 páginas", "Blog o catálogo de servicios", "SEO básico en cada página", "WhatsApp, formulario y analítica de visitas", "Aviso legal con sus datos + privacidad y cookies (iubenda)", "2 rondas de cambios"],
+      incluye: ["5–7 páginas", "Versión para móvil, tablet y ordenador incluida", "Blog o catálogo de servicios", "Preparada para salir en Google (SEO básico en cada página)", "WhatsApp, formulario y estadísticas de visitas", "Textos legales instalados: aviso legal, privacidad y cookies (la herramienta depende del país)", "2 rondas de cambios"],
       noIncluye: ["Tienda o pagos online", "Más de 7 páginas o varios idiomas (se presupuesta aparte)", "Redacción completa de todos los textos", "Fotografía profesional"],
+      necesitamos: ["Logo y fotos del negocio", "Información de cada servicio (nosotros la ordenamos y la dejamos clara)", "Datos de la empresa para el aviso legal (nombre, NIF o RFC, dirección)", "Acceso para el dominio a su nombre"],
       plazo: "3–4 semanas desde que el cliente envía contenidos",
       precio: { inicial: "web" },
       terceros: [
@@ -79,8 +82,9 @@ window.CATALOGO = {
       queEs: "Una web donde el cliente compra y paga con tarjeta, o reserva cita y recibe recordatorios. Con un panel para gestionar pedidos o reservas.",
       paraQuien: ["Tiendas que quieren vender fuera de su local", "Estéticas, clínicas, academias que dan citas", "Negocios que hoy gestionan pedidos por WhatsApp a mano"],
       senales: "Te dicen «me piden por WhatsApp y es un lío», «quiero cobrar por adelantado» o «se me olvidan las citas».",
-      incluye: ["Catálogo, carrito y pago con tarjeta (Stripe, TPV del banco o Mercado Pago)", "O agenda de citas con recordatorios", "Panel para gestionar pedidos o reservas", "Diseño a medida", "30 días de soporte tras el lanzamiento"],
-      noIncluye: ["Subir cientos de productos (hasta 20 incluidos; el resto, aparte)", "Fotografía de producto", "Envíos internacionales complejos o conexión con almacenes", "Facturación electrónica oficial"],
+      incluye: ["Versión para móvil, tablet y ordenador incluida", "Catálogo, carrito y pago con tarjeta (Stripe, TPV del banco o Mercado Pago)", "O agenda de citas con recordatorios", "Panel para gestionar pedidos o reservas", "Diseño a medida", "30 días de soporte tras el lanzamiento"],
+      noIncluye: ["Subir cientos de productos (hasta 20 incluidos; el resto, aparte)", "Fotografía de producto", "Envíos internacionales complejos o conexión con almacenes", "Facturas oficiales (Verifactu en España, CFDI en México): las hace su programa de facturación o su gestoría"],
+      necesitamos: ["Lista de productos con foto, precio y descripción (hasta 20 incluidos)", "Datos de la empresa y condiciones de envío y devolución", "Abrir su cuenta de Stripe o Mercado Pago (le ayudamos)"],
       plazo: "4–6 semanas",
       precio: { inicial: "tienda" },
       terceros: [
@@ -105,6 +109,7 @@ window.CATALOGO = {
       senales: "Te dicen «me paso el día contestando lo mismo», «me escriben de noche» o «se me olvida responder».",
       incluye: ["Configuración con la información del negocio", "Respuestas 24/7 en WhatsApp o web", "Pase a una persona cuando hace falta", "Con citas: agenda, recordatorios y ficha de cada cliente", "La cuota mensual incluye la IA, el servidor y el mantenimiento"],
       noIncluye: ["Más de 1.000 conversaciones al mes (2.000 con citas): bloques extra aparte", "Mensajes de WhatsApp que cobra Meta (los paga el cliente a Meta)", "Asesoramiento legal o médico: el asistente nunca lo da", "Llamadas de voz"],
+      necesitamos: ["Lista de preguntas frecuentes, precios, horarios y servicios", "El número de WhatsApp del negocio", "Una tarjeta de pago en Meta para los mensajes (le ayudamos a configurarlo)", "Con citas: acceso a su agenda o calendario"],
       plazo: "1–2 semanas (con citas: 2–3 semanas)",
       precio: { tope: "hasta 1.000 conversaciones al mes; con citas, 2.000", inicial: "ia", mensual: "ia_cuota", variante: { nombre: "Con citas (agenda + recordatorios + CRM)", inicial: "ia_citas", mensual: "ia_citas_cuota" } },
       terceros: [
@@ -127,13 +132,14 @@ window.CATALOGO = {
       senales: "Te dicen «no doy abasto con el teléfono», «pierdo llamadas mientras atiendo» o «me llaman fuera de horario».",
       incluye: ["Configuración con la información del negocio y su forma de hablar", "Atiende 24/7 con voz natural, en español", "Toma citas o reservas en su agenda", "Resumen de cada llamada por WhatsApp o email", "Pasa la llamada a una persona cuando hace falta", "La cuota incluye la IA, la voz, el número y 200 minutos al mes"],
       noIncluye: ["Más de 200 minutos al mes: bloques de 100 minutos aparte", "Llamadas salientes de venta (solo atiende llamadas que entran)", "Consejo médico o legal: nunca lo da", "Cambiar de compañía telefónica"],
+      necesitamos: ["Información del negocio: horarios, precios, servicios", "Cómo quiere que se atienda (tono, a quién pasar llamadas)", "Acceso a su agenda para las citas", "Activar el desvío de llamadas en su línea (le explicamos cómo)"],
       plazo: "2–3 semanas (incluye una semana de pruebas)",
       precio: { tope: "hasta 200 minutos de llamadas al mes", inicial: "voz", mensual: "voz_cuota", extra: { nombre: "Si necesitas más: 100 minutos extra", inicial: "voz_bloque_extra" } },
       terceros: [
         {que:  "Desvío de llamadas desde tu línea", quien:  "Cliente", costeEur:  null, periodo:  "mes", nota:  "Según tu operador; normalmente gratis"},
         {que:  "Voz, IA y número de teléfono", quien:  "Nosotros", costeEur:  null, periodo:  "mes", nota:  "Incluidos en la cuota (hasta 200 minutos al mes)", opciones:  [{n:  "Voz natural: ElevenLabs", p:  "incluido"}, {n:  "IA: Claude", p:  "incluido"}, {n:  "Número de teléfono", p:  "incluido"}]}
       ],
-      demos: [],
+      demos: [{ nombre: "Llamada a un restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/recepcionista-voz/#restaurante" }, { nombre: "Llamada a una clínica", url: "https://melinarivera.github.io/MR_Portafolio/demos/recepcionista-voz/#clinica" }],
       preguntas: [
         ["¿Se nota que es una máquina?", "La voz es muy natural, pero al empezar dice que es un asistente virtual del negocio: es lo honesto y lo que pide la ley."],
         ["¿Y si alguien quiere hablar con una persona?", "Le pasa la llamada a quien decidas, o toma el recado y te avisa al momento."],
@@ -149,6 +155,7 @@ window.CATALOGO = {
       senales: "Te dicen «perdemos horas pasando datos», «siempre se nos olvida…» o «hacemos el mismo informe cada semana».",
       incluye: ["1 flujo automático por precio", "Pruebas con datos reales del cliente", "Explicación de cómo funciona"],
       noIncluye: ["Programas de pago que el cliente necesite (los paga él)", "Cambios en el flujo después de entregarlo (van al mantenimiento)"],
+      necesitamos: ["Explicarnos la tarea paso a paso (20 minutos)", "Acceso a los programas que intervienen (correo, Excel, facturación…)", "Ejemplos reales para probar"],
       plazo: "1–2 semanas por flujo",
       precio: { inicial: "automatizacion", porUnidad: "flujo" },
       terceros: [
@@ -166,8 +173,9 @@ window.CATALOGO = {
       queEs: "Una herramienta para guardar clientes con su historial, reservas o ventas, y lanzar campañas (por WhatsApp o email) respetando la ley de protección de datos. Puede ser hecha a medida o configurar una que ya existe (HubSpot, Notion…).",
       paraQuien: ["Restaurantes (reservas, alérgenos, clientes habituales)", "Despachos y consultoras (casos y seguimiento)", "Negocios que llevan clientes en Excel o en el móvil"],
       senales: "Te dicen «lo llevo todo en Excel», «no sé quién es cliente habitual» o «quiero volver a contactar a clientes antiguos».",
-      incluye: ["Fichas de cliente con historial y segmentos", "Reservas, agenda o embudo de ventas", "Campañas por WhatsApp o email (con consentimiento)", "Exportar a Excel", "Formación para usarlo"],
+      incluye: ["Una ficha por cliente con todo su historial, y grupos (habituales, nuevos, inactivos…)", "Reservas, agenda o seguimiento de ventas (en qué paso está cada cliente)", "Campañas por WhatsApp o email (con consentimiento)", "Exportar a Excel", "Formación para usarlo"],
       noIncluye: ["Licencias de programas de terceros (HubSpot, etc.)", "Pasar datos antiguos desordenados (se presupuesta aparte)", "App en tiendas de Apple o Google"],
+      necesitamos: ["Su Excel o lista actual de clientes", "Qué quiere ver de cada cliente", "Quién del equipo lo va a usar"],
       plazo: "3–5 semanas (configurar uno existente: 1–2 semanas)",
       precio: { inicial: "crm", variante: { nombre: "Configurar uno existente (HubSpot, Notion…)", inicial: "crm_configurar" } },
       terceros: [
@@ -187,6 +195,7 @@ window.CATALOGO = {
       senales: "Te dicen «no tengo tiempo para redes», «publico cuando me acuerdo» o «tengo malas reseñas sin responder».",
       incluye: ["Esencial: 2 redes, 8 publicaciones al mes", "Crecimiento: 12 publicaciones + 4 reels y gestión de anuncios", "Calendario mensual y diseños propios", "Respuesta a reseñas y perfil de Google optimizado"],
       noIncluye: ["El dinero de los anuncios (lo paga el cliente a Meta o Google)", "Sesiones de fotos o vídeo presenciales", "Responder mensajes privados 24/7 (para eso: asistente de WhatsApp)", "Garantizar seguidores o ventas concretas"],
+      necesitamos: ["Acceso a sus redes (Instagram, Facebook, Google)", "Fotos y novedades del negocio cada mes", "Aprobar el calendario de publicaciones"],
       plazo: "Arranca en 1 semana; se recomienda mínimo 3 meses para ver resultados",
       precio: { tope: "Esencial: 2 redes y 8 publicaciones al mes; Crecimiento: 12 publicaciones y 4 reels", mensual: "redes", variante: { nombre: "Plan Crecimiento (reels + anuncios)", mensual: "redes_crecimiento" }, extra: { nombre: "Auditoría de perfiles con plan de acción (pago único)", inicial: "auditoria_redes" } },
       terceros: [
@@ -208,6 +217,7 @@ window.CATALOGO = {
       senales: "Te dicen «me da vergüenza salir en vídeo», «no tengo tiempo de grabar» o «el vídeo funciona pero no sé hacerlo».",
       incluye: ["Guion pensado para enganchar en los primeros segundos", "Vídeo de hasta 1 minuto con avatar y voz natural", "Subtítulos y formato vertical u horizontal", "Pack mensual: 4 vídeos al mes", "Licencias de la herramienta de vídeo incluidas"],
       noIncluye: ["Grabaciones con cámara real o sesiones de fotos", "Vídeos de más de 1 minuto (se presupuestan aparte)", "Publicar los vídeos (va en el plan de redes)", "Usar la cara o la voz de otra persona sin su permiso"],
+      necesitamos: ["El tema de cada vídeo (nosotros escribimos el guion)", "Para su propio avatar: 2 minutos de vídeo hablando a cámara y su permiso firmado"],
       plazo: "Primer vídeo en 3–5 días desde que aprueba el guion",
       precio: { tope: "vídeos de hasta 1 minuto; el pack son 4 al mes", inicial: "avatar_video", porUnidad: "vídeo", variante: { nombre: "Pack mensual: 4 vídeos", mensual: "avatar_pack" }, extra: { nombre: "Su propio avatar (su cara y su voz, pago único)", inicial: "avatar_propio" } },
       terceros: [
@@ -228,6 +238,7 @@ window.CATALOGO = {
       senales: "Te dicen «no salgo en Google Maps», «tengo pocas reseñas» o «sale mi horario mal».",
       incluye: ["Ficha de Google completa: categorías, horarios, servicios y fotos", "Textos con las palabras que buscan sus clientes", "Respuesta a las reseñas pendientes", "Plantillas para pedir reseñas", "Revisión de que sus datos coinciden en internet"],
       noIncluye: ["Gestión mensual de reseñas (va en el plan de redes)", "Anuncios en Google", "Posicionar la web en buscadores a nivel nacional"],
+      necesitamos: ["Acceso a su ficha de Google (o le ayudamos a crearla)", "Fotos del local y del equipo", "Horarios y servicios"],
       plazo: "1 semana (Google puede tardar unos días en verificar la ficha)",
       precio: { inicial: "seo_local" },
       terceros: [
@@ -243,8 +254,9 @@ window.CATALOGO = {
       queEs: "Diseñamos cómo se verá y cómo se usará una web o app antes de programarla: qué pantallas tiene, qué hay en cada una y por dónde va el usuario. Se entrega un prototipo en Figma que se puede tocar como si fuera real, y una guía de estilo (colores, letras, botones) para que todo sea coherente.",
       paraQuien: ["Emprendedores que van a invertir en una app y quieren validarla antes", "Negocios con una web que se ve anticuada o confunde a sus clientes", "Empresas que ya tienen programador pero no diseñador", "Cualquier cliente de web o app que quiera ver el resultado antes de pagar el desarrollo"],
       senales: "Te dicen «mi web no convence», «la gente entra y no compra», «quiero ver cómo quedaría antes» o «tengo programador pero queda feo».",
-      incluye: ["Entrevista y mapa de lo que necesitan sus usuarios", "Web: diseño de hasta 5 pantallas (móvil y ordenador)", "App: hasta 15 pantallas y el flujo completo de usuario", "Prototipo navegable en Figma", "Guía de estilo: colores, tipografías y componentes", "2 rondas de cambios"],
+      incluye: ["Entrevista y mapa de lo que necesitan sus usuarios", "Web: diseño de hasta 5 pantallas (móvil y ordenador)", "App: hasta 15 pantallas y el recorrido completo que hace el usuario", "Prototipo que se puede tocar en el móvil como si fuera real (hecho en Figma)", "Guía de estilo: colores, letras y botones", "2 rondas de cambios"],
       noIncluye: ["Programar la web o la app (es otro servicio; si lo contratan junto, se descuenta parte del diseño)", "Logo o identidad de marca completa", "Fotos o ilustraciones a medida", "Pruebas con usuarios reales a gran escala"],
+      necesitamos: ["Una reunión para entender a sus clientes", "Ejemplos de webs o apps que le gustan", "Su web o app actual, si existe"],
       plazo: "Web: 1–2 semanas · App: 3–4 semanas",
       precio: { inicial: "uxui", variante: { nombre: "Diseño de app completa (hasta 15 pantallas)", inicial: "uxui_app" }, extra: { nombre: "Auditoría UX de su web o app actual (informe de mejoras)", inicial: "auditoria_ux" } },
       terceros: [
@@ -264,8 +276,9 @@ window.CATALOGO = {
       queEs: "Creamos la imagen básica del negocio: un logo sencillo, sus colores, sus tipografías y unas plantillas para redes. Todo recogido en una mini guía para que cualquier persona la use igual.",
       paraQuien: ["Negocios que empiezan y no tienen logo", "Negocios con un logo hecho a mano o que no se lee bien", "Quien va a contratar web o redes y no tiene marca"],
       senales: "Te dicen «no tengo logo», «cada publicación me sale distinta» o «mi logo lo hizo un amigo».",
-      incluye: ["Logo sencillo: 2 propuestas y la versión final", "Versiones para redes, web y fondo oscuro", "Paleta de colores y tipografías", "Mini guía de marca en PDF", "5 plantillas de Canva para redes", "2 rondas de cambios"],
+      incluye: ["Logo sencillo: 2 propuestas y la versión final", "Versiones para redes, web y fondo oscuro", "Paleta de colores y tipografías", "Mini guía de marca en PDF (cómo usar el logo y los colores)", "5 plantillas de Canva para redes", "2 rondas de cambios"],
       noIncluye: ["Registro de la marca en la oficina de patentes", "Diseño de papelería impresa, rótulos o envases", "Ilustraciones o mascotas a medida"],
+      necesitamos: ["Nombre del negocio y a quién se dirige", "Ejemplos de marcas que le gustan y que no", "Colores que prefiere o evita"],
       plazo: "2–3 semanas",
       precio: { inicial: "identidad" },
       terceros: [
@@ -284,6 +297,7 @@ window.CATALOGO = {
       senales: "Te dicen «hemos oído hablar de la IA pero no sabemos usarla», «cada uno la usa a su manera» o «me da miedo meter datos de clientes».",
       incluye: ["Formulario previo y llamada de 15 min para preparar casos con su trabajo real", "Taller de 2 horas, presencial u online, hasta 10 personas", "Guía en PDF con 15–20 instrucciones listas para copiar, hecha para su negocio", "Semáforo de datos: qué se puede meter en la IA y qué nunca", "Plantilla de normas de uso de IA para el equipo", "Constancia de asistencia (sirve como registro de formación y para FUNDAE)", "2 semanas de dudas por correo o WhatsApp", "Lista de 3 tareas del equipo que se podrían automatizar"],
       noIncluye: ["Licencias de las herramientas de IA", "Desplazamiento fuera de Madrid (se presupuesta aparte)", "Implantar automatizaciones (es otro servicio)", "Tramitar FUNDAE (lo hace la empresa o su gestoría; damos toda la documentación)"],
+      necesitamos: ["Que cada persona rellene un formulario de 5 minutos", "Una sala con proyector o una videollamada", "Que cada asistente venga con su móvil u ordenador"],
       plazo: "Se agenda en 1–2 semanas. También: taller + sesión de seguimiento a los 15 días, o programa de 3 sesiones por puestos (a medida)",
       precio: { inicial: "formacion_ia", porUnidad: "taller" },
       terceros: [
@@ -303,8 +317,9 @@ window.CATALOGO = {
       queEs: "Una aplicación web hecha a medida: usuarios con contraseña, panel de administración y base de datos. Se empieza por una primera versión (MVP) con lo imprescindible y luego se amplía.",
       paraQuien: ["Emprendedores con una idea de producto", "Empresas que necesitan una herramienta interna propia", "Negocios cuyo proceso no encaja en ningún programa existente"],
       senales: "Te dicen «tengo una idea de app», «ningún programa hace lo que necesito» o «lo hacemos con 5 Excel distintos».",
-      incluye: ["Definición de la primera versión (MVP)", "Usuarios, roles y panel de administración", "Base de datos y servidor", "Publicación", "30 días de soporte"],
+      incluye: ["Funciona en móvil, tablet y ordenador, y se puede instalar en el móvil como una app", "Definición de la primera versión (MVP)", "Usuarios, roles y panel de administración", "Base de datos y servidor", "Publicación", "30 días de soporte"],
       noIncluye: ["Publicación en App Store / Google Play (se presupuesta aparte)", "Funciones fuera del MVP acordado", "Marketing de lanzamiento"],
+      necesitamos: ["Explicar la idea y para quién es", "Qué tiene que hacer la primera versión (lo definimos juntos)", "Ejemplos o pantallas que le gusten"],
       plazo: "6–10 semanas según el alcance",
       precio: { inicial: "app" },
       terceros: [
@@ -326,6 +341,7 @@ window.CATALOGO = {
       senales: "Te dicen «¿y si se rompe?», «no sé renovar el dominio» o «quiero cambiar un precio de vez en cuando».",
       incluye: ["Vigilancia de que la web está en línea", "Certificado de seguridad (candado) y avisos de renovación", "Copias de seguridad", "Cambios pequeños de contenido (textos, precios, fotos)", "Soporte directo por WhatsApp"],
       noIncluye: ["Secciones o funciones nuevas (se presupuestan)", "El pago del dominio y del alojamiento (siguen a nombre del cliente)", "Rediseños"],
+      necesitamos: ["Nada: solo avisarnos por WhatsApp cuando quiera un cambio"],
       plazo: "Desde el primer mes; sin permanencia",
       precio: { mensual: "mantenimiento" },
       terceros: [],
@@ -385,7 +401,7 @@ window.CATALOGO = {
         ["Sales mal en Google Maps o con el horario antiguo", "Ficha de Google completa, con fotos, carta y reseñas respondidas", ["seo"]],
         ["Nadie tiene tiempo de llevar Instagram", "Publicaciones cada semana con platos, novedades y eventos", ["redes"]]
       ],
-      demos: [{ nombre: "Demo CRM de restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }],
+      demos: [{ nombre: "Llamada para reservar", url: "https://melinarivera.github.io/MR_Portafolio/demos/recepcionista-voz/#restaurante" }, { nombre: "Demo CRM de restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }],
       preset: { voz: true, crm: "medida", seo: true }
     },
     {
@@ -423,7 +439,7 @@ window.CATALOGO = {
         ["Pocas reseñas en Google", "Ficha de Google completa y plantillas para pedir reseñas", ["seo"]]
       ],
       nota: "La IA nunca da consejo médico ni guarda datos de salud: solo gestiona citas e información general.",
-      demos: [],
+      demos: [{ nombre: "Llamada para pedir cita", url: "https://melinarivera.github.io/MR_Portafolio/demos/recepcionista-voz/#clinica" }],
       preset: { voz: true, ia: "citas", seo: true }
     },
     {
@@ -465,7 +481,19 @@ window.CATALOGO = {
     ["Mantenimiento", "Cuota mensual para que todo siga funcionando: vigilancia, seguridad, copias y cambios pequeños."],
     ["Dominio", "La dirección de la web (www.negocio.com). Se paga cada año, unos 10–15 €."],
     ["Alojamiento (hosting)", "El «terreno» donde vive la web. En webs sencillas es gratis con un alojamiento que permite uso comercial."],
-    ["iubenda", "Servicio que genera y actualiza la política de privacidad y cookies para cumplir la ley."],
+    ["Textos legales", "Aviso legal, política de privacidad y de cookies que la ley exige en una web. Se hacen con una herramienta que los actualiza sola: en España recomendamos Lawwwing; en México se redacta el aviso de privacidad."],
+    ["Versión para móvil (diseño adaptable)", "La misma web se ve bien en móvil, tablet y ordenador. Va incluida siempre."],
+    ["SEO y SEO local", "Preparar la web o la ficha de Google para que salga cuando alguien busca ese servicio. «Local» es cuando lo buscan cerca."],
+    ["Ficha de Google", "La tarjeta del negocio que sale en Google Maps con horario, fotos y reseñas. Es gratis."],
+    ["CRM", "Programa para tener a todos los clientes ordenados: datos, historial, citas y seguimiento."],
+    ["Pasarela de pago", "La empresa que cobra con tarjeta en la web (Stripe, Mercado Pago…). Se queda un pequeño % de cada venta."],
+    ["Base de datos", "Donde se guarda la información de una app o CRM (clientes, pedidos…). Se paga al mes, a nombre del cliente."],
+    ["Automatización o flujo", "Una tarea que se hace sola, sin que nadie la toque (por ejemplo, pasar facturas del correo a un Excel)."],
+    ["Conversación (asistente de WhatsApp)", "Un cliente que escribe y al que se contesta en el mismo día, aunque se manden varios mensajes."],
+    ["Avatar", "Un presentador virtual con voz que habla en los vídeos. Puede ser inventado o un doble digital del propio cliente."],
+    ["Reel", "Vídeo corto y vertical para Instagram o TikTok."],
+    ["FUNDAE", "En España, la empresa puede recuperar parte del precio de una formación con lo que ya paga a la Seguridad Social."],
+    ["Suscripción o pago por uso", "Una suscripción es una cuota fija al mes (por ejemplo, ChatGPT Plus). Pago por uso es pagar según lo que se gasta (por ejemplo, la IA de un asistente, que va incluida en nuestra cuota)."],
     ["Meta", "La empresa dueña de WhatsApp, Instagram y Facebook. Cobra algunos mensajes de WhatsApp y los anuncios."],
     ["IA / tokens", "Lo que consume la inteligencia artificial al responder. Va incluido en la cuota del asistente."],
     ["Ronda de cambios", "Cada vez que revisas y pides ajustes. Incluimos 2 por proyecto."],

@@ -45,7 +45,7 @@ header.top{background:#09172E;color:#EEF0F6;padding-top:env(safe-area-inset-top)
 .seg button[aria-pressed=true]{background:#EEF0F6;color:var(--night)}
 nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
 nav.tabs::-webkit-scrollbar{display:none}
-nav.tabs button{display:inline-flex;align-items:center;gap:8px;border:0;background:transparent;color:rgba(238,240,246,.7);font-weight:600;font-size:15px;padding:12px 14px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;min-height:50px}
+nav.tabs button{display:inline-flex;align-items:center;gap:7px;border:0;background:transparent;color:rgba(238,240,246,.7);font-weight:600;font-size:15px;padding:12px 11px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;min-height:50px}
 nav.tabs button[aria-selected=true]{color:#fff;border-bottom-color:var(--steel-light)}
 nav.tabs svg{font-size:18px}
 main{padding-block:24px 64px}
@@ -259,11 +259,11 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
       </div>
     </div>
     <nav class="tabs" role="tablist" aria-label="Secciones">
-      <button type="button" role="tab" data-tab="negocio" aria-selected="true"><i data-lucide="store"></i>Para tu negocio</button>
+      <button type="button" role="tab" data-tab="negocio" aria-selected="true"><i data-lucide="store"></i>Tu negocio</button>
       <button type="button" role="tab" data-tab="servicios" aria-selected="false"><i data-lucide="layout-list"></i>Servicios</button>
-      <button type="button" role="tab" data-tab="cotizar" aria-selected="false"><i data-lucide="calculator"></i>Hacer presupuesto</button>
-      <button type="button" role="tab" data-tab="glosario" aria-selected="false"><i data-lucide="book-open"></i>Condiciones y palabras clave</button>
-      <button type="button" role="tab" data-tab="guia" aria-selected="false" id="tabGuia" hidden><i data-lucide="lock-open"></i>Guía del vendedor</button>
+      <button type="button" role="tab" data-tab="cotizar" aria-selected="false"><i data-lucide="calculator"></i>Presupuesto</button>
+      <button type="button" role="tab" data-tab="glosario" aria-selected="false"><i data-lucide="book-open"></i>Condiciones</button>
+      <button type="button" role="tab" data-tab="guia" aria-selected="false" id="tabGuia" hidden><i data-lucide="lock-open"></i>Guía</button>
     </nav>
   </div>
 </header>
@@ -424,6 +424,7 @@ function renderDetail(id){
         '<div class="blk"><h3>' + ic('ear') + '¿Te suena alguna de estas frases?</h3><p class="quote">' + esc(frases(s.senales)) + '</p><h3 style="margin-top:18px">' + ic('clock') + 'Plazo</h3><p>' + esc(s.plazo) + '</p></div>' +
         '<div class="blk"><h3>' + ic('list-checks') + 'Qué incluye</h3><ul class="yes">' + s.incluye.map(function(x){ return '<li>' + ic('check') + '<span>' + esc(x) + '</span></li>'; }).join('') + '</ul></div>' +
         '<div class="blk"><h3>' + ic('ban') + 'Qué no incluye</h3><ul class="no">' + s.noIncluye.map(function(x){ return '<li>' + ic('x') + '<span>' + esc(x) + '</span></li>'; }).join('') + '</ul></div>' +
+        (s.necesitamos ? '<div class="blk full"><h3>' + ic('clipboard-list') + 'Qué necesitamos de ti</h3><ul class="dot">' + s.necesitamos.map(function(x){ return '<li>' + ic('dot') + '<span>' + esc(x) + '</span></li>'; }).join('') + '</ul></div>' : '') +
         '<div class="blk full"><h3>' + ic('wallet') + 'Quién paga cada cosa</h3><div class="pays">' + pays + '</div></div>' +
         (s.mensual ? '<div class="blk full"><div class="note">' + ic('wrench') + '<span>' + esc(s.mensual.texto) + ' Mantenimiento desde <b>' + money(val('mantenimiento')) + ' al mes</b>. <a href="#" data-open="mant">Qué incluye el mantenimiento</a></span></div></div>' : '') +
         (s.preguntas.length ? '<div class="blk full"><h3>' + ic('messages-square') + 'Preguntas frecuentes</h3><div class="qa">' + s.preguntas.map(function(q){ return '<details><summary>' + ic('circle-help') + esc(q[0]) + '</summary><p>' + esc(q[1]) + '</p></details>'; }).join('') + '</div></div>' : '') +
@@ -434,7 +435,7 @@ function renderDetail(id){
   $('#svcList').hidden = true; $('#guide').hidden = true; $('#svcDetail').hidden = false; icons(); window.scrollTo(0,0);
 }
 
-function frases(t){ t = t.replace(/^Te dicen /, ''); return t.charAt(0).toUpperCase() + t.slice(1); }
+function frases(t){ t = t.replace(/^Te dicen /, ''); return t.replace(/^(«?)(.)/, function(m, q, c){ return q + c.toUpperCase(); }); }
 
 /* ---------- Para tu negocio ---------- */
 function niche(id){ return C.nichos.filter(function(n){ return n.id === id; })[0]; }
