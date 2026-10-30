@@ -70,6 +70,9 @@ main{padding-block:24px 64px}
 .checks{list-style:none;display:flex;flex-direction:column;gap:8px}
 .checks label{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:15px;cursor:pointer}
 .checks input{width:22px;height:22px;flex:none;margin-top:1px;accent-color:var(--night)}
+.addneed{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.addrow{display:flex;gap:8px}.addrow .field{flex:1;min-width:0}.addrow .btn{flex:none}
+.checks .rm{margin-left:auto;border:0;background:transparent;color:var(--muted);font-size:13px;text-decoration:underline;min-height:32px;padding:0 4px}
 .ptot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
 .ptot div{background:var(--wash);border-radius:12px;padding:10px 12px;font-size:13.5px;color:var(--muted)}
 .ptot b{display:block;font-size:19px;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -400,7 +403,9 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
       <label>Fecha de inicio deseada<input class="field" id="pFecha" type="date"/></label>
       <p class="full rsub">Al empezar se paga el 50 % del pago inicial y al entregar el otro 50 %. Las cuotas empiezan el mes en que el servicio funciona. Melina envía la factura con los datos de pago.</p>
     </div></div>
-    <div class="qbox"><h3><span class="n">4</span>Lo que el cliente nos tiene que enviar</h3><div class="qbody"><p class="rsub" style="margin-bottom:10px">Marca lo que ya te ha dado. Lo que falte se le recuerda en su confirmación.</p><ul class="checks" id="pNeed"></ul></div></div>
+    <div class="qbox"><h3><span class="n">4</span>Lo que el cliente nos tiene que enviar</h3><div class="qbody"><p class="rsub" style="margin-bottom:10px">Marca lo que ya te ha dado. Lo que falte se le recuerda en su confirmación.</p><ul class="checks" id="pNeed"></ul>
+      <div class="addneed"><label for="pExtra" class="rsub">¿Falta algo en la lista? Añádelo aquí y saldrá también en la confirmación al cliente.</label>
+        <div class="addrow"><input class="field" id="pExtra" maxlength="90" placeholder="Por ejemplo: carta en PDF, claves de Instagram…" autocomplete="off"/><button type="button" class="btn" id="pExtraAdd">Añadir</button></div></div></div></div>
     <div class="qbox"><h3><span class="n">5</span>Notas para Melina</h3><div class="qbody"><textarea class="field" id="pNotas" placeholder="Lo que haya comentado el cliente, urgencias, gustos…"></textarea></div></div>
     <div class="qbox"><h3><span class="n">6</span>Enviar</h3><div class="qbody">
       <div class="btns">
@@ -442,7 +447,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 </dialog>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=20261030d"></script>
+<script src="catalogo.js?v=20261030e"></script>
 <script>
 (function(){
 'use strict';
@@ -788,6 +793,7 @@ function needs(){
   var ids = [], out = [];
   Object.keys(q).forEach(function(k){ var v = q[k]; if (v && v !== '0' && v !== 0 && Q2S[k] && ids.indexOf(Q2S[k]) < 0) ids.push(Q2S[k]); });
   ids.forEach(function(id){ var s = svc(id); (s && s.necesitamos || []).forEach(function(n){ if (out.indexOf(n) < 0) out.push(n); }); });
+  (pedidoStore().extra || []).forEach(function(n){ if (out.indexOf(n) < 0) out.push(n); });
   return out;
 }
 function renderPedido(){
@@ -803,7 +809,7 @@ function renderPedido(){
       '<div class="ptot"><div>Pago inicial<b>' + money(I) + '</b></div><div>Al empezar (50 %)<b>' + money(I/2) + '</b></div><div>Cuota mensual<b>' + (M ? money(M) : '—') + '</b></div></div>';
   }
   var have = d.need || [];
-  $('#pNeed').innerHTML = needs().map(function(n, i){ return '<li><label><input type="checkbox" value="' + esc(n) + '"' + (have.indexOf(n) >= 0 ? ' checked' : '') + '/><span>' + esc(n) + '</span></label></li>'; }).join('') || '<li class="rsub">Aparece al elegir servicios en Presupuesto.</li>';
+  $('#pNeed').innerHTML = needs().map(function(n, i){ var ex = (d.extra || []).indexOf(n) >= 0; return '<li><label><input type="checkbox" value="' + esc(n) + '"' + (have.indexOf(n) >= 0 ? ' checked' : '') + '/><span>' + esc(n) + '</span>' + (ex ? '<button type="button" class="rm" data-rmneed="' + esc(n) + '">quitar</button>' : '') + '</label></li>'; }).join('') || '<li class="rsub">Aparece al elegir servicios en Presupuesto.</li>';
   $('#pErr').hidden = true; icons();
 }
 function num(v){ v = String(v || '').replace(/[^\d,.]/g, '').replace(/\.(?=\d{3}(\D|$))/g, '').replace(',', '.'); var n = parseFloat(v); return isNaN(n) ? null : n; }
@@ -854,6 +860,10 @@ function sendToNotion(){
   } catch(e){}
 }
 function waTo(num, text){ window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(text), '_blank', 'noopener'); }
+function addNeed(){ var v = $('#pExtra').value.trim(); if (!v) return; var d = pedidoStore(); d.extra = d.extra || []; if (d.extra.indexOf(v) < 0) d.extra.push(v); store.set('kv-pedido', JSON.stringify(d)); $('#pExtra').value = ''; renderPedido(); $('#pExtra').focus(); }
+$('#pExtraAdd').addEventListener('click', addNeed);
+$('#pExtra').addEventListener('keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); addNeed(); } });
+$('#pNeed').addEventListener('click', function(e){ var b = e.target.closest('[data-rmneed]'); if (!b) return; e.preventDefault(); var d = pedidoStore(); d.extra = (d.extra || []).filter(function(x){ return x !== b.dataset.rmneed; }); d.need = (d.need || []).filter(function(x){ return x !== b.dataset.rmneed; }); store.set('kv-pedido', JSON.stringify(d)); renderPedido(); });
 $('#tab-pedido').addEventListener('input', pedidoSave);
 $('#tab-pedido').addEventListener('change', pedidoSave);
 $('#pSendMel').addEventListener('click', function(){ if (pedidoOk()){ sendToNotion(); waTo(MELINA_WA, pedidoText(false)); } });
