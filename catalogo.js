@@ -244,7 +244,7 @@ window.CATALOGO = {
       terceros: [
         {que:  "Ficha de Google (Perfil de Empresa)", quien:  "Cliente", costeEur:  [0, 0], costeMxn:  [0, 0], costeUsd:  [0, 0], periodo:  "", nota:  "Gratuita y a tu nombre"}
       ],
-      demos: [{ nombre: "Piñatas Madrid", url: "https://melinarivera.github.io/pinata/" }],
+      demos: [{ nombre: "Ficha de Google completa, antes y después", url: "https://melinarivera.github.io/MR_Portafolio/demos/ficha-google/" }],
       preguntas: [["¿Tengo que pagar algo a Google?", "No. La ficha de Google es gratis. Solo pagas nuestro trabajo de dejarla bien hecha."]]
     },
     {
@@ -263,7 +263,7 @@ window.CATALOGO = {
         {que:  "Figma, para ver y comentar el diseño", quien:  "Cliente", costeEur:  [0, 0], costeMxn:  [0, 0], costeUsd:  [0, 0], periodo:  "", nota:  "Con el plan gratuito basta; el archivo es tuyo"},
         {que:  "Licencia de Figma para diseñar", quien:  "Nosotros", costeEur:  null, periodo:  "mes", nota:  "Incluida en el precio"}
       ],
-      demos: [{ nombre: "Kit de ventas (este mismo)", url: "https://melinarivera.github.io/kit-ventas/" }, { nombre: "Demo asistente WhatsApp", url: "https://melinarivera.github.io/MR_Portafolio/demos/asistente-whatsapp/#estetica" }, { nombre: "Demo CRM restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }],
+      demos: [{ nombre: "Prototipo de app que se puede tocar", url: "https://melinarivera.github.io/MR_Portafolio/demos/prototipo-ux/" }, { nombre: "Kit de ventas (este mismo)", url: "https://melinarivera.github.io/kit-ventas/" }, { nombre: "Demo asistente WhatsApp", url: "https://melinarivera.github.io/MR_Portafolio/demos/asistente-whatsapp/#estetica" }, { nombre: "Demo CRM restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }],
       preguntas: [
         ["¿Para qué pagar diseño si luego hay que programarlo?", "Porque cambiar un dibujo cuesta minutos y cambiar algo ya programado cuesta días. El diseño evita pagar dos veces."],
         ["¿Qué es una auditoría UX?", "Revisamos su web o app actual como si fuéramos sus clientes y le damos un informe con lo que les hace dudar o abandonar, y cómo arreglarlo."]
@@ -285,7 +285,7 @@ window.CATALOGO = {
         {que:  "Registro de la marca (opcional)", quien:  "Cliente", costeEur:  [128, 128], costeMxn:  [2500, 3500], costeUsd:  null, periodo:  "", nota:  "Protege el nombre y el logo; se paga a la oficina de patentes", opciones:  [{n:  "España: OEPM", p:  "127,88 € la primera clase y 82,84 € cada clase extra (tasas 2026)", m:  ["eur"]}, {n:  "México: IMPI", p:  "unos 2.500–3.500 MXN, más honorarios si lo tramita un gestor", m:  ["mxn"]}, {n:  "Otros países", p:  "según la oficina de cada país", m:  ["usd"]}]},
         {que:  "Canva, para editar las plantillas", quien:  "Cliente", costeEur:  [0, 0], costeMxn:  [0, 0], costeUsd:  [0, 0], periodo:  "", nota:  "Funciona con el plan gratuito"}
       ],
-      demos: [{ nombre: "Piñatas Madrid", url: "https://melinarivera.github.io/pinata/" }],
+      demos: [{ nombre: "Tu marca en un minuto", url: "https://melinarivera.github.io/MR_Portafolio/demos/identidad-visual/" }, { nombre: "Piñatas Madrid (marca y web hechas)", url: "https://melinarivera.github.io/pinata/" }],
       preguntas: [["¿El logo es mío?", "Sí. Te entregamos todos los archivos y los derechos de uso."]]
     },
     {

@@ -447,7 +447,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 </dialog>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=20261030e"></script>
+<script src="catalogo.js?v=20261030f"></script>
 <script>
 (function(){
 'use strict';
@@ -532,7 +532,7 @@ function renderDetail(id){
         '<p class="frase">' + esc(s.frase) + '</p>' +
         '<div class="prices">' + priceChips(s).map(function(c){ return '<div class="pchip">' + esc(c[0]) + '<b>' + esc(c[1]) + '</b></div>'; }).join('') + '</div>' +
         '<div class="headbtns"><button class="btn headadd" type="button" data-quote="' + s.id + '">' + ic('plus') + 'Añadir al presupuesto</button>' +
-          s.demos.map(function(d){ return '<a class="btn headdemo" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + ic('play') + 'Ver demo' + (s.demos.length > 1 ? ': ' + esc(d.nombre) : '') + '</a>'; }).join('') + '</div></div>' +
+          s.demos.map(function(d){ return '<a class="btn headdemo" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + ic(isDemo(d.url) ? 'play' : 'external-link') + (isDemo(d.url) ? 'Ver demo' : 'Ver ejemplo') + (s.demos.length > 1 ? ': ' + esc(d.nombre) : '') + '</a>'; }).join('') + '</div></div>' +
       '<div class="sheet-body">' +
         '<div class="blk full"><h3>' + ic('message-square-text') + 'Qué es, en palabras sencillas</h3><p>' + esc(s.queEs) + '</p></div>' +
         '<div class="blk"><h3>' + ic('target') + 'Para quién es</h3><ul class="dot">' + s.paraQuien.map(function(x){ return '<li>' + ic('dot') + '<span>' + esc(x) + '</span></li>'; }).join('') + '</ul></div>' +
@@ -578,7 +578,7 @@ function renderNiche(id){
         '<div class="sheet-title"><span class="tile" style="--c:#3A6E9E">' + ic(n.icon) + '</span><h2>' + esc(n.nombre) + '</h2></div>' +
         '<p class="frase">' + esc(n.resumen) + '</p>' +
         '<div class="prices"><div class="pchip">Solución recomendada' + (P.ph ? ' (' + esc(P.ph[0]) + ')' : '') + '<b>desde ' + P.txt + '</b></div></div>' +
-        (n.demos.length ? '<div class="headbtns">' + n.demos.map(function(d){ return '<a class="btn headdemo" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + ic('play') + 'Ver demo: ' + esc(d.nombre) + '</a>'; }).join('') + '</div>' : '') + '</div>' +
+        (n.demos.length ? '<div class="headbtns">' + n.demos.map(function(d){ return '<a class="btn headdemo" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + ic(isDemo(d.url) ? 'play' : 'external-link') + (isDemo(d.url) ? 'Ver demo: ' : 'Ver ejemplo: ') + esc(d.nombre) + '</a>'; }).join('') + '</div>' : '') + '</div>' +
       '<div class="sheet-body">' +
         '<div class="blk full"><h3>' + ic('list-checks') + 'Lo que suele pasar y cómo lo resolvemos</h3><div class="prob">' +
           n.problemas.map(function(p){ return '<div class="pr"><div class="pain">' + ic('circle-alert') + '<span><span class="ph">El problema</span>' + esc(p[0]) + '</span></div><div class="fix">' + ic('circle-check') + '<span><span class="ph">La solución</span>' + esc(p[1]) + '<span class="chips">' + p[2].map(chip).join('') + '</span></span></div></div>'; }).join('') +
@@ -859,6 +859,7 @@ function sendToNotion(){
     fetch(MAKE_HOOK, { method:'POST', mode:'no-cors', body:b }).then(function(){ toast('Pedido enviado a Notion'); }).catch(function(){ toast('No se pudo guardar el pedido: revisa la conexión. El WhatsApp sí se envía.'); });
   } catch(e){}
 }
+function isDemo(u) { return /\/MR_Portafolio\/demos\/|Nexo_Facturas/.test(u || ''); }
 function waTo(num, text){ window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(text), '_blank', 'noopener'); }
 function addNeed(){ var v = $('#pExtra').value.trim(); if (!v) return; var d = pedidoStore(); d.extra = d.extra || []; if (d.extra.indexOf(v) < 0) d.extra.push(v); store.set('kv-pedido', JSON.stringify(d)); $('#pExtra').value = ''; renderPedido(); $('#pExtra').focus(); }
 $('#pExtraAdd').addEventListener('click', addNeed);
