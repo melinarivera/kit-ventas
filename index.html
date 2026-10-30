@@ -823,10 +823,29 @@ function pedidoOk(){
   $('#pErr').hidden = !miss.length; $('#pErr').textContent = miss.length ? 'Falta: ' + miss.join(', ') + '.' : '';
   return !miss.length;
 }
+var MAKE_HOOK = 'https://hook.eu1.make.com/ys660xjg6gnc0g334ot4ka1g11gya0c4';
+function pedidoData(){
+  var L = lines(), I = sum(L.ini), M = sum(L.mes), g = function(id){ return $('#' + id).value.trim(); };
+  var iA = num(g('pIni')), mA = num(g('pMes'));
+  var faltan = Array.prototype.filter.call(document.querySelectorAll('#pNeed input'), function(x){ return !x.checked; }).map(function(x){ return x.value; });
+  return {
+    cliente: g('pNeg'), contacto: g('pCon'), whatsapp: g('pTel'), email: g('pMail'), nif: g('pNif'), direccion: g('pDir'),
+    pais: ({eur:'España', mxn:'México', usd:'Otro país'})[cur], moneda: ({eur:'EUR', mxn:'MXN', usd:'USD'})[cur],
+    servicios: L.ini.map(function(l){ return l[0]; }).concat(L.mes.map(function(l){ return l[0] + ' (mensual)'; })).join(', '),
+    pago_inicial: iA !== null ? iA : I, cuota_mensual: mA !== null ? mA : M,
+    condicion: g('pCond'), forma_pago: g('pPago'), fecha_pedido: new Date().toISOString().slice(0,10), fecha_inicio: g('pFecha'),
+    materiales_pendientes: faltan.join(', '), notas: g('pNotas'), vendedor: 'Mauro', estado: 'Nuevo'
+  };
+}
+function sendToNotion(){
+  try { var d = pedidoData(), b = new URLSearchParams(); Object.keys(d).forEach(function(k){ b.append(k, d[k] == null ? '' : d[k]); });
+    fetch(MAKE_HOOK, { method:'POST', mode:'no-cors', body:b }).then(function(){ toast('Pedido enviado a Notion'); }).catch(function(){ toast('No se pudo guardar el pedido: revisa la conexión. El WhatsApp sí se envía.'); });
+  } catch(e){}
+}
 function waTo(num, text){ window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(text), '_blank', 'noopener'); }
 $('#tab-pedido').addEventListener('input', pedidoSave);
 $('#tab-pedido').addEventListener('change', pedidoSave);
-$('#pSendMel').addEventListener('click', function(){ if (pedidoOk()) waTo(MELINA_WA, pedidoText(false)); });
+$('#pSendMel').addEventListener('click', function(){ if (pedidoOk()){ sendToNotion(); waTo(MELINA_WA, pedidoText(false)); } });
 $('#pSendCli').addEventListener('click', function(){ if (!pedidoOk()) return; var n = $('#pTel').value.replace(/\D/g, ''); if (n.length < 9){ $('#pErr').hidden = false; $('#pErr').textContent = 'Revisa el WhatsApp del cliente: ponlo con prefijo (+34… o +52…).'; return; } waTo(n, pedidoText(true)); });
 $('#pCopy').addEventListener('click', function(){ if (!pedidoOk()) return; if (navigator.clipboard) navigator.clipboard.writeText(pedidoText(false)).then(function(){ toast('Pedido copiado'); }); });
 $('#pClear').addEventListener('click', function(){ PF.forEach(function(k){ var el = $('#' + k); el.value = el.tagName === 'SELECT' ? el.options[0].value : ''; }); try{ localStorage.removeItem('kv-pedido'); }catch(e){} q = {}; $('#qName').value = ''; renderOpts(); renderRes(); renderPedido(); toast('Pedido borrado'); });
