@@ -17,7 +17,7 @@ window.CATALOGO = {
 
 
   condiciones: [
-    "Los precios son «desde»: el precio final te lo confirmamos por escrito tras una llamada gratuita de 20 minutos.",
+    "Los precios son «desde»: el precio final depende de lo que necesites y queda por escrito en tu presupuesto.",
     "Forma de pago de los proyectos: 50 % al empezar y 50 % al entregar.",
     "Las cuotas mensuales no tienen permanencia: se cancelan avisando con 30 días.",
     "El dominio, el alojamiento y las cuentas van siempre a tu nombre: si dejas de trabajar con nosotros, te lo llevas todo.",
@@ -38,9 +38,9 @@ window.CATALOGO = {
       plazo: "1–2 semanas desde que el cliente envía fotos y datos",
       precio: { inicial: "landing" },
       terceros: [
-        { que: "Dominio (www.sunegocio.com)", quien: "Cliente", costeEur: [10, 15], periodo: "año" },
-        { que: "Alojamiento (hosting)", quien: "Cliente", costeEur: [0, 0], periodo: "", nota: "Gratis: usamos un alojamiento que permite uso comercial (Cloudflare Pages), a tu nombre" },
-        { que: "Textos legales (iubenda)", quien: "Cliente", costeEur: [0, 6], periodo: "mes" }
+        {que:  "Dominio (la dirección de tu web)", quien:  "Cliente", costeEur:  [8, 16], costeMxn:  [500, 1200], costeUsd:  [17, 18], periodo:  "año", nota:  "Se renueva cada año y va a tu nombre", opciones:  [{n:  "DonDominio, .es", p:  "unos 8 € al año", m:  ["eur"]}, {n:  "DonDominio, .com", p:  "unos 16 € al año", m:  ["eur"]}, {n:  "Dominio .mx", p:  "unos 500–1.200 MXN al año, según el registrador", m:  ["mxn"]}, {n:  "Dominio .com", p:  "unos 17–18 US$ al año", m:  ["mxn", "usd"]}]},
+        {que:  "Alojamiento (hosting)", quien:  "Cliente", costeEur:  [0, 0], costeMxn:  [0, 0], costeUsd:  [0, 0], periodo:  "", nota:  "Gratis, con uso comercial permitido, a tu nombre", opciones:  [{n:  "Cloudflare Pages", p:  "gratis"}]},
+        {que:  "Textos legales y aviso de cookies", quien:  "Cliente", costeEur:  [6, 12], costeMxn:  [0, 190], costeUsd:  [6, 14], periodo:  "mes", nota:  "Obligatorio por ley; la opción depende del país", opciones:  [{n:  "España (recomendado): Lawwwing Starter", p:  "9,90 €/mes con pago anual o 12 €/mes. Aviso legal, privacidad, cookies y banner", m:  ["eur"]}, {n:  "España, más barato: iubenda Essentials", p:  "5,99 US$/mes con pago anual; el aviso legal lo redactamos nosotros", m:  ["eur"]}, {n:  "México: aviso de privacidad (integral y simplificado)", p:  "lo redactamos nosotros, incluido", m:  ["mxn"]}, {n:  "México, si la web usa analítica o publicidad: CookieYes", p:  "gratis hasta 5.000 visitas al mes; Basic 9 €/mes (unos 190 MXN)", m:  ["mxn"]}, {n:  "Otros países: iubenda Essentials", p:  "5,99 US$/mes con pago anual", m:  ["usd"]}, {n:  "Otros países: Termly Starter", p:  "10 US$/mes con pago anual o 14 US$/mes", m:  ["usd"]}]}
       ],
       mensual: { opcional: "mant", texto: "Opcional: mantenimiento mensual." },
       demos: [{ nombre: "Piñatas Madrid", url: "https://melinarivera.github.io/pinata/" }],
@@ -61,9 +61,9 @@ window.CATALOGO = {
       plazo: "3–4 semanas desde que el cliente envía contenidos",
       precio: { inicial: "web" },
       terceros: [
-        { que: "Dominio", quien: "Cliente", costeEur: [10, 15], periodo: "año" },
-        { que: "Alojamiento (hosting)", quien: "Cliente", costeEur: [0, 10], periodo: "mes", nota: "Gratis si la web no lleva funciones especiales (Cloudflare Pages, uso comercial permitido)" },
-        { que: "Textos legales (iubenda)", quien: "Cliente", costeEur: [0, 6], periodo: "mes" }
+        {que:  "Dominio (la dirección de tu web)", quien:  "Cliente", costeEur:  [8, 16], costeMxn:  [500, 1200], costeUsd:  [17, 18], periodo:  "año", nota:  "Se renueva cada año y va a tu nombre", opciones:  [{n:  "DonDominio, .es", p:  "unos 8 € al año", m:  ["eur"]}, {n:  "DonDominio, .com", p:  "unos 16 € al año", m:  ["eur"]}, {n:  "Dominio .mx", p:  "unos 500–1.200 MXN al año, según el registrador", m:  ["mxn"]}, {n:  "Dominio .com", p:  "unos 17–18 US$ al año", m:  ["mxn", "usd"]}]},
+        {que:  "Alojamiento (hosting)", quien:  "Cliente", costeEur:  [0, 0], costeMxn:  [0, 0], costeUsd:  [0, 0], periodo:  "", nota:  "Gratis, con uso comercial permitido, a tu nombre", opciones:  [{n:  "Cloudflare Pages", p:  "gratis"}]},
+        {que:  "Textos legales y aviso de cookies", quien:  "Cliente", costeEur:  [6, 12], costeMxn:  [0, 190], costeUsd:  [6, 14], periodo:  "mes", nota:  "Obligatorio por ley; la opción depende del país", opciones:  [{n:  "España (recomendado): Lawwwing Starter", p:  "9,90 €/mes con pago anual o 12 €/mes. Aviso legal, privacidad, cookies y banner", m:  ["eur"]}, {n:  "España, más barato: iubenda Essentials", p:  "5,99 US$/mes con pago anual; el aviso legal lo redactamos nosotros", m:  ["eur"]}, {n:  "México: aviso de privacidad (integral y simplificado)", p:  "lo redactamos nosotros, incluido", m:  ["mxn"]}, {n:  "México, si la web usa analítica o publicidad: CookieYes", p:  "gratis hasta 5.000 visitas al mes; Basic 9 €/mes (unos 190 MXN)", m:  ["mxn"]}, {n:  "Otros países: iubenda Essentials", p:  "5,99 US$/mes con pago anual", m:  ["usd"]}, {n:  "Otros países: Termly Starter", p:  "10 US$/mes con pago anual o 14 US$/mes", m:  ["usd"]}]}
       ],
       mensual: { opcional: "mant", texto: "Recomendado: mantenimiento mensual." },
       demos: [{ nombre: "ETERN-ME", url: "https://etern-me.com" }, { nombre: "Cotidiana", url: "https://cotidiana.app" }],
@@ -84,10 +84,10 @@ window.CATALOGO = {
       plazo: "4–6 semanas",
       precio: { inicial: "tienda" },
       terceros: [
-        { que: "Comisión de la pasarela de pago por cada venta", quien: "Cliente", costeEur: null, periodo: "venta", nota: "Un pequeño % de cada venta, según la pasarela" },
-        { que: "Dominio", quien: "Cliente", costeEur: [10, 15], periodo: "año" },
-        { que: "Alojamiento (hosting)", quien: "Cliente", costeEur: [3, 10], periodo: "mes" },
-        { que: "Textos legales (iubenda)", quien: "Cliente", costeEur: [0, 6], periodo: "mes" }
+        {que:  "Dominio (la dirección de tu web)", quien:  "Cliente", costeEur:  [8, 16], costeMxn:  [500, 1200], costeUsd:  [17, 18], periodo:  "año", nota:  "Se renueva cada año y va a tu nombre", opciones:  [{n:  "DonDominio, .es", p:  "unos 8 € al año", m:  ["eur"]}, {n:  "DonDominio, .com", p:  "unos 16 € al año", m:  ["eur"]}, {n:  "Dominio .mx", p:  "unos 500–1.200 MXN al año, según el registrador", m:  ["mxn"]}, {n:  "Dominio .com", p:  "unos 17–18 US$ al año", m:  ["mxn", "usd"]}]},
+        {que:  "Cobro con tarjeta (pasarela de pago)", quien:  "Cliente", costeEur:  null, periodo:  "venta", nota:  "Se descuenta de cada venta. Nosotros no cobramos comisión", opciones:  [{n:  "Stripe (España)", p:  "1,5 % + 0,25 € con tarjeta europea; 1,9 % tarjetas premium; 3,25 % internacionales", m:  ["eur", "usd"]}, {n:  "Stripe (México)", p:  "3,6 % + 3 MXN con tarjeta nacional; 4,4 % + 3 MXN internacional", m:  ["mxn"]}, {n:  "Mercado Pago (México)", p:  "3,49 % + IVA", m:  ["mxn"]}, {n:  "Conekta (México)", p:  "2,9 % + 2,5 MXN", m:  ["mxn"]}, {n:  "PayPal (México)", p:  "3,95 % + 4 MXN", m:  ["mxn"]}]},
+        {que:  "Alojamiento y gestión de pedidos", quien:  "Cliente", costeEur:  [0, 23], costeMxn:  [0, 500], costeUsd:  [0, 25], periodo:  "mes", nota:  "Gratis si los pedidos se gestionan desde el panel de Stripe", opciones:  [{n:  "Cloudflare Pages + panel de Stripe", p:  "gratis"}, {n:  "Con stock, reservas o panel propio: Supabase Pro", p:  "25 US$/mes"}]},
+        {que:  "Textos legales de tienda (condiciones de compra, devoluciones, cookies)", quien:  "Cliente", costeEur:  [16, 20], costeMxn:  [0, 190], costeUsd:  [15, 25], periodo:  "mes", nota:  "Obligatorio por ley para vender online", opciones:  [{n:  "España: Lawwwing Growth", p:  "15,90 €/mes con pago anual o 20 €/mes. Incluye condiciones de compra y botón de desistimiento", m:  ["eur"]}, {n:  "México: aviso de privacidad y términos de compra", p:  "los redactamos nosotros, incluido", m:  ["mxn"]}, {n:  "México, si usa analítica o publicidad: CookieYes", p:  "gratis hasta 5.000 visitas; Basic 9 €/mes (unos 190 MXN)", m:  ["mxn"]}, {n:  "Otros países: Termly Pro+", p:  "15 US$/mes con pago anual o 20 US$/mes", m:  ["usd"]}, {n:  "Otros países: iubenda Advanced", p:  "24,99 US$/mes con pago anual", m:  ["usd"]}]}
       ],
       mensual: { opcional: "mant", texto: "Muy recomendado: mantenimiento mensual (una tienda caída es dinero perdido)." },
       demos: [{ nombre: "Efsun · plataforma con reservas", url: "https://melinarivera.github.io/pyme-efsun/" }, { nombre: "Efsun · tienda", url: "https://melinarivera.github.io/tienda-esoterica/" }],
@@ -108,9 +108,8 @@ window.CATALOGO = {
       plazo: "1–2 semanas (con citas: 2–3 semanas)",
       precio: { tope: "hasta 1.000 conversaciones al mes; con citas, 2.000", inicial: "ia", mensual: "ia_cuota", variante: { nombre: "Con citas (agenda + recordatorios + CRM)", inicial: "ia_citas", mensual: "ia_citas_cuota" } },
       terceros: [
-        { que: "Mensajes de WhatsApp (Meta): responder a clientes", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Gratis hasta 1.000 respuestas al mes; después ≈ 0,017 € cada una" },
-        { que: "Recordatorios automáticos (Meta)", quien: "Cliente", costeEur: null, periodo: "mensaje", nota: "≈ 0,017 € cada recordatorio" },
-        { que: "IA (Claude)", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluida en la cuota. Si el cliente prefiere pagarla con su propia cuenta, la cuota baja" }
+        {que:  "Mensajes de WhatsApp (los cobra Meta)", quien:  "Cliente", costeEur:  [0, 20], costeMxn:  [0, 200], costeUsd:  [0, 22], periodo:  "mes", nota:  "Meta factura directamente a tu negocio; no añadimos margen", opciones:  [{n:  "Responder a clientes que te escriben", p:  "gratis las primeras 1.000 respuestas al mes; después ≈ 0,017 € cada una", m:  ["eur", "usd"]}, {n:  "Responder a clientes que te escriben", p:  "gratis las primeras 1.000 al mes; después ≈ 0,15 MXN cada una", m:  ["mxn"]}, {n:  "Recordatorios de citas", p:  "≈ 0,017 € cada uno", m:  ["eur", "usd"]}, {n:  "Recordatorios de citas", p:  "≈ 0,15 MXN cada uno", m:  ["mxn"]}, {n:  "Campañas y promociones", p:  "≈ 0,059 € cada mensaje", m:  ["eur", "usd"]}, {n:  "Campañas y promociones", p:  "desde ≈ 0,80 MXN cada mensaje (Meta lo subió en octubre de 2026)", m:  ["mxn"]}]},
+        {que:  "IA (Claude)", quien:  "Nosotros", costeEur:  null, periodo:  "mes", nota:  "Incluida en la cuota: hasta 1.000 conversaciones al mes (2.000 con citas). Si prefieres pagarla con tu propia cuenta, la cuota baja"}
       ],
       demos: [{ nombre: "Demo estética", url: "https://melinarivera.github.io/MR_Portafolio/demos/asistente-whatsapp/#estetica" }, { nombre: "Demo extranjería", url: "https://melinarivera.github.io/MR_Portafolio/demos/asistente-whatsapp/#extranjeria" }],
       preguntas: [
@@ -131,8 +130,8 @@ window.CATALOGO = {
       plazo: "2–3 semanas (incluye una semana de pruebas)",
       precio: { tope: "hasta 200 minutos de llamadas al mes", inicial: "voz", mensual: "voz_cuota", extra: { nombre: "Si necesitas más: 100 minutos extra", inicial: "voz_bloque_extra" } },
       terceros: [
-        { que: "Desvío de llamadas desde tu línea", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Según su operador; normalmente gratis" },
-        { que: "IA, voz natural y número de teléfono", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluidos en la cuota (hasta 200 minutos al mes)" }
+        {que:  "Desvío de llamadas desde tu línea", quien:  "Cliente", costeEur:  null, periodo:  "mes", nota:  "Según tu operador; normalmente gratis"},
+        {que:  "Voz, IA y número de teléfono", quien:  "Nosotros", costeEur:  null, periodo:  "mes", nota:  "Incluidos en la cuota (hasta 200 minutos al mes)", opciones:  [{n:  "Voz natural: ElevenLabs", p:  "incluido"}, {n:  "IA: Claude", p:  "incluido"}, {n:  "Número de teléfono", p:  "incluido"}]}
       ],
       demos: [],
       preguntas: [
@@ -153,7 +152,8 @@ window.CATALOGO = {
       plazo: "1–2 semanas por flujo",
       precio: { inicial: "automatizacion", porUnidad: "flujo" },
       terceros: [
-        { que: "Herramientas que use el flujo (si son de pago)", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Muchas veces 0 €; se avisa antes" }
+        {que:  "Herramienta de automatización", quien:  "Cliente", costeEur:  [0, 10], costeMxn:  [0, 200], costeUsd:  [0, 11], periodo:  "mes", nota:  "Depende de cuántas tareas haga al mes; te lo decimos antes de empezar", opciones:  [{n:  "Make, plan gratis", p:  "hasta 1.000 operaciones al mes"}, {n:  "Make Core", p:  "9 US$/mes con pago anual o 10,59 US$/mes; 10.000 operaciones"}]},
+        {que:  "Programas que ya usas (Gmail, Excel, tu programa de facturas…)", quien:  "Cliente", costeEur:  null, periodo:  "mes", nota:  "Tu suscripción de siempre; no cambia"}
       ],
       mensual: { opcional: "mant", texto: "Si el flujo usa servidor o IA, necesita el mantenimiento mensual." },
       demos: [{ nombre: "Nexo · facturas con IA", url: "https://melinarivera.github.io/Nexo_Facturas/" }],
@@ -171,8 +171,8 @@ window.CATALOGO = {
       plazo: "3–5 semanas (configurar uno existente: 1–2 semanas)",
       precio: { inicial: "crm", variante: { nombre: "Configurar uno existente (HubSpot, Notion…)", inicial: "crm_configurar" } },
       terceros: [
-        { que: "Base de datos (Supabase Pro)", quien: "Cliente", costeEur: [23, 25], periodo: "mes", nota: "Recomendada desde el primer día: el plan gratis se pausa si no se usa y no guarda copias diarias" },
-        { que: "Licencias de HubSpot, Notion, etc. (si se usan)", quien: "Cliente", costeEur: null, periodo: "mes" }
+        {que:  "Base de datos con copias diarias", quien:  "Cliente", costeEur:  [23, 25], costeMxn:  [450, 500], costeUsd:  [25, 25], periodo:  "mes", nota:  "Recomendada desde el primer día", opciones:  [{n:  "Supabase Pro", p:  "25 US$/mes"}]},
+        {que:  "Si prefieres configurar un CRM ya hecho", quien:  "Cliente", costeEur:  null, periodo:  "mes", nota:  "En lugar de la base de datos", opciones:  [{n:  "HubSpot, plan gratuito", p:  "gratis para empezar"}, {n:  "Notion", p:  "gratis o de pago según usuarios"}]}
       ],
       mensual: { opcional: "mant", texto: "Recomendado: mantenimiento mensual." },
       demos: [{ nombre: "Demo CRM restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }, { nombre: "Nexo para gestorías", url: "https://melinarivera.github.io/Nexo_Facturas/" }],
@@ -190,8 +190,8 @@ window.CATALOGO = {
       plazo: "Arranca en 1 semana; se recomienda mínimo 3 meses para ver resultados",
       precio: { tope: "Esencial: 2 redes y 8 publicaciones al mes; Crecimiento: 12 publicaciones y 4 reels", mensual: "redes", variante: { nombre: "Plan Crecimiento (reels + anuncios)", mensual: "redes_crecimiento" }, extra: { nombre: "Auditoría de perfiles con plan de acción (pago único)", inicial: "auditoria_redes" } },
       terceros: [
-        { que: "Inversión en anuncios (Meta o Google)", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Lo decide el cliente; se paga directo a la plataforma" },
-        { que: "Canva Pro y herramientas para programar publicaciones", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluidas en la cuota" }
+        {que:  "Inversión en anuncios", quien:  "Cliente", costeEur:  null, periodo:  "mes", nota:  "La decides tú y se paga directamente a la plataforma", opciones:  [{n:  "Meta (Instagram y Facebook)", p:  "lo que tú decidas"}, {n:  "Google Ads", p:  "lo que tú decidas"}]},
+        {que:  "Canva Pro y herramientas para programar publicaciones", quien:  "Nosotros", costeEur:  null, periodo:  "mes", nota:  "Incluidas en la cuota"}
       ],
       demos: [{ nombre: "Instagram de Melina", url: "https://www.instagram.com/melina_rivera_developer/" }],
       preguntas: [
@@ -211,7 +211,7 @@ window.CATALOGO = {
       plazo: "Primer vídeo en 3–5 días desde que aprueba el guion",
       precio: { tope: "vídeos de hasta 1 minuto; el pack son 4 al mes", inicial: "avatar_video", porUnidad: "vídeo", variante: { nombre: "Pack mensual: 4 vídeos", mensual: "avatar_pack" }, extra: { nombre: "Su propio avatar (su cara y su voz, pago único)", inicial: "avatar_propio" } },
       terceros: [
-        { que: "Herramienta de vídeo con avatar y voz (HeyGen)", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluida en el precio, también la voz; los vídeos son tuyos" }
+        {que:  "Herramienta de vídeo con avatar y voz", quien:  "Nosotros", costeEur:  null, periodo:  "mes", nota:  "Incluida en el precio; los vídeos son tuyos", opciones:  [{n:  "HeyGen", p:  "incluido (también la voz)"}]}
       ],
       demos: [],
       preguntas: [
@@ -231,7 +231,7 @@ window.CATALOGO = {
       plazo: "1 semana (Google puede tardar unos días en verificar la ficha)",
       precio: { inicial: "seo_local" },
       terceros: [
-        { que: "Ficha de Google", quien: "Cliente", costeEur: [0, 0], periodo: "", nota: "Gratuita y a nombre del cliente" }
+        {que:  "Ficha de Google (Perfil de Empresa)", quien:  "Cliente", costeEur:  [0, 0], costeMxn:  [0, 0], costeUsd:  [0, 0], periodo:  "", nota:  "Gratuita y a tu nombre"}
       ],
       demos: [{ nombre: "Piñatas Madrid", url: "https://melinarivera.github.io/pinata/" }],
       preguntas: [["¿Tengo que pagar algo a Google?", "No. La ficha de Google es gratis. Solo pagas nuestro trabajo de dejarla bien hecha."]]
@@ -248,8 +248,8 @@ window.CATALOGO = {
       plazo: "Web: 1–2 semanas · App: 3–4 semanas",
       precio: { inicial: "uxui", variante: { nombre: "Diseño de app completa (hasta 15 pantallas)", inicial: "uxui_app" }, extra: { nombre: "Auditoría UX de su web o app actual (informe de mejoras)", inicial: "auditoria_ux" } },
       terceros: [
-        { que: "Figma (para ver y comentar el diseño)", quien: "Cliente", costeEur: [0, 0], periodo: "", nota: "El plan gratuito basta para verlo; el archivo se entrega en su cuenta" },
-        { que: "Licencia de Figma para diseñar", quien: "Nosotros", costeEur: null, periodo: "mes", nota: "Incluida en el precio" }
+        {que:  "Figma, para ver y comentar el diseño", quien:  "Cliente", costeEur:  [0, 0], costeMxn:  [0, 0], costeUsd:  [0, 0], periodo:  "", nota:  "Con el plan gratuito basta; el archivo es tuyo"},
+        {que:  "Licencia de Figma para diseñar", quien:  "Nosotros", costeEur:  null, periodo:  "mes", nota:  "Incluida en el precio"}
       ],
       demos: [{ nombre: "Kit de ventas (este mismo)", url: "https://melinarivera.github.io/kit-ventas/" }, { nombre: "Demo asistente WhatsApp", url: "https://melinarivera.github.io/MR_Portafolio/demos/asistente-whatsapp/#estetica" }, { nombre: "Demo CRM restaurante", url: "https://melinarivera.github.io/MR_Portafolio/demos/crm-restaurante/" }],
       preguntas: [
@@ -269,8 +269,8 @@ window.CATALOGO = {
       plazo: "2–3 semanas",
       precio: { inicial: "identidad" },
       terceros: [
-        { que: "Registro de marca (si lo quiere)", quien: "Cliente", costeEur: null, periodo: "año", nota: "Se paga a la oficina de patentes de su país" },
-        { que: "Canva (para editar las plantillas)", quien: "Cliente", costeEur: [0, 12], periodo: "mes", nota: "Funciona con el plan gratuito" }
+        {que:  "Registro de la marca (opcional)", quien:  "Cliente", costeEur:  [128, 128], costeMxn:  [2500, 3500], costeUsd:  null, periodo:  "", nota:  "Protege el nombre y el logo; se paga a la oficina de patentes", opciones:  [{n:  "España: OEPM", p:  "127,88 € la primera clase y 82,84 € cada clase extra (tasas 2026)", m:  ["eur"]}, {n:  "México: IMPI", p:  "unos 2.500–3.500 MXN, más honorarios si lo tramita un gestor", m:  ["mxn"]}, {n:  "Otros países", p:  "según la oficina de cada país", m:  ["usd"]}]},
+        {que:  "Canva, para editar las plantillas", quien:  "Cliente", costeEur:  [0, 0], costeMxn:  [0, 0], costeUsd:  [0, 0], periodo:  "", nota:  "Funciona con el plan gratuito"}
       ],
       demos: [{ nombre: "Piñatas Madrid", url: "https://melinarivera.github.io/pinata/" }],
       preguntas: [["¿El logo es mío?", "Sí. Te entregamos todos los archivos y los derechos de uso."]]
@@ -287,7 +287,7 @@ window.CATALOGO = {
       plazo: "Se agenda en 1–2 semanas. También: taller + sesión de seguimiento a los 15 días, o programa de 3 sesiones por puestos (a medida)",
       precio: { inicial: "formacion_ia", porUnidad: "taller" },
       terceros: [
-        { que: "Planes de pago de IA (si el equipo los quiere)", quien: "Cliente", costeEur: [0, 25], periodo: "mes", nota: "Por persona; muchas herramientas tienen plan gratuito" }
+        {que:  "Licencias de IA (si el equipo quiere planes de pago)", quien:  "Cliente", costeEur:  [0, 20], costeMxn:  [0, 400], costeUsd:  [0, 20], periodo:  "mes", nota:  "Por persona; para empezar bastan los planes gratuitos", opciones:  [{n:  "Planes gratuitos (Claude, ChatGPT)", p:  "0 €"}, {n:  "Claude Pro o ChatGPT Plus", p:  "20 US$/mes por persona"}, {n:  "Claude Team (equipos)", p:  "desde 20 US$/mes por persona, con pago anual y mínimo 5"}]}
       ],
       demos: [{ nombre: "Tesovia (IA hecha por Melina)", url: "https://www.tesovia.com" }],
       preguntas: [
@@ -308,8 +308,10 @@ window.CATALOGO = {
       plazo: "6–10 semanas según el alcance",
       precio: { inicial: "app" },
       terceros: [
-        { que: "Alojamiento y base de datos", quien: "Cliente", costeEur: [23, 35], periodo: "mes", nota: "Plan de pago desde el primer día, con copias de seguridad" },
-        { que: "IA (si la app usa IA)", quien: "Cliente", costeEur: null, periodo: "mes", nota: "Según uso" }
+        {que:  "Base de datos con copias diarias", quien:  "Cliente", costeEur:  [23, 25], costeMxn:  [450, 500], costeUsd:  [25, 25], periodo:  "mes", nota:  "Recomendada desde el primer día", opciones:  [{n:  "Supabase Pro", p:  "25 US$/mes"}]},
+        {que:  "Alojamiento de la app", quien:  "Cliente", costeEur:  [0, 0], costeMxn:  [0, 0], costeUsd:  [0, 0], periodo:  "", nota:  "Gratis en la mayoría de los casos", opciones:  [{n:  "Cloudflare Pages", p:  "gratis"}]},
+        {que:  "IA (si la app usa IA)", quien:  "Cliente", costeEur:  null, periodo:  "mes", nota:  "Según el uso; te lo calculamos antes"},
+        {que:  "Publicar en tiendas de apps (opcional)", quien:  "Cliente", costeEur:  null, periodo:  "", nota:  "Solo si la quieres en el móvil como app nativa", opciones:  [{n:  "Apple App Store", p:  "99 US$ al año"}, {n:  "Google Play", p:  "25 US$, pago único"}]}
       ],
       mensual: { opcional: "mant", texto: "Necesario: mantenimiento mensual." },
       demos: [{ nombre: "Tesovia", url: "https://www.tesovia.com" }, { nombre: "ETERN-ME", url: "https://etern-me.com" }, { nombre: "ZenWi", url: "https://zenwi.app" }],

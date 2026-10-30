@@ -175,6 +175,9 @@ section[hidden],[hidden]{display:none!important}
 .hint{display:flex;gap:10px;align-items:flex-start;background:var(--ok-wash);color:#11492D;border-radius:12px;padding:12px 14px;font-size:14.5px;margin-top:14px}
 .hint svg{font-size:19px;margin-top:1px}
 /* guía del vendedor (cifrada) */
+.opts{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:3px;font-size:13.5px;color:var(--muted)}
+.opts li{display:block}
+.opts b{color:var(--ink);font-weight:600}
 .chul{background:var(--sheet);border:2px solid var(--night);border-radius:16px;padding:18px 20px;margin-bottom:10px}
 .chul ol,.chul ul{margin:8px 0 14px 20px;display:flex;flex-direction:column;gap:6px}
 .glead{font-size:16px;max-width:75ch;margin-bottom:6px}
@@ -290,7 +293,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
         <div class="qbox"><h3><span class="n">1</span>¿Qué necesitas?</h3><div id="qOpts"></div></div>
         <div class="qbox"><h3><span class="n">2</span>Nombre del negocio (opcional)</h3><div class="qbody"><label for="qName" class="rsub" style="display:block;margin-bottom:6px">Aparece en el resumen.</label><input id="qName" class="field" placeholder="Ej.: Estética Luna"/></div></div>
         <div class="qbox"><h3><span class="n">3</span>Guárdalo o compártelo</h3><div class="qbody">
-          <p class="rsub" style="margin-bottom:12px">El resumen separa nuestro trabajo de lo que pagas aparte a otras empresas. Te confirmamos el precio final.</p>
+          <p class="rsub" style="margin-bottom:12px">El resumen separa nuestro trabajo de lo que pagas aparte a otras empresas, con el nombre de cada una.</p>
           <div class="btns">
             <button class="btn wa" type="button" id="btnWa"><i data-lucide="message-circle"></i>Enviar por WhatsApp</button>
             <button class="btn" type="button" id="btnCopy"><i data-lucide="copy"></i>Copiar texto</button>
@@ -315,7 +318,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
   </section>
 
   <div class="foot">
-    <span>Precios desde. Te confirmamos el precio final por escrito tras una llamada gratuita de 20 minutos.</span>
+    <span>Precios sin IVA en España y más IVA en México.</span>
     <span style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><a href="https://melinarivera.github.io/MR_Portafolio/servicios/?v=2" target="_blank" rel="noopener">Página de servicios</a><button class="linkbtn" type="button" id="btnKey"><i data-lucide="key-round"></i>Acceso vendedor</button></span>
   </div>
 </main>
@@ -350,6 +353,16 @@ function grp(n, sep){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))
 function val(key){ var v = PR[key]; if (!v) return 0; if (cur === 'mxn') return v.mxn; if (cur === 'usd') return Math.round(v.eur*USD/5)*5; return v.eur; }
 function money(n){ if (cur === 'mxn') return '$' + grp(n, ',') + ' MXN'; if (cur === 'usd') return 'US$' + grp(n, ','); return grp(n, '.') + ' €'; }
 function terc(n){ return cur === 'mxn' ? n*MXN_TERC : cur === 'usd' ? n*USD : n; }
+function costTxt(t){
+  var r = null, a, b;
+  if (cur === 'mxn' && t.costeMxn){ a = t.costeMxn[0]; b = t.costeMxn[1]; r = a === b ? (a === 0 ? 'Gratis' : '$' + grp(a, ',') + ' MXN') : '$' + grp(a, ',') + '–' + grp(b, ',') + ' MXN'; }
+  else if (cur === 'usd' && t.costeUsd){ a = t.costeUsd[0]; b = t.costeUsd[1]; r = a === b ? (a === 0 ? 'Gratis' : 'US$' + a) : 'US$' + a + '–' + b; }
+  else if (t.costeEur && !(cur === 'usd' && t.costeUsd === null)) r = rango(t.costeEur[0], t.costeEur[1]);
+  if (!r) return '';
+  return r === 'Gratis' ? r : r + ' ' + (PER[t.periodo] || '');
+}
+function optsFor(t){ return (t.opciones || []).filter(function(o){ return !o.m || o.m.indexOf(cur) >= 0; }); }
+function optsHtml(t){ var o = optsFor(t); if (!o.length) return ''; return '<ul class="opts">' + o.map(function(x){ return '<li><b>' + esc(x.n) + '</b>: ' + esc(x.p) + '</li>'; }).join('') + '</ul>'; }
 function rango(a,b){ if (a === b) return a === 0 ? 'Gratis' : money(terc(a)); return (cur === 'eur' ? grp(a,'.') : money(terc(a)).replace(/ MXN$/,'')) + '–' + money(terc(b)); }
 function ahorro(k){ var p = PR[k]; return cur === 'mxn' ? p.ahorro_mxn : cur === 'usd' ? Math.round(p.ahorro_eur*USD/5)*5 : p.ahorro_eur; }
 var PER = { 'año':'al año', 'mes':'al mes', 'venta':'por venta', 'mensaje':'por mensaje' };
@@ -390,15 +403,15 @@ function renderList(){
     }).join('') + '</div></div>';
   $('#svcList').innerHTML = html; icons();
 }
-function payRow(what, note, who, cost){
+function payRow(what, note, who, cost, extra){
   var w = who === 'us' ? '<span class="who us">' + ic('hand-coins') + 'Nos lo pagas a nosotros</span>' : who === 'we' ? '<span class="who us">' + ic('shield-check') + 'Incluido, lo pagamos nosotros</span>' : '<span class="who cli">' + ic('receipt') + 'Lo pagas tú a otra empresa</span>';
-  return '<div class="pay"><div class="what"><b>' + esc(what) + '</b>' + (note ? '<span>' + esc(note) + '</span>' : '') + '</div>' + w + '<div class="cost">' + cost + '</div></div>';
+  return '<div class="pay"><div class="what"><b>' + esc(what) + '</b>' + (note ? '<span>' + esc(note) + '</span>' : '') + (extra || '') + '</div>' + w + '<div class="cost">' + cost + '</div></div>';
 }
 function renderDetail(id){
   var s = svc(id); if (!s) return;
   $('#svcDetail').dataset.id = id;
   var pays = payRow('Nuestro trabajo (mano de obra)', 'Diseño, desarrollo, configuración, formación y soporte', 'us', esc(priceChips(s)[0][1])) +
-    s.terceros.map(function(t){ return payRow(t.que, t.nota || '', t.quien === 'Cliente' ? 'cli' : 'we', t.costeEur ? rango(t.costeEur[0], t.costeEur[1]) + ' ' + (PER[t.periodo] || '') : (t.quien === 'Cliente' ? 'según uso' : 'incluido')); }).join('');
+    s.terceros.map(function(t){ return payRow(t.que, t.nota || '', t.quien === 'Cliente' ? 'cli' : 'we', costTxt(t) || (t.quien === 'Cliente' ? 'según uso' : 'incluido'), optsHtml(t)); }).join('');
   $('#svcDetail').innerHTML =
     '<article class="sheet">' +
       '<div class="sheet-head"><button type="button" class="back" data-back>' + ic('arrow-left') + 'Todos los servicios</button>' +
@@ -538,13 +551,13 @@ function packHint(){
 function taxNote(){ return cur === 'eur' ? 'sin IVA' : cur === 'mxn' ? 'más IVA' : 'impuestos según país'; }
 function renderRes(){
   var L = lines(), I = sum(L.ini), M = sum(L.mes), name = $('#qName').value.trim();
-  var head = '<div class="res-head"><h3>' + (name ? esc(name) : 'Resumen') + '</h3><p>Precios desde, ' + taxNote() + '. Te confirmamos el precio final.</p></div>';
+  var head = '<div class="res-head"><h3>' + (name ? esc(name) : 'Resumen') + '</h3><p>Precios ' + taxNote() + '.</p></div>';
   if (!L.ini.length && !L.mes.length){ $('#qRes').innerHTML = head + '<div class="res-body"><p class="empty">' + ic('mouse-pointer-click') + '<span>Marca lo que necesitas y aquí aparece el precio, separado en pago inicial, cuota mensual y lo que pagas aparte a otras empresas.</span></p></div>'; icons(); return; }
   var b = '';
   if (L.ini.length) b += '<div class="rg"><h4>' + ic('hand-coins') + 'Pago único</h4>' + L.ini.map(function(l){ return '<div class="rl"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '</span></div>'; }).join('') + '<div class="rt"><span>Pago inicial</span><span>' + money(I) + '</span></div><p class="rsub">50 % al empezar (' + money(I/2) + ') y 50 % al entregar.</p></div>';
   if (L.mes.length) b += '<div class="rg"><h4>' + ic('calendar-sync') + 'Cada mes</h4>' + L.mes.map(function(l){ return '<div class="rl"><span>' + esc(l[0]) + '</span><span>' + money(l[1]) + '</span></div>'; }).join('') + '<div class="rt"><span>Cuota mensual</span><span>' + money(M) + '</span></div><p class="rsub">Sin permanencia. Se cancela avisando con 30 días.</p></div>';
   b += '<div class="year"><span>Total del primer año</span><span>' + money(I + 12*M) + '</span></div>';
-  if (L.ter.length) b += '<div class="rg"><h4>' + ic('receipt') + 'Pagas aparte a otras empresas</h4>' + L.ter.map(function(t){ return '<div class="rl"><span>' + esc(t.que) + (t.nota && !t.costeEur ? '<br><small>' + esc(t.nota) + '</small>' : '') + '</span><span>' + (t.costeEur ? rango(t.costeEur[0], t.costeEur[1]) + ' ' + (PER[t.periodo]||'') : 'según uso') + '</span></div>'; }).join('') + '<p class="rsub" style="margin-top:6px">Aproximado. Va a tu nombre y no cobramos nada sobre esto.</p></div>';
+  if (L.ter.length) b += '<div class="rg"><h4>' + ic('receipt') + 'Pagas aparte a otras empresas</h4>' + L.ter.map(function(t){ return '<div class="rl"><span>' + esc(t.que) + (t.nota && !costTxt(t) ? '<br><small>' + esc(t.nota) + '</small>' : '') + optsHtml(t) + '</span><span>' + (costTxt(t) || 'según uso') + '</span></div>'; }).join('') + '<p class="rsub" style="margin-top:6px">Aproximado. Va a tu nombre y no cobramos nada sobre esto.</p></div>';
   var ph = packHint();
   if (ph) b += '<div class="hint">' + ic('lightbulb') + '<span>Te sale mejor el <b>' + ph[0] + '</b>: desde ' + money(val(ph[1])) + ' en lugar de los precios sueltos (ahorras ' + money(ahorro(ph[1])) + ').</span></div>';
   $('#qRes').innerHTML = head + '<div class="res-body">' + b + '</div>'; icons();
@@ -554,8 +567,8 @@ function summaryText(){
   var t = '*Presupuesto' + (n ? ' para ' + n : '') + '*\nMR · Tecnología que trabaja por tu negocio\n\n';
   if (L.ini.length) t += '*Pago inicial (una vez):*\n' + L.ini.map(function(l){ return '• ' + l[0] + ': ' + money(l[1]); }).join('\n') + '\n*Total: ' + money(I) + '* (50 % al empezar, 50 % al entregar)\n\n';
   if (L.mes.length) t += '*Cuota mensual (sin permanencia):*\n' + L.mes.map(function(l){ return '• ' + l[0] + ': ' + money(l[1]) + ' al mes'; }).join('\n') + '\n*Total: ' + money(M) + ' al mes*\n\n';
-  if (L.ter.length) t += '*Aparte, a otras empresas (aprox., a tu nombre):*\n' + L.ter.map(function(x){ return '• ' + x.que + ': ' + (x.costeEur ? rango(x.costeEur[0], x.costeEur[1]) + ' ' + (PER[x.periodo]||'') : 'según uso'); }).join('\n') + '\n\n';
-  return t + 'Precios desde, ' + taxNote() + '. Te confirmamos el precio final tras una llamada gratuita de 20 minutos.\nServicios y ejemplos: https://melinarivera.github.io/MR_Portafolio/servicios/?v=2';
+  if (L.ter.length) t += '*Aparte, a otras empresas (aprox., a tu nombre):*\n' + L.ter.map(function(x){ return '• ' + x.que + ': ' + (costTxt(x) || 'según uso') + optsFor(x).map(function(o){ return '\n   – ' + o.n + ': ' + o.p; }).join(''); }).join('\n') + '\n\n';
+  return t + 'Precios ' + taxNote() + '. Presupuesto válido durante 30 días.';
 }
 
 /* ---------- Condiciones ---------- */
