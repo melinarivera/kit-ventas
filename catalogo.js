@@ -69,7 +69,7 @@ window.CATALOGO = {
         {que:  "Textos legales y aviso de cookies", quien:  "Cliente", costeEur:  [6, 12], costeMxn:  [0, 190], costeUsd:  [6, 14], periodo:  "mes", nota:  "Obligatorio por ley; la opción depende del país", opciones:  [{n:  "España (recomendado): Lawwwing Starter", p:  "9,90 €/mes con pago anual o 12 €/mes. Aviso legal, privacidad, cookies y banner", m:  ["eur"]}, {n:  "España, más barato: iubenda Essentials", p:  "5,99 US$/mes (unos 5,50 €) con pago anual; el aviso legal lo redactamos nosotros", m:  ["eur"]}, {n:  "México: aviso de privacidad (integral y simplificado)", p:  "lo redactamos nosotros, incluido", m:  ["mxn"]}, {n:  "México, si la web usa analítica o publicidad: CookieYes", p:  "gratis hasta 5.000 visitas al mes; Basic 9 €/mes (unos 190 MXN)", m:  ["mxn"]}, {n:  "Otros países: iubenda Essentials", p:  "5,99 US$/mes con pago anual", m:  ["usd"]}, {n:  "Otros países: Termly Starter", p:  "10 US$/mes con pago anual o 14 US$/mes", m:  ["usd"]}]}
       ],
       mensual: { opcional: "mant", texto: "Recomendado: mantenimiento mensual." },
-      demos: [{ nombre: "ETERN-ME", url: "https://etern-me.com" }, { nombre: "Cotidiana", url: "https://cotidiana.app" }],
+      demos: [{ nombre: "Efsun · web con reservas", url: "https://melinarivera.github.io/pyme-efsun/" }],
       preguntas: [
         ["¿La web es mía?", "Sí. Dominio, alojamiento y cuentas van a tu nombre desde el primer día."],
         ["¿Me vais a posicionar el primero en Google?", "Dejamos la web preparada para Google (SEO básico). Subir posiciones depende también de contenido y reseñas con el tiempo; nadie serio puede garantizar el primer puesto."]
@@ -94,7 +94,7 @@ window.CATALOGO = {
         {que:  "Textos legales de tienda (condiciones de compra, devoluciones, cookies)", quien:  "Cliente", costeEur:  [16, 20], costeMxn:  [0, 190], costeUsd:  [15, 25], periodo:  "mes", nota:  "Obligatorio por ley para vender online", opciones:  [{n:  "España: Lawwwing Growth", p:  "15,90 €/mes con pago anual o 20 €/mes. Incluye condiciones de compra y botón de desistimiento", m:  ["eur"]}, {n:  "México: aviso de privacidad y términos de compra", p:  "los redactamos nosotros, incluido", m:  ["mxn"]}, {n:  "México, si usa analítica o publicidad: CookieYes", p:  "gratis hasta 5.000 visitas; Basic 9 €/mes (unos 190 MXN)", m:  ["mxn"]}, {n:  "Otros países: Termly Pro+", p:  "15 US$/mes con pago anual o 20 US$/mes", m:  ["usd"]}, {n:  "Otros países: iubenda Advanced", p:  "24,99 US$/mes con pago anual", m:  ["usd"]}]}
       ],
       mensual: { opcional: "mant", texto: "Muy recomendado: mantenimiento mensual (una tienda caída es dinero perdido)." },
-      demos: [{ nombre: "Efsun · plataforma con reservas", url: "https://melinarivera.github.io/pyme-efsun/" }, { nombre: "Efsun · tienda", url: "https://melinarivera.github.io/tienda-esoterica/" }],
+      demos: [{ nombre: "Efsun · tienda online", url: "https://melinarivera.github.io/tienda-esoterica/" }],
       preguntas: [
         ["¿Cobráis comisión por venta?", "No. Solo la pasarela de pago (Stripe, el banco o Mercado Pago) cobra su pequeña comisión. Nosotros no."],
         ["¿Puedo subir yo los productos?", "Sí, te enseñamos a hacerlo desde el panel."]
