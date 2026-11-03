@@ -15,11 +15,11 @@ Página para enseñar los servicios de Melina a clientes y hacerles un presupues
 ## Precios
 
 Los precios **no se cambian aquí**. Se leen de la web de Melina
-(`MR_Portafolio/servicios/precios.json`), así que la página de servicios, el portafolio y este kit siempre coinciden.
+(`MR_Portafolio/datos/precios.json`), así que la página de servicios, el portafolio y este kit siempre coinciden.
 
 - Dólares: precio en euros × 1,10, redondeado a 5.
 - Costes de terceros (dominio, hosting…): aproximados; en pesos ≈ euros × 20.
 
-Los textos de cada servicio (incluye, no incluye, plazos, preguntas) y de cada tipo de negocio están en `catalogo.js`.
+Los textos de cada servicio (incluye, no incluye, plazos, preguntas) y de cada tipo de negocio están en `MR_Portafolio/datos/catalogo.js` (compartido con la web). Los colores salen de `MR_Portafolio/marca/tokens.css`.
 
 Los márgenes de negociación (precio mínimo y máximo) no están aquí: van en la guía de venta, que no es pública.
