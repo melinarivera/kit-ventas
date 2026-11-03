@@ -1,6 +1,11 @@
 # Kit de ventas · MR
 
-Página para enseñar los servicios de Melina a clientes y hacerles un presupuesto al momento. Todo lo que aparece aquí lo puede ver el cliente.
+Herramienta de Mauro para enseñar los servicios de Melina a clientes y hacerles un presupuesto al momento. No se enlaza desde la web pública.
+
+Tiene dos modos:
+
+- **Presentación** (sin clave): Tu negocio, Servicios, Presupuesto y Condiciones. Lo puede ver el cliente.
+- **Vendedor** (botón «Vendedor» + clave): añade **Pedido** y **Guía** (márgenes y argumentos, cifrada). Se queda abierto solo en ese móvil hasta pulsar «Salir del modo vendedor».
 
 **Abrir:** https://melinarivera.github.io/kit-ventas/
 

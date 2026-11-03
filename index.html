@@ -338,7 +338,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
       <button type="button" role="tab" data-tab="negocio" aria-selected="true"><i data-lucide="store"></i>Tu negocio</button>
       <button type="button" role="tab" data-tab="servicios" aria-selected="false"><i data-lucide="layout-list"></i>Servicios</button>
       <button type="button" role="tab" data-tab="cotizar" aria-selected="false"><i data-lucide="calculator"></i>Presupuesto</button>
-      <button type="button" role="tab" data-tab="pedido" aria-selected="false"><i data-lucide="clipboard-check"></i>Pedido</button>
+      <button type="button" role="tab" data-tab="pedido" aria-selected="false" id="tabPedido" hidden><i data-lucide="clipboard-check"></i>Pedido</button>
       <button type="button" role="tab" data-tab="glosario" aria-selected="false"><i data-lucide="book-open"></i>Condiciones</button>
       <button type="button" role="tab" data-tab="guia" aria-selected="false" id="tabGuia" hidden><i data-lucide="lock-open"></i>Guía</button>
     </nav>
@@ -376,7 +376,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
             <button class="btn" type="button" id="btnCopy"><i data-lucide="copy"></i>Copiar texto</button>
             <button class="btn" type="button" id="btnReset"><i data-lucide="rotate-ccw"></i>Empezar de nuevo</button>
           </div>
-          <button class="btn primary" type="button" data-tab="pedido" style="margin-top:12px;width:100%"><i data-lucide="clipboard-check"></i>¿Ha dicho que sí? Tomar el pedido</button>
+          <button class="btn primary" type="button" data-tab="pedido" id="btnPedidoGo" hidden style="margin-top:12px;width:100%"><i data-lucide="clipboard-check"></i>¿Ha dicho que sí? Tomar el pedido</button>
         </div></div>
       </div>
       <aside class="res" aria-live="polite" id="qRes"></aside>
@@ -397,7 +397,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
     <div class="qbox"><h3><span class="n">2</span>Lo que contrata</h3><div class="qbody">
       <div id="pLines"></div>
       <div class="pform" style="margin-top:14px">
-        <label class="full">Condición pactada (si la hay)<small>Ej.: Pack Arranque, pago adelantado, 6 meses de cuota… Nunca por debajo del mínimo de la guía.</small><input class="field" id="pCond"/></label>
+        <label class="full">Condición pactada (si la hay)<small>Ej.: Pack Arranque, pago adelantado, 6 meses de cuota…</small><input class="field" id="pCond"/></label>
         <label>Precio inicial acordado<small>Déjalo vacío si es el del presupuesto</small><input class="field" id="pIni" inputmode="decimal"/></label>
         <label>Cuota mensual acordada<small>Déjalo vacío si es la del presupuesto</small><input class="field" id="pMes" inputmode="decimal"/></label>
       </div>
@@ -423,7 +423,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
   </section>
 
   <section id="tab-guia" hidden>
-    <div class="ghead"><b><i data-lucide="lock-open"></i>Solo para el vendedor. No la enseñes al cliente.</b><button class="linkbtn" type="button" id="btnLock"><i data-lucide="lock"></i>Cerrar la guía en este móvil</button></div>
+    <div class="ghead"><b><i data-lucide="lock-open"></i>Solo para el vendedor. No la enseñes al cliente.</b><button class="linkbtn" type="button" id="btnLock"><i data-lucide="lock"></i>Salir del modo vendedor</button></div>
     <div id="guiaBody"></div>
   </section>
 
@@ -443,10 +443,10 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 <dialog id="dlgKey" aria-labelledby="dlgKeyT">
   <form class="dlg" method="dialog" id="keyForm">
     <h3 id="dlgKeyT"><i data-lucide="key-round"></i>Acceso vendedor</h3>
-    <p>Escribe la clave para ver la guía de venta. Se queda abierta solo en este móvil.</p>
+    <p>Escribe la clave para abrir el modo vendedor: tomar el pedido y la guía de venta. Se queda abierto solo en este móvil.</p>
     <label for="kPw">Clave<input id="kPw" class="field" type="password" autocomplete="current-password"/></label>
     <p id="kErr" style="color:var(--no)" hidden>Clave incorrecta. Prueba otra vez.</p>
-    <div class="btns"><button class="btn primary" value="ok" type="submit">Abrir la guía</button><button class="btn" value="no" type="submit" formnovalidate>Cancelar</button></div>
+    <div class="btns"><button class="btn primary" value="ok" type="submit">Entrar</button><button class="btn" value="no" type="submit" formnovalidate>Cancelar</button></div>
   </form>
 </dialog>
 <div class="toast" id="toast" role="status"></div>
@@ -706,6 +706,8 @@ function renderGlos(){
 /* ---------- navegación ---------- */
 function isHome(){ return !!(history.state && history.state.kv === 'home'); }
 function tab(t, nohist){
+  /* Pedido y Guía solo existen en modo vendedor (con clave) */
+  if ((t === 'pedido' || t === 'guia') && $('#tabGuia').hidden) t = 'cotizar';
   /* Historial: la flecha «atrás» del navegador siempre lleva al inicio del kit (Tu negocio) */
   if (!nohist){
     try {
@@ -766,6 +768,8 @@ $('#btnWa').addEventListener('click', function(){
 $('#btnReset').addEventListener('click', function(){ q = {}; $('#qName').value = ''; renderOpts(); renderRes(); toast('Presupuesto vacío'); });
 
 /* ---------- guía del vendedor (cifrada con AES-GCM; la clave no está en el código) ---------- */
+/* Modo vendedor: muestra u oculta lo que el cliente no debe ver (pedido y guía) */
+function seller(on){ ['#tabGuia','#tabPedido','#btnPedidoGo'].forEach(function(id){ var el = $(id); if (el) el.hidden = !on; }); }
 function b64(s){ return Uint8Array.from(atob(s), function(c){ return c.charCodeAt(0); }); }
 function openGuide(pw){
   if (!window.crypto || !crypto.subtle) return Promise.reject();
@@ -775,16 +779,16 @@ function openGuide(pw){
     }).then(function(key){ return crypto.subtle.decrypt({ name:'AES-GCM', iv:b64(d.iv) }, key, b64(d.ct)); });
   }).then(function(buf){
     $('#guiaBody').innerHTML = new TextDecoder().decode(buf);
-    $('#tabGuia').hidden = false; store.set('kv-guia', pw); icons();
+    seller(true); store.set('kv-guia', pw); icons();
   });
 }
 $('#btnKey').addEventListener('click', function(){ if (!$('#tabGuia').hidden){ tab('guia'); return; } $('#kErr').hidden = true; $('#kPw').value = ''; $('#dlgKey').showModal(); });
 $('#keyForm').addEventListener('submit', function(e){
   if (!e.submitter || e.submitter.value !== 'ok') return;
   e.preventDefault();
-  openGuide($('#kPw').value).then(function(){ $('#dlgKey').close(); tab('guia'); toast('Guía abierta'); }, function(){ $('#kErr').hidden = false; });
+  openGuide($('#kPw').value).then(function(){ $('#dlgKey').close(); tab('guia'); toast('Modo vendedor activado'); }, function(){ $('#kErr').hidden = false; });
 });
-$('#btnLock').addEventListener('click', function(){ try{ localStorage.removeItem('kv-guia'); }catch(e){} $('#guiaBody').innerHTML = ''; $('#tabGuia').hidden = true; showNiches(); tab('negocio'); toast('Guía cerrada en este móvil'); });
+$('#btnLock').addEventListener('click', function(){ try{ localStorage.removeItem('kv-guia'); }catch(e){} $('#guiaBody').innerHTML = ''; seller(false); showNiches(); tab('negocio'); toast('Modo vendedor cerrado en este móvil'); });
 
 /* ---------- barra de total en el móvil ---------- */
 function qbar(){
