@@ -7,10 +7,10 @@
 <meta name="description" content="Qué ofrecemos, qué incluye cada servicio, quién paga cada cosa y presupuesto al momento."/>
 <meta name="robots" content="noindex"/>
 <meta name="theme-color" content="#0F1020"/>
-<link rel="icon" href="/MR_Portafolio/marca/mr-favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="https://melinarivera.com/marca/mr-favicon.svg" type="image/svg+xml"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="/MR_Portafolio/marca/tokens.css"/>
+<link rel="stylesheet" href="https://melinarivera.com/marca/tokens.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.469.0/dist/umd/lucide.min.js"></script>
 <style>
@@ -323,7 +323,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 <header class="top">
   <div class="wrap">
     <div class="brand">
-      <div class="lockup"><img class="logo" src="/MR_Portafolio/marca/mr-logo-web.svg" alt="" width="64" height="38"/><div><h1><span class="sr">MR · </span>Servicios</h1><p>Tecnología que trabaja por tu negocio</p></div></div>
+      <div class="lockup"><img class="logo" src="https://melinarivera.com/marca/mr-logo-web.svg" alt="" width="64" height="38"/><div><h1><span class="sr">MR · </span>Servicios</h1><p>Tecnología que trabaja por tu negocio</p></div></div>
       <div class="hact">
         <div class="seg" role="group" aria-label="Moneda">
           <button type="button" data-cur="eur" aria-pressed="true">€ España</button>
@@ -436,7 +436,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 
   <div class="foot">
     <span>Todos los precios son + IVA (o + impuestos en otros países).</span>
-    <span style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><a href="https://melinarivera.github.io/MR_Portafolio/#servicios" target="_blank" rel="noopener">Web de servicios</a></span>
+    <span style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><a href="https://melinarivera.com/#servicios" target="_blank" rel="noopener">Web de servicios</a></span>
   </div>
 </main>
 
@@ -451,7 +451,7 @@ dialog::backdrop{background:rgba(15,16,32,.55)}
 </dialog>
 <div class="toast" id="toast" role="status"></div>
 
-<script src="/MR_Portafolio/datos/catalogo.js?v=20261103"></script>
+<script src="https://melinarivera.com/datos/catalogo.js?v=20261103"></script>
 <script>
 (function(){
 'use strict';
@@ -878,7 +878,7 @@ function sendToNotion(){
     fetch(MAKE_HOOK, { method:'POST', mode:'no-cors', body:b }).then(function(){ toast('Pedido enviado a Notion'); }).catch(function(){ toast('No se pudo guardar el pedido: revisa la conexión. El WhatsApp sí se envía.'); });
   } catch(e){}
 }
-function isDemo(u) { return /\/MR_Portafolio\/demos\/|Nexo_Facturas/.test(u || ''); }
+function isDemo(u) { return /melinarivera\.com\/demos\/|\/MR_Portafolio\/demos\/|Nexo_Facturas/.test(u || ''); }
 function waTo(num, text){ window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(text), '_blank', 'noopener'); }
 function addNeed(){ var v = $('#pExtra').value.trim(); if (!v) return; var d = pedidoStore(); d.extra = d.extra || []; if (d.extra.indexOf(v) < 0) d.extra.push(v); store.set('kv-pedido', JSON.stringify(d)); $('#pExtra').value = ''; renderPedido(); $('#pExtra').focus(); }
 $('#pExtraAdd').addEventListener('click', addNeed);
@@ -904,7 +904,7 @@ window.addEventListener('popstate', function(){
 });
 if (h === 'cotizar' || h === 'glosario' || h === 'servicios' || h === 'pedido') tab(h);
 var gpw = store.get('kv-guia'); if (gpw) openGuide(gpw).then(function(){ if (h === 'guia') tab('guia'); }, function(){ try{ localStorage.removeItem('kv-guia'); }catch(e){} });
-fetch('/MR_Portafolio/datos/precios.json', { cache:'no-store' }).then(function(r){ if (!r.ok) throw 0; return r.json(); }).then(function(j){ PR = j; renderList(); renderRes(); if (!$('#svcDetail').hidden) renderDetail($('#svcDetail').dataset.id); }).catch(function(){});
+fetch('https://melinarivera.com/datos/precios.json', { cache:'no-store' }).then(function(r){ if (!r.ok) throw 0; return r.json(); }).then(function(j){ PR = j; renderList(); renderRes(); if (!$('#svcDetail').hidden) renderDetail($('#svcDetail').dataset.id); }).catch(function(){});
 })();
 </script>
 </body>
